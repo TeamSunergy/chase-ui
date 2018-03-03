@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Time from 'react-time';
 
 class CurrentTime extends React.Component{

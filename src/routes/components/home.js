@@ -1,5 +1,4 @@
 import React from 'react';
-import {LineChart} from 'react-easy-chart'; //https://github.com/rma-consulting/react-easy-chart
 
 class Home extends React.Component {
 	constructor(props) {
@@ -9,7 +8,7 @@ class Home extends React.Component {
 	}
 	render() {
 		return  (
-			<h1>Home Dash</h1>
+			<h1></h1>
 			);
 	}
 }

@@ -14,7 +14,6 @@ const styles = {
   },
   content: {
     padding: '16px',
-    'color': 'white',
   },
   time:{
     'float':'right',
@@ -58,6 +57,7 @@ class App extends React.Component {
         {!this.state.docked &&
          <a onClick={this.menuButtonClick} href="#" style={styles.contentHeaderMenuLink}>=</a>}
          <span style={styles.para}>
+         Team Sunergy
          <span style ={styles.time}> <CurrentTime className = 'time'></CurrentTime></span>
          </span>
        </span>

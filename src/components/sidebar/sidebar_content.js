@@ -35,12 +35,16 @@ const styles = {
 const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
   const links = [];
-  links.push(<a key={2} href="#" style={styles.sidebarLink}>Menu2</a>);
-  links.push(<a key={3} href="#" style={styles.sidebarLink}>Menu3</a>);
-  links.push(<a key={1}  href="/settings" style={styles.sidebarLink}><Icon.Settings style={styles.icon}/><span className='text'>Settings</span></a>);
+    links.push(<a key={5}  href="/home" style={styles.sidebarLink}><Icon.Home style={styles.icon}/><span>Home</span></a>);
+    links.push(<a key={6}  href="/battery" style={styles.sidebarLink}><Icon.Battery style={styles.icon}/><span>Battery</span></a>);
+    links.push(<a key={4} href="/weather" style={styles.sidebarLink}><Icon.Sun style={styles.icon}/><span>Weather</span></a>);
+    links.push(<a key={1}  href="/settings" style={styles.sidebarLink}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
+    links.push(<a key={2} href="#" style={styles.sidebarLink}>Menu2</a>);
+    links.push(<a key={3} href="#" style={styles.sidebarLink}>Menu3</a>);
+
 
   return (
-    <MaterialTitlePanel title="Team Sunergy" style={style}>
+    <MaterialTitlePanel title="Menu" style={style}>
       <div style={styles.content}>
         <a href="/" style={styles.sidebarLink}><Icon.Activity style={styles.icon}/>Main Dashboard</a>
         <div style={styles.divider} />
