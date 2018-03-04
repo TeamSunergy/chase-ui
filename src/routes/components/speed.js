@@ -15,8 +15,9 @@ const styles = {
 class speed extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(props);
 		this.state = {
-			currentSpeed: 123,
+			currentSpeed: (this.props.speed).toFixed(2),
 			units: 'mph'
 		}
 	}

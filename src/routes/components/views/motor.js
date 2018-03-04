@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Weather extends React.Component {
+class motor extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -8,8 +8,8 @@ class Weather extends React.Component {
 	}
 	render() {
 		return  (
-			<h1>Weather</h1>
+			<h1>Motor</h1>
 			);
 	}
 }
-export default Weather;
+export default motor;

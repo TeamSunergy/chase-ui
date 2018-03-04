@@ -27,20 +27,22 @@ const styles = {
   icon: {
   'vertical-align': 'middle',
   'padding-right': '10px',
-  height: '20px',
-  width: '20px',
+  height: '25px',
+  width: '25px',
+  'box-sizing': 'content-box !important'
 }
 };
 
 const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
   const links = [];
-    links.push(<a key={5}  href="/home" style={styles.sidebarLink}><Icon.Home style={styles.icon}/><span>Home</span></a>);
-    links.push(<a key={6}  href="/battery" style={styles.sidebarLink}><Icon.Battery style={styles.icon}/><span>Battery</span></a>);
-    links.push(<a key={4} href="/weather" style={styles.sidebarLink}><Icon.Sun style={styles.icon}/><span>Weather</span></a>);
-    links.push(<a key={1}  href="/settings" style={styles.sidebarLink}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
-    links.push(<a key={2} href="#" style={styles.sidebarLink}>Menu2</a>);
-    links.push(<a key={3} href="#" style={styles.sidebarLink}>Menu3</a>);
+    //links.push(<a key={1}  href="/home" style={styles.sidebarLink}><Icon.Home style={styles.icon}/><span>Home</span></a>);
+    links.push(<a key={2}  href="/battery" style={styles.sidebarLink}><Icon.Battery style={styles.icon}/><span>Battery Protection System</span></a>);
+    links.push(<a key={3}  href="/array" style={styles.sidebarLink}><Icon.Zap style={styles.icon}/><span>Solar Array</span></a>);
+    links.push(<a key={4} href="/motor" style={styles.sidebarLink}><Icon.Truck style={styles.icon}/><span>Motor Controller</span></a>);
+    links.push(<a key={5} href="/smartroute" style={styles.sidebarLink}><Icon.Navigation style={styles.icon}/><span>Smart Route</span></a>);
+    links.push(<a key={6} href="/weather" style={styles.sidebarLink}><Icon.Sun style={styles.icon}/><span>Weather</span></a>);
+    links.push(<a key={7}  href="/settings" style={styles.sidebarLink}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
 
 
   return (

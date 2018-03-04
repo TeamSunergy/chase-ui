@@ -28,7 +28,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      docked: false,
+      docked: true,
       open: false,
       transitions: true,
       touch: true,

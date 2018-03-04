@@ -16,7 +16,7 @@ class batteryVoltage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentVoltage: 12,
+			currentVoltage: (0.00).toFixed(2),
 			units: 'V'
 		}
 	}

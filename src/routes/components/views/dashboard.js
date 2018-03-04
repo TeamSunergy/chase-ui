@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Dashboard from 'react-dazzle';
-import home from './home';
-import speed from './speed';
-import batteryVoltage from './batteryVoltage'
+import speed from '../speed';
+import batteryVoltage from '../batteryVoltage'
 // Default styles.
 import 'react-dazzle/lib/style/style.css';
 
@@ -14,15 +13,13 @@ export default class dashboard extends Component {
         speed: {
           type: speed,
           title: 'Speed',
+          props: {
+            speed: 1,
+          }
         },
           batteryVoltage: {
           type: batteryVoltage,
           title: 'Battery Voltage',
-        }
-        ,
-          WordCounter: {
-          type: home,
-          title: 'Counter widget',
         }
       },
       layout: {
@@ -39,10 +36,10 @@ export default class dashboard extends Component {
         {
           columns: [{
             className: 'col-md-3',
-            widgets: [{key: 'WordCounter'}],
+            widgets: [{key: 'speed'}],
           },{
             className: 'col-md-3',
-            widgets: [{key: 'WordCounter'}],
+            widgets: [{key: 'speed'}],
           },
           ],
         }],
