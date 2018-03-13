@@ -7,11 +7,11 @@ const styles = {
     fontWeight: 300,
   },
   header: {
-    backgroundColor: 'rgb(35,38,48)',
+    backgroundColor: 'rgb(22,25,28)',
     color: 'white',
     padding: '16px',
     fontSize: '1.5em',
-    'min-height': '25px'
+    'min-height': '25px',
   },
 };
 

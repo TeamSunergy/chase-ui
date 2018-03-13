@@ -11,7 +11,7 @@ class Weather extends React.Component {
 	render() {
 		return  (
 			<Iframe url= {this.state.url}
-        width="97.5%"
+        width="100%"
         height="100%"
         id="myId"
         className="myClassname"

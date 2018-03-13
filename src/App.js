@@ -4,23 +4,32 @@ import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './components/sidebar/material_title_panel';
 import SidebarContent from './components/sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
 import Routes from './routes';
+import * as Icon from 'react-feather';
 import CurrentTime from './components/CurrentTime';
 
 const styles = {
   contentHeaderMenuLink: {
     textDecoration: 'none',
     color: 'white',
-    padding: 8,
+    padding: 0,
   },
   content: {
-    padding: '16px',
+    padding: '0px',
+    "overflow-x" : "hidden",
   },
   time:{
     'float':'right',
   },
   para:{
     'text-align':'left',
-  }
+  },
+  icon:{
+  'vertical-align': 'middle',
+  'padding-right': '10px',
+  height: '30px',
+  width: '30px',
+  'box-sizing': 'content-box !important'
+}
 };
 
 class App extends React.Component {
@@ -28,7 +37,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      docked: true,
+      docked: false,
       open: false,
       transitions: true,
       touch: true,
@@ -55,10 +64,9 @@ class App extends React.Component {
     const contentHeader = (
       <span>
         {!this.state.docked &&
-         <a onClick={this.menuButtonClick} href="#" style={styles.contentHeaderMenuLink}>=</a>}
+         <a onClick={this.menuButtonClick} href="#" style={styles.contentHeaderMenuLink}><Icon.Menu style={styles.icon}/></a>}
          <span style={styles.para}>
          Team Sunergy
-         <span style ={styles.time}> <CurrentTime className = 'time'></CurrentTime></span>
          </span>
        </span>
        );

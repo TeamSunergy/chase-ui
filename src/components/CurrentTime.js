@@ -16,7 +16,6 @@ class CurrentTime extends React.Component{
 				this.setState({
 					time: new Date()
 				})
-				console.log('Time Updated');
 			}
 			,interval)
 	}

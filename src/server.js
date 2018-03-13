@@ -11,6 +11,9 @@ const io = socketIO(server)
 client.connect(25000, '127.0.0.1', function() {
 		console.log('Connected @ localhost on Port: 25000');
 	});
+client.on('close', function() {
+  console.log('Connection closed');
+});
 
 io.on('connection', socket => {
   console.log('User connected');
