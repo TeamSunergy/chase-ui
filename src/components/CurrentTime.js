@@ -10,7 +10,7 @@ class CurrentTime extends React.Component{
 		}
 	}  
 	componentDidMount() {
-		const {interval} = this.state;
+		const { interval } = this.state;
 		setInterval(
 			() => {
 				this.setState({
@@ -20,8 +20,8 @@ class CurrentTime extends React.Component{
 			,interval)
 	}
 	render() {
-		const {time} = this.state;    
-		const {className} = this.props;
+		const { time } = this.state;    
+		const { className } = this.props;
 		return (
 			<Time value={time} className = {className} format="hh:mm:ss A"></Time>
 			)

@@ -13,14 +13,14 @@ const styles = {
     padding: '16px 0px',
     color: 'white',
     textDecoration: 'none',
-    'font-size': '16px',
+    'fontSize': '16px',
   }, settings: {
     position:"absolute",
     bottom:20,
     padding: '16px 0px',
     color: 'white',
     textDecoration: 'none',
-    'font-size': '16px',
+    'fontSize': '16px',
   },
   divider: {
     margin: '8px 0',
@@ -33,15 +33,14 @@ const styles = {
     backgroundColor: 'rgb(22,25,28)',
   },
   icon: {
-  'vertical-align': 'middle',
-  'padding-right': '10px',
+  'verticalAlign': 'middle',
+  'paddingRight': '10px',
   height: '25px',
   width: '25px',
-  'box-sizing': 'content-box !important'
+  'boxSizing': 'content-box !important'
 },
 image: {
-    "text-align": "center",
-
+    "textAlign": "center",
 },
 };
 
@@ -51,8 +50,9 @@ const SidebarContent = (props) => {
     //links.push(<a key={1}  href="/home" style={styles.sidebarLink}><Icon.Home style={styles.icon}/><span>Home</span></a>);
     links.push(<a key={2}  href="/battery" style={styles.sidebarLink}><Icon.Battery style={styles.icon}/><span>Battery</span></a>);
     links.push(<a key={4} href="/motor" style={styles.sidebarLink}><Icon.Truck style={styles.icon}/><span>Motor Controller</span></a>);
-    links.push(<a key={5} href="/smartroute" style={styles.sidebarLink}><Icon.Navigation style={styles.icon}/><span>Smart Route</span></a>);
+    links.push(<a key={5} href="/analytics" style={styles.sidebarLink}><Icon.Navigation style={styles.icon}/><span>Analytics</span></a>);
     links.push(<a key={6} href="/weather" style={styles.sidebarLink}><Icon.Sun style={styles.icon}/><span>Weather</span></a>);
+    links.push(<a key={7}  href="/data" style={styles.sidebarLink}><Icon.Info style={styles.icon}/><span>Data</span></a>);
     links.push(<a key={7}  href="/settings" style={styles.settings}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
 
 

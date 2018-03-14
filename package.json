@@ -2,11 +2,15 @@
   "name": "chase",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "express": "^4.16.2",
     "feather-icons": "^4.7.0",
+    "immutability-helper": "^2.6.6",
     "jquery": "^3.3.1",
     "moment": "^2.20.1",
+    "mongodb": "^3.0.4",
     "popper": "^1.0.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
@@ -14,11 +18,15 @@
     "react-dom": "^16.2.0",
     "react-easy-chart": "^1.0.0",
     "react-feather": "^1.0.8",
+    "react-horizontal-gauge": "^0.1.2",
     "react-iframe": "^1.1.0",
+    "react-json-view": "^1.16.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "react-sidebar": "^2.3.2",
-    "react-time": "^4.3.0"
+    "react-time": "^4.3.0",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

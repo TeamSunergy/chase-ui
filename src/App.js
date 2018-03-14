@@ -5,7 +5,7 @@ import MaterialTitlePanel from './components/sidebar/material_title_panel';
 import SidebarContent from './components/sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
 import Routes from './routes';
 import * as Icon from 'react-feather';
-import CurrentTime from './components/CurrentTime';
+//import CurrentTime from './components/CurrentTime';
 
 const styles = {
   contentHeaderMenuLink: {
@@ -14,21 +14,20 @@ const styles = {
     padding: 0,
   },
   content: {
-    padding: '0px',
-    "overflow-x" : "hidden",
+    "overflowX" : "hidden",
   },
   time:{
     'float':'right',
   },
   para:{
-    'text-align':'left',
+    'textAlign':'left',
   },
   icon:{
-  'vertical-align': 'middle',
-  'padding-right': '10px',
+  'verticalAlign': 'middle',
+  'paddingRight': '10px',
   height: '30px',
   width: '30px',
-  'box-sizing': 'content-box !important'
+  'boxSizing': 'content-box !important'
 }
 };
 

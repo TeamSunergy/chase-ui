@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
 import Dashboard from 'react-dazzle';
-import primary from './dashboard/primary';
-import batteryVoltage from './dashboard/batteryVoltage';
-import totalArrayPower from './dashboard/totalArrayPower';
-import netPower from './dashboard/netPower';
-import netCurrent from './dashboard/netCurrent';
-import secondary from './dashboard/secondary';
-import auxBatteryVoltage from './dashboard/auxBatteryVoltage';
-// Default styles.
+import primary from './dashboard/Primary';
+import secondary from './dashboard/Secondary';
+import auxBatteryVoltage from './dashboard/AuxBatteryVoltage';
 import 'react-dazzle/lib/style/style.css';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client'
 
 const styles = {
-  nav: {
-    "background-color": "rgb(22,25,28)",
-    "border-radius": "0px",
-    "color" : "white",
-    "padding-left" : "10px",
-    "margin-bottom" : "10px",
-  },
   content: {
-      "margin-left" : "10px",
-      "marigin-right" : "232px"
-    }
+    "padding" : "20px"
+  }
 }
 
 export default class dashboard extends Component {
@@ -38,31 +25,6 @@ export default class dashboard extends Component {
             speed: 1,
             batteryVoltage:2,
           }
-        },
-        batteryVoltage: {
-          type: batteryVoltage,
-          props: {
-            batteryVoltage: 2,
-          },
-        },
-        totalArrayPower: {
-          type: totalArrayPower,
-          props: {
-            totalArrayPower:3,
-          },
-        },
-        netPower: {
-          type: netPower,
-          props: {
-            netPower: 4,
-          },
-        },
-
-        netCurrent: {
-          type: netCurrent,
-          props: {
-            netCurrent: 5,
-          },
         },
         secondary: {
           type: secondary,
@@ -85,10 +47,6 @@ export default class dashboard extends Component {
             className: 'col-md-3',
             widgets: [{key: 'primary'}],
           },
-          {
-            className: 'col-md-8',
-            widgets: [{key: 'batteryVoltage'}],
-          },
           ],
         },
         {
@@ -109,7 +67,6 @@ export default class dashboard extends Component {
 
   componentDidMount(){
     const socket = socketIOClient(this.state.endpoint);
-    console.log('re');
     socket.on('data', (data) => {
       console.log(data.time);
       console.log(data.battery);
@@ -117,22 +74,21 @@ export default class dashboard extends Component {
       const newState = update(this.state, {
         widgets: {
           primary: {
-              props: {
-                  speed :{$set: data.speed},
-                  batteryVoltage : {$set: data.battery}
-                }
-       }
-     }
-   });
+            props: {
+              speed :{$set: data.speed},
+              batteryVoltage : {$set: data.battery}
+            }
+          }
+        }
+      });
       this.setState(newState);
     });
   }
   render() {
-
     return (
       <div>
         <div style={styles.content}>
-        <Dashboard widgets={this.state.widgets} layout={this.state.layout}/>
+          <Dashboard widgets={this.state.widgets} layout={this.state.layout}/>
         </div>
       </div>
       );  

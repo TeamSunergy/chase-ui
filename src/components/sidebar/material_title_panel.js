@@ -11,7 +11,7 @@ const styles = {
     color: 'white',
     padding: '16px',
     fontSize: '1.5em',
-    'min-height': '25px',
+    'minHeight': '20px',
   },
 };
 
