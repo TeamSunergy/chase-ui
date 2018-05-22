@@ -9,9 +9,10 @@ const styles = {
   header: {
     backgroundColor: 'rgb(22,25,28)',
     color: 'white',
-    padding: '16px',
+    padding: '5px',
     fontSize: '1.5em',
-    'minHeight': '20px',
+    'minHeight': '40px',
+    'maxHeight': '40px',
   },
 };
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 const styles = {
 	json: {
-		"margin-top" : "15px"
+		"marginTop" : "15px"
 	}
 }
 export default class Data extends Component {
@@ -11,13 +11,13 @@ export default class Data extends Component {
 		super(props);
 		this.state = {
 			endpoint: "http://localhost:4001",
-			object: {},
 			theme: "google"
 		}
 	}
 	componentDidMount(){
 		const socket = socketIOClient(this.state.endpoint);
 		socket.on('data', (data) => {
+			console.log('re');
 			this.setState({"object":data});
 		});
 	}

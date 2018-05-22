@@ -3,38 +3,12 @@ import ReactDOM from 'react-dom';
 import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './components/sidebar/material_title_panel';
 import SidebarContent from './components/sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
-import Routes from './routes';
+import Routes from './routes/router';
 import * as Icon from 'react-feather';
-//import CurrentTime from './components/CurrentTime';
-
-const styles = {
-  contentHeaderMenuLink: {
-    textDecoration: 'none',
-    color: 'white',
-    padding: 0,
-  },
-  content: {
-    "overflowX" : "hidden",
-  },
-  time:{
-    'float':'right',
-  },
-  para:{
-    'textAlign':'left',
-  },
-  icon:{
-  'verticalAlign': 'middle',
-  'paddingRight': '10px',
-  height: '30px',
-  width: '30px',
-  'boxSizing': 'content-box !important'
-}
-};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       docked: false,
       open: false,
@@ -63,8 +37,8 @@ class App extends React.Component {
     const contentHeader = (
       <span>
         {!this.state.docked &&
-         <a onClick={this.menuButtonClick} href="#" style={styles.contentHeaderMenuLink}><Icon.Menu style={styles.icon}/></a>}
-         <span style={styles.para}>
+         <a onClick={this.menuButtonClick} href="#" className = "contentHeaderMenuLink"><Icon.Menu className="styles.icon"/></a>}
+         <span className= "para">
          Team Sunergy
          </span>
        </span>
@@ -84,13 +58,15 @@ class App extends React.Component {
     };
 
     return (
+      <div className = "root">
       <Sidebar {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
-          <div style={styles.content}>
+          <div className = "content">
             <Routes />
           </div>
         </MaterialTitlePanel>
       </Sidebar>
+      </div>
       );
   }
 }

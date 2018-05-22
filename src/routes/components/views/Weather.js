@@ -5,7 +5,8 @@ class Weather extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			url: "https://forecast.weather.gov/MapClick.php?lat=36.220480000000066&lon=-81.68718999999999#.WpxY5BPwbX8"
+			//weatherunderground for weather
+			url: "https://www.wunderground.com/"
 		}
 	}
 	render() {

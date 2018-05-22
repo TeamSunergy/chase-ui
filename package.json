@@ -4,21 +4,19 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "chart.js": "^2.7.2",
     "express": "^4.16.2",
     "feather-icons": "^4.7.0",
     "immutability-helper": "^2.6.6",
     "jquery": "^3.3.1",
+    "json-stream-parse": "^1.0.3",
     "moment": "^2.20.1",
-    "mongodb": "^3.0.4",
     "popper": "^1.0.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
-    "react-dazzle": "^1.2.7",
+    "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.2.0",
-    "react-easy-chart": "^1.0.0",
     "react-feather": "^1.0.8",
-    "react-horizontal-gauge": "^0.1.2",
     "react-iframe": "^1.1.0",
     "react-json-view": "^1.16.1",
     "react-router-dom": "^4.2.2",
@@ -33,5 +31,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }

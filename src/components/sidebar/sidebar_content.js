@@ -5,7 +5,7 @@ import * as Icon from 'react-feather';
 import logo from '../../resources/logo.png';
 const styles = {
   sidebar: {
-    width: 265,
+    width: 180,
     height: '100%',
   },
   sidebarLink: {
@@ -53,7 +53,7 @@ const SidebarContent = (props) => {
     links.push(<a key={5} href="/analytics" style={styles.sidebarLink}><Icon.Navigation style={styles.icon}/><span>Analytics</span></a>);
     links.push(<a key={6} href="/weather" style={styles.sidebarLink}><Icon.Sun style={styles.icon}/><span>Weather</span></a>);
     links.push(<a key={7}  href="/data" style={styles.sidebarLink}><Icon.Info style={styles.icon}/><span>Data</span></a>);
-    links.push(<a key={7}  href="/settings" style={styles.settings}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
+    links.push(<a key={8}  href="/settings" style={styles.settings}><Icon.Settings style={styles.icon}/><span>Settings</span></a>);
 
 
   return (
