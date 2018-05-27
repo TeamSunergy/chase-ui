@@ -1,10 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './components/sidebar/material_title_panel';
 import SidebarContent from './components/sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
-import Routes from './routes/router';
+import { Route, Switch } from  'react-router-dom';
 import * as Icon from 'react-feather';
+import Weather from "./components/Weather/Weather";
+import Data from "./components/Data/Data";
+import Overview from "./components/Overview/Overview";
+import Battery from "./components/Battery/Battery";
+import Analytics from "./components/Analytics/Analytics";
+import Settings from "./components/Settings/Settings";
+import Motor from "./components/Motor/Motor";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,7 +68,15 @@ class App extends React.Component {
       <Sidebar {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
           <div className = "content">
-            <Routes />
+            <Switch>
+              <Route path="/" exact component={Overview}/>
+              <Route path="/battery" exact component={Battery}/>
+              <Route path="/motor" exact component={Motor}/>
+              <Route path="/analytics" exact component={Analytics}/>
+              <Route path="/weather" exact component={Weather}/>
+              <Route path="/settings" exact component={Settings}/>
+              <Route path="/data" exact component={Data}/>
+            </Switch>
           </div>
         </MaterialTitlePanel>
       </Sidebar>

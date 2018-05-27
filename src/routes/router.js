@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, browserHistory } from  'react-router-dom';
 //components
 import Overview from '../components/Overview/Overview';
-import Battery from './components/views/Battery';
-import Motor from './components/views/Motor';
-import Analytics from './components/views/Analytics';
-import Weather from './components/views/Weather';
-import Settings from './components/views/Settings';
-import Data from './components/views/Data';
+import Battery from '../components/Battery/Battery';
+import Motor from '../components/Motor/Motor';
+import Analytics from '../components/Analytics/Analytics';
+import Weather from '../components/Weather/Weather';
+import Settings from '../components/Settings/Settings';
+import Data from '../components/Data/Data';
 
 export default ()=>(
 	<BrowserRouter>
