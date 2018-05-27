@@ -1,4 +1,13 @@
+/**
+ * Primary widget Component
+ *
+ * // TODO: Write Desc
+ *
+ * @extends Component
+ */
+
 import React from 'react';
+
 const styles = {
 	units: {
 		'paddingLeft' : '5px',
@@ -18,8 +27,9 @@ const styles = {
 		overflow:"hidden",
 		"marginBottom" : "15px",
 	},
-}
-export class Primary extends React.Component {
+};
+
+class Primary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -69,6 +79,8 @@ export class Primary extends React.Component {
 					</div>
 				</div>
 			</div>
-	);
+		);
+	}
 }
-}
+
+export default Primary;

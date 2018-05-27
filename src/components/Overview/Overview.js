@@ -1,8 +1,16 @@
+/**
+ * Overview Component
+ *
+ * // TODO: Write Desc
+ *
+ * @extends Component
+ */
+
 import React, { Component } from 'react';
-import { Primary } from '../../../components/Overview/widgets/Primary';
-import Secondary from '../../../components/Overview/widgets/Secondary';
-import Gauge from '../../../components/Overview/widgets/Gauge';
-import Graph from '../../../components/Overview/widgets/Graph';
+import Primary from './widgets/Primary';
+import Secondary from './widgets/Secondary';
+import Gauge from './widgets/Gauge';
+import Graph from './widgets/Graph';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
 
@@ -14,12 +22,12 @@ const styles = {
 
 class Overview extends Component {
   constructor(props) {
-  	super(props);
-    this.state = {    
+    super(props);
+    this.state = {
       loading: true,
       endpoint: "http://localhost:4001",
       primary: {
-        props:{ 
+        props:{
           speed: 0,
           batteryVoltage:0,
           arrayAPower: 0,
@@ -86,29 +94,29 @@ class Overview extends Component {
   render() {
     // const { loading } = this.state;
     return (
-      <div className = "container-fluid" style = {styles.content}>
-        <div className="row">
-        <div className="col-md-3">
-        <Primary {...this.state.primary.props}/>
-        <Secondary {...this.state.secondary.props}/>
-        </div>
-          <div className="col-md-9">
-            <div className="row">
-              <div className = "row">
-              <div className="col-md-12">
-              <Graph{...this.state.graph.props}/>
-              </div>
+        <div className = "container-fluid" style = {styles.content}>
+          <div className="row">
+            <div className="col-md-3">
+              <Primary {...this.state.primary.props}/>
+              <Secondary {...this.state.secondary.props}/>
+            </div>
+            <div className="col-md-9">
+              <div className="row">
                 <div className = "row">
                   <div className="col-md-12">
-                    <Gauge {...this.state.gauge.props}/>
+                    <Graph{...this.state.graph.props}/>
+                  </div>
+                  <div className = "row">
+                    <div className="col-md-12">
+                      <Gauge {...this.state.gauge.props}/>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      );  
+    );
   }
 }
 
