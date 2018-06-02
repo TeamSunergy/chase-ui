@@ -45,7 +45,7 @@ class Primary extends Component {
     console.log(nextProps);
 
     this.setState({
-			speed: (nextProps.speed).toFixed(2), 
+			speed: (nextProps.speed).toFixed(2),
 			batteryVoltage: (nextProps.batteryVoltage).toFixed(2),
 			arrayAPower: (nextProps.arrayAPower).toFixed(2),
 			arrayBPower: (nextProps.arrayBPower).toFixed(2),

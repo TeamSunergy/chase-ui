@@ -13,6 +13,7 @@ var count = 0;
 io.once('connection', (socket) => {
 	parser.on("json", (json) => {
 		io.sockets.emit("data", json);
+		console.log(json);
 	});
 });
 

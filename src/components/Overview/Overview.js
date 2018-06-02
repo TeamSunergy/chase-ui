@@ -62,8 +62,8 @@ class Overview extends Component {
       const newState = update(this.state, {
         primary: {
           props:{
-            speed :{$set: data.speed},
-            batteryVoltage : {$set: data.batteryVoltage},
+            speed :{$set: data.motConVehicleVelocity},
+            batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
             arrayAPower : {$set: data.arrayAPower},
             arrayBPower : {$set: data.arrayBPower},
             arrayCPower : {$set: data.arrayCPower},
