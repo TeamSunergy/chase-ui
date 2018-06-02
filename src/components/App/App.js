@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Sidebar from 'react-sidebar';
-import MaterialTitlePanel from './components/sidebar/material_title_panel';
-import SidebarContent from './components/sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
+import MaterialTitlePanel from '../sidebar/material_title_panel';
+import SidebarContent from '../sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
 import { Route, Switch } from  'react-router-dom';
 import * as Icon from 'react-feather';
-import Weather from "./components/Weather/Weather";
-import Data from "./components/Data/Data";
-import Overview from "./components/Overview/Overview";
-import Battery from "./components/Battery/Battery";
-import Analytics from "./components/Analytics/Analytics";
-import Settings from "./components/Settings/Settings";
-import Motor from "./components/Motor/Motor";
+import Weather from "../Weather/Weather";
+import Data from "../Data/Data";
+import Overview from "../Overview/Overview";
+import Battery from "../Battery/Battery";
+import Analytics from "../Analytics/Analytics";
+import Settings from "../Settings/Settings";
+import Motor from "../Motor/Motor";
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {

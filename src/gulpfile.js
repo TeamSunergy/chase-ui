@@ -5,13 +5,13 @@ const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 
 gulp.task('sass', function() {
-  return gulp.src('./styles/sass/style.scss')
+  return gulp.src('./style/sass/style.scss')
   // Minify
     .pipe(sass({ outputStyle: 'compressed' })
       .on('error', sass.logError)
     )
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('./styles/css/'))
+    .pipe(gulp.dest('./style/css/'))
 
     // Normal compile with sourcemap
     .pipe(sourcemaps.init())
@@ -20,10 +20,10 @@ gulp.task('sass', function() {
     )
     .pipe(concat('style.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./styles/css/'));
+    .pipe(gulp.dest('./style/css/'));
 });
 
 // Watch task
 gulp.task('default',function() {
-  gulp.watch('./styles/sass/**/*.scss',['sass']);
+  gulp.watch('./style/sass/**/*.scss',['sass']);
 });

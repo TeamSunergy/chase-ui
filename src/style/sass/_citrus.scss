@@ -1,0 +1,36 @@
+/*
+ * Citrus 1.0.0
+ * Based on Bootstrap 3.3.7
+ * --------------------------------------------------
+ */
+
+// Core variables
+@import "citrus/variables";
+
+// Custom variables (uncomment next line)
+/* If you want to use your custom sass variables, uncomment the following import */
+@import "custom-variables";
+
+//Core mixins
+@import "citrus/mixins";
+
+
+// Reset and dependencies
+@import "citrus/normalize";
+
+// Accessibility
+// TODO
+
+// Core CSS
+@import "citrus/scaffolding";
+@import "citrus/grid";
+@import "citrus/type";
+
+
+// Components
+@import "citrus/responsive-embed";
+
+
+// Utility classes
+@import "citrus/utilities";
+@import "citrus/responsive-utilities";

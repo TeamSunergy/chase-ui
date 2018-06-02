@@ -6,7 +6,7 @@
  * @extends Component
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 
 const styles = {
 	units: {
@@ -29,7 +29,7 @@ const styles = {
 	},
 };
 
-class Primary extends React.Component {
+class Primary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -41,7 +41,10 @@ class Primary extends React.Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		this.setState({
+
+    console.log(nextProps);
+
+    this.setState({
 			speed: (nextProps.speed).toFixed(2), 
 			batteryVoltage: (nextProps.batteryVoltage).toFixed(2),
 			arrayAPower: (nextProps.arrayAPower).toFixed(2),
@@ -52,29 +55,29 @@ class Primary extends React.Component {
 	render() {
 		const{ speed, batteryVoltage, arrayAPower, arrayBPower, arrayCPower } = this.state;
 		return  (
-			<div style={ styles.boxesContent }>
+			<div>
 				<div className="row">
-						<div className="col-md-12" style={ styles.box1 }>
-						<h3>Speed</h3>
-						<h1>{speed}<span style={ styles.units }>mph</span></h1>
-					</div>
+          <div className="widget speed">
+            <h2>Speed</h2>
+            <div>{speed}<span>mph</span></div>
+          </div>
 				</div>
 				<hr/>
 				<div className="row">
-						<div className="col-md-12" style={ styles.box2 }>
+						<div className="col-md-12" >
 						<h3>Battery</h3>
 						<h1>{ batteryVoltage }<span style={ styles.units }>volts</span></h1>
 					</div>
 				</div>
 				<hr/>
 				<div className="row">
-					<div className="col-md-4 col-sm-4 col-4"style={styles.box3}>
+					<div className="col-md-4 col-sm-4 col-4">
 					<h4>sub-a</h4><h2>{arrayAPower}</h2><h5>watts</h5>
 					</div>
-					<div className="col-md-4 col-sm-4 col-4"style={styles.box3}>
+					<div className="col-md-4 col-sm-4 col-4">
 					<h4>sub-b</h4><h2>{arrayBPower}</h2><h5>watts</h5>
 					</div>
-					<div className="col-md-4 col-sm-4 col-4"style={styles.box3}>
+					<div className="col-md-4 col-sm-4 col-4">
 					<h4>sub-c</h4><h2>{arrayCPower}</h2><h5>watts</h5>
 					</div>
 				</div>
