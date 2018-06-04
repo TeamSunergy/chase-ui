@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import TitleBar from '../TitleBar/TitleBar';
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Gauge from './widgets/Gauge';
@@ -94,21 +95,24 @@ class Overview extends Component {
   render() {
     // const { loading } = this.state;
     return (
-        <div className = "container-fluid" style = {styles.content}>
-          <div className="row">
-            <div className="col-md-3">
-              <Primary {...this.state.primary.props}/>
-              <Secondary {...this.state.secondary.props}/>
-            </div>
-            <div className="col-md-9">
-              <div className="row">
-                <div className = "row">
-                  <div className="col-md-12">
-                    <Graph{...this.state.graph.props}/>
-                  </div>
+        <div>
+          <TitleBar pageTitle="Overview"/>
+          <div className = "container-fluid" style = {styles.content}>
+            <div className="row">
+              <div className="col-md-3">
+                <Primary {...this.state.primary.props}/>
+                <Secondary {...this.state.secondary.props}/>
+              </div>
+              <div className="col-md-9">
+                <div className="row">
                   <div className = "row">
                     <div className="col-md-12">
-                      <Gauge {...this.state.gauge.props}/>
+                      <Graph{...this.state.graph.props}/>
+                    </div>
+                    <div className = "row">
+                      <div className="col-md-12">
+                        <Gauge {...this.state.gauge.props}/>
+                      </div>
                     </div>
                   </div>
                 </div>
