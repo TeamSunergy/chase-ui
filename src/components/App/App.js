@@ -65,9 +65,8 @@ class App extends Component {
 
     return (
       <div className = "root">
-      <Sidebar {...sidebarProps}>
-        <MaterialTitlePanel title={contentHeader}>
-          <div className = "content">
+        {/**<Sidebar {...sidebarProps}>**/}
+        <div className = "content">
             <Switch>
               <Route path="/" exact component={Overview}/>
               <Route path="/battery" exact component={Battery}/>
@@ -78,8 +77,7 @@ class App extends Component {
               <Route path="/data" exact component={Data}/>
             </Switch>
           </div>
-        </MaterialTitlePanel>
-      </Sidebar>
+        {/** </Sidebar> **/}
       </div>
       );
   }
