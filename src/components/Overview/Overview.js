@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import TitleBar from '../TitleBar/TitleBar';
+import StatusBar from '../StatusBar/StatusBar';
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Gauge from './widgets/Gauge';
@@ -96,7 +96,7 @@ class Overview extends Component {
     // const { loading } = this.state;
     return (
         <div>
-          <TitleBar pageTitle="Overview"/>
+          <StatusBar title="Overview"/>
           <div className = "container-fluid" style = {styles.content}>
             <div className="row">
               <div className="col-md-3">

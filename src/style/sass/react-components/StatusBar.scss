@@ -1,0 +1,55 @@
+/*
+ * StatusBar Component Styles
+ * --------------------------------------------------
+ */
+@import '../custom-variables';
+
+//== Styles
+//
+//
+
+#status-bar {
+  //border: 1px solid black;
+  //height: 60px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+  overflow: auto;
+}
+
+#status-title {
+  padding: 0 0 0 36px;
+  display: inline-block;
+  line-height: 60px;
+  h1 {
+    font-size: $font-size-base;
+  }
+}
+
+#status-info {
+  display: inline-block;
+  float: right;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li.info-item {
+      text-align: center;
+      line-height: 1.3em;
+      height: 60px;
+      width: 80px;
+      border-left: 1px solid red;
+      padding: 12px 10px 0;
+      display: inline-block;
+      font-weight: $fw-bold;
+      .info-label {
+        //position: relative;
+        //bottom: 0;
+        font-weight: $fw-medium;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+      .data {
+        font-size: $font-size-base;
+      }
+    }
+  }
+}

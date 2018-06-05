@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1108,5 +1109,44 @@ dd {
   border: 1px solid rgba(0, 0, 0, 0.02);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
   border-radius: 5px; }
+
+#status-bar {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  overflow: auto; }
+
+#status-title {
+  padding: 0 0 0 36px;
+  display: inline-block;
+  line-height: 60px; }
+
+#status-title h1 {
+  font-size: 16px; }
+
+#status-info {
+  display: inline-block;
+  float: right; }
+
+#status-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+#status-info ul li.info-item {
+  text-align: center;
+  line-height: 1.3em;
+  height: 60px;
+  width: 80px;
+  border-left: 1px solid red;
+  padding: 12px 10px 0;
+  display: inline-block;
+  font-weight: 700; }
+
+#status-info ul li.info-item .info-label {
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase; }
+
+#status-info ul li.info-item .data {
+  font-size: 16px; }
 
 /*# sourceMappingURL=style.css.map */
