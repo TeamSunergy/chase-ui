@@ -1,16 +1,23 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# Idea
+.idea/workspace.xml
+.idea/tasks.xml
+code/.idea/workspace.xml
+code/.idea/tasks.xml
+
+
 # dependencies
-/node_modules
+**/node_modules
 
 # testing
-/coverage
+**/coverage
 
 # production
-/build
+**/build
 
 # misc
-.DS_Store
+**/.DS_Store
 .env.local
 .env.development.local
 .env.test.local
