@@ -1110,9 +1110,19 @@ dd {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
   border-radius: 5px; }
 
+.view {
+  padding: 65px 10px 10px; }
+
 #status-bar {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  overflow: auto; }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 1px 0 #D6D6D6;
+  overflow: auto;
+  background-color: white;
+  z-index: 100; }
 
 #status-title {
   padding: 0 0 0 36px;
@@ -1124,29 +1134,64 @@ dd {
 
 #status-info {
   display: inline-block;
-  float: right; }
+  float: right;
+  border-left: 1px solid #D6D6D6;
+  border-right: 1px solid #D6D6D6;
+  height: 60px; }
 
-#status-info ul {
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-
-#status-info ul li.info-item {
+#status-info .info-item {
   text-align: center;
-  line-height: 1.3em;
-  height: 60px;
-  width: 80px;
-  border-left: 1px solid red;
-  padding: 12px 10px 0;
+  width: 100px;
+  border-left: 1px solid #EAEAEA;
+  padding: 4px 10px;
   display: inline-block;
-  font-weight: 700; }
+  font-weight: 700;
+  margin-top: 8px; }
 
-#status-info ul li.info-item .info-label {
+#status-info .info-item .info-label {
   font-weight: 500;
   font-size: 10px;
   text-transform: uppercase; }
 
-#status-info ul li.info-item .data {
+#status-info .info-item .data {
   font-size: 16px; }
+
+#status-info .info-item:first-of-type {
+  border-left: 0; }
+
+#notification-center {
+  display: inline-block;
+  float: right;
+  width: 72px; }
+
+#notification-center .notification-circle {
+  margin: 8px auto;
+  height: 42px;
+  width: 42px;
+  text-align: center;
+  border-radius: 100%;
+  background-color: #EAEAEA; }
+
+#notification-center .notification-circle .mdi-notification {
+  margin: 4px auto;
+  font-size: 22px; }
+
+#notification-center .number-label {
+  margin: -6px auto;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #B7B7B7; }
+
+.notification-circle-hover {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  margin: 10px auto;
+  border-radius: 100%;
+  background-color: #EAEAEA; }
+
+.notification-circle-hover .mdi-notification {
+  font-size: 24px; }
 
 /*# sourceMappingURL=style.css.map */

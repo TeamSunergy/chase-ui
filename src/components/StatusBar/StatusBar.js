@@ -7,21 +7,27 @@
  */
 
 import React, {Component} from 'react';
+import NotificationCenter from './NotificationCenter';
 
 class StatusBar extends Component {
   render() {
     return (
         <div id="status-bar">
+          <NotificationCenter />
           <div id="status-title"><h1>{ this.props.title }</h1></div>
           <div id="status-info">
-            <ul>
-              <li className="info-item"><div className="data">{ this.props.speed }</div>
-                <div className="info-label">Speed</div></li>
-              <li className="info-item"><div className="data">{ this.props.speed }</div>
-                <div className="info-label">Batt. Volt.</div></li>
-              <li className="info-item"><div className="data">{ this.props.speed }</div>
-                <div className="info-label">Net Power</div></li>
-            </ul>
+              <div className="info-item">
+                <div className="data">{ this.props.speed } MPH</div>
+                <div className="info-label">Speed</div>
+              </div>
+              <div className="info-item">
+                <div className="data">{ this.props.batteryVoltage } V</div>
+                <div className="info-label">Batt. Volt.</div>
+              </div>
+              <div className="info-item">
+                <div className="data">{ this.props.netPower } V</div>
+                <div className="info-label">Net Power</div>
+              </div>
           </div>
         </div>
 
@@ -31,7 +37,9 @@ class StatusBar extends Component {
 
 StatusBar.defaultProps = {
   title: "page_title",
-  speed: 0
+  speed: 0,
+  batteryVoltage: 0,
+  netPower: 0
 };
 
 export default StatusBar;

@@ -65,9 +65,9 @@ class Overview extends Component {
           props:{
             speed :{$set: data.motConVehicleVelocity},
             batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
-            arrayAPower : {$set: data.arrayAPower},
-            arrayBPower : {$set: data.arrayBPower},
-            arrayCPower : {$set: data.arrayCPower},
+            arrayAPower : {$set: data.mppt0ArrayVoltage},
+            arrayBPower : {$set: data.mppt1ArrayVoltage},
+            arrayCPower : {$set: data.mppt2ArrayVoltage},
           }
         },
         secondary:{
@@ -103,12 +103,14 @@ class Overview extends Component {
                 <Primary {...this.state.primary.props}/>
                 <Secondary {...this.state.secondary.props}/>
               </div>
+              {/**
               <div className="col-md-9">
                 <div className="row">
                   <div className = "row">
                     <div className="col-md-12">
                       <Graph{...this.state.graph.props}/>
                     </div>
+
                     <div className = "row">
                       <div className="col-md-12">
                         <Gauge {...this.state.gauge.props}/>
@@ -117,6 +119,7 @@ class Overview extends Component {
                   </div>
                 </div>
               </div>
+               **/}
             </div>
           </div>
         </div>

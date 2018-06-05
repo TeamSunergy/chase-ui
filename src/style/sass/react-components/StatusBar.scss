@@ -10,9 +10,15 @@
 
 #status-bar {
   //border: 1px solid black;
-  //height: 60px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 1px 0 $gray-2;
   overflow: auto;
+  background-color: white;
+  z-index: 100;
 }
 
 #status-title {
@@ -27,29 +33,67 @@
 #status-info {
   display: inline-block;
   float: right;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li.info-item {
-      text-align: center;
-      line-height: 1.3em;
-      height: 60px;
-      width: 80px;
-      border-left: 1px solid red;
-      padding: 12px 10px 0;
-      display: inline-block;
-      font-weight: $fw-bold;
-      .info-label {
-        //position: relative;
-        //bottom: 0;
-        font-weight: $fw-medium;
-        font-size: 10px;
-        text-transform: uppercase;
-      }
-      .data {
-        font-size: $font-size-base;
-      }
+  border-left: 1px solid $gray-2;
+  border-right: 1px solid $gray-2;
+  height: 60px;
+  .info-item {
+    text-align: center;
+    //line-height: 1.3em;
+    width: 100px;
+    border-left: 1px solid $gray-1;
+    padding: 4px 10px;
+    display: inline-block;
+    font-weight: $fw-bold;
+    margin-top: 8px;
+    .info-label {
+      font-weight: $fw-medium;
+      font-size: 10px;
+      text-transform: uppercase;
     }
+    .data {
+      font-size: $font-size-base;
+    }
+  }
+  .info-item:first-of-type {
+    border-left: 0;
+  }
+}
+
+#notification-center {
+  display: inline-block;
+  float: right;
+  width: 72px;
+  .notification-circle {
+    margin: 8px auto;
+    height: 42px;
+    width: 42px;
+    //line-height: 32px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: $gray-1;
+    .mdi-notification {
+      margin: 4px auto;
+      font-size: 22px;
+    }
+  }
+  .number-label {
+    margin: -6px auto;
+    font-weight: $fw-medium;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $gray-3;
+  }
+}
+
+.notification-circle-hover {
+  height: 40px;
+  width: 40px;
+  //line-height: 32px;
+  text-align: center;
+  margin: 10px auto;
+  border-radius: 100%;
+  background-color: $gray-1;
+  .mdi-notification {
+    font-size: 24px;
   }
 }

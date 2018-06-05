@@ -64,9 +64,9 @@ class App extends Component {
     };
 
     return (
-      <div className = "root">
+      <div className="root">
         {/**<Sidebar {...sidebarProps}>**/}
-        <div className = "content">
+        <div className="view">
             <Switch>
               <Route path="/" exact component={Overview}/>
               <Route path="/battery" exact component={Battery}/>
