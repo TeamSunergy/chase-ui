@@ -17,15 +17,37 @@ class NotificationCenter extends Component {
       panelOpen: false,
       unreadCount: this.props.unreadCount
     };
+
+    this.panelNode = null;
     this.handleClick = this.handleClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.openPanel = this.openPanel.bind(this);
   }
 
   handleClick() {
     let {panelOpen} = this.state;
+
+    if (!panelOpen) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+
     if (!panelOpen) this.openPanel();
     else this.setState({panelOpen: false});
   }
+  handleOutsideClick(e) {
+    // If panelNode is a defined reference
+    if (this.panelNode) {
+      // ignore clicks on the component itself
+      if (this.panelNode.contains(e.target)) {
+        return;
+      }
+
+      this.handleClick();
+    }
+  }
+
 
   openPanel() {
     this.setState({
@@ -34,17 +56,7 @@ class NotificationCenter extends Component {
     });
   }
 
-
   render() {
-    /**
-    document.addEventListener("click", function(event) {
-      let isOpen = true;
-      // If user clicks inside the element, do nothing
-      if (event.target.closest("#notification-panel") && this.state.panelOpen) return;
-      // If user clicks outside the element, hide it!
-      else this.setState({panelOpen: false});
-    });
-     **/
     let {panelOpen} = this.state;
     let {unreadCount} = this.state;
     let notificationStyle = "notification-circle";
@@ -59,7 +71,7 @@ class NotificationCenter extends Component {
             </div>
           </div>
           {/** IF panel is toggled open, render it **/}
-          {panelOpen ? <NotificationPanel />: <div />}
+          {panelOpen ? <NotificationPanel panelNodeRef={el => this.panelNode = el} />: <div />}
         </div>
 
     );

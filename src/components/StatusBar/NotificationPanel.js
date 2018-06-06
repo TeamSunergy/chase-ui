@@ -20,12 +20,11 @@ class NotificationPanel extends Component {
 
   handleClick() {
     // TODO: render notifications dynamically
-
   }
 
   render() {
     return (
-        <div id="notification-panel">
+        <div id="notification-panel" ref={this.props.panelNodeRef}>
           <div className="panel-arrow" />
           <ul>
             <li><Link to="/battery">Battery: Notification_0 this one is a little longer.</Link></li>
@@ -39,5 +38,9 @@ class NotificationPanel extends Component {
     );
   }
 }
+
+NotificationPanel.defaultProps = {
+  panelNodeRef: undefined
+};
 
 export default NotificationPanel;
