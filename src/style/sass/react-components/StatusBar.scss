@@ -93,7 +93,7 @@
   background-color: $gray-0;
   margin-right: 15px;
   box-shadow: -3px 3px 9px $gray-1;
-  width: 240px;
+  //width: 260px;
   ul {
     padding: 0;
     list-style: none;
@@ -101,7 +101,7 @@
       display: block;
       //margin: 0 auto;
       padding: 14px;
-      width: 240px;
+      width: 300px;
       background-color: $gray-0;
       border-bottom: 1px solid $gray-1;
       &:hover {
@@ -122,7 +122,7 @@
   .panel-arrow {
     position: relative;
     top: -10px;
-    right: -188px;
+    right: -269px;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;

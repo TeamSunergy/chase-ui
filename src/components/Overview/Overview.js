@@ -30,7 +30,8 @@ class Overview extends Component {
       primary: {
         props:{
           speed: 0,
-          batteryVoltage:0,
+          batteryVoltage: 0,
+          arrayTotalPower: 0,
           arrayAPower: 0,
           arrayBPower: 0,
           arrayCPower: 0,
@@ -65,15 +66,16 @@ class Overview extends Component {
           props:{
             speed :{$set: data.motConVehicleVelocity},
             batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
-            arrayAPower : {$set: data.mppt0ArrayVoltage},
-            arrayBPower : {$set: data.mppt1ArrayVoltage},
-            arrayCPower : {$set: data.mppt2ArrayVoltage},
+            arrayTotalPower: {$set: data.mpptTotalNetPower},
+            arrayAPower : {$set: data.mppt0ArrayCurrent},
+            arrayBPower : {$set: data.mppt1ArrayCurrent},
+            arrayCPower : {$set: data.mppt2ArrayCurrent},
           }
         },
         secondary:{
           props: {
-            motorControllerPower: {$set: data.motorControllerPower},
-            auxiliaryBatteryVoltage: {$set: data.auxiliaryBatteryVoltage},
+            motorControllerPower: {$set: data.motConBusCurrent},
+            auxiliaryBatteryVoltage: {/**$set: data.auxiliaryBatteryVoltage **/ $set: 0.00},
           }
         },
         gauge:{

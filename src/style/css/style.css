@@ -1103,15 +1103,22 @@ dd {
     display: none !important; } }
 
 .widget {
+  display: block;
   width: 100%;
   margin: 0 20px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.02);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
-  border-radius: 5px; }
+  border-radius: 5px;
+  overflow: auto;
+  clear: both; }
 
 .view {
   padding: 65px 10px 10px; }
+
+.sub-inline {
+  width: 33.33%;
+  float: left; }
 
 #status-bar {
   position: fixed;
@@ -1191,8 +1198,7 @@ dd {
   right: 0;
   background-color: #f5f5f5;
   margin-right: 15px;
-  box-shadow: -3px 3px 9px #EAEAEA;
-  width: 240px; }
+  box-shadow: -3px 3px 9px #EAEAEA; }
 
 #notification-panel ul {
   padding: 0;
@@ -1201,7 +1207,7 @@ dd {
 #notification-panel ul li a {
   display: block;
   padding: 14px;
-  width: 240px;
+  width: 300px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #EAEAEA; }
 
@@ -1219,7 +1225,7 @@ dd {
 #notification-panel .panel-arrow {
   position: relative;
   top: -10px;
-  right: -188px;
+  right: -269px;
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
