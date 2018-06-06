@@ -9,7 +9,6 @@
 //
 
 #status-bar {
-  //border: 1px solid black;
   position: fixed;
   top: 0;
   left: 0;
@@ -49,6 +48,7 @@
       font-weight: $fw-medium;
       font-size: 10px;
       text-transform: uppercase;
+      color: $gray-5;
     }
     .data {
       font-size: $font-size-base;
@@ -63,14 +63,10 @@
   display: inline-block;
   float: right;
   width: 72px;
+  height: 60px;
   .notification-circle {
     margin: 8px auto;
-    height: 42px;
-    width: 42px;
-    //line-height: 32px;
     text-align: center;
-    border-radius: 100%;
-    background-color: $gray-1;
     .mdi-notification {
       margin: 4px auto;
       font-size: 22px;
@@ -81,19 +77,56 @@
     font-weight: $fw-medium;
     font-size: 10px;
     text-transform: uppercase;
-    color: $gray-3;
+    color: $gray-5;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $gray-1;
   }
 }
 
-.notification-circle-hover {
-  height: 40px;
-  width: 40px;
-  //line-height: 32px;
-  text-align: center;
-  margin: 10px auto;
-  border-radius: 100%;
-  background-color: $gray-1;
-  .mdi-notification {
-    font-size: 24px;
+#notification-panel {
+  position: fixed;
+  top: 75px;
+  right: 0;
+  background-color: $gray-0;
+  margin-right: 15px;
+  box-shadow: -3px 3px 9px $gray-1;
+  width: 240px;
+  ul {
+    padding: 0;
+    list-style: none;
+    li a {
+      display: block;
+      //margin: 0 auto;
+      padding: 14px;
+      width: 240px;
+      background-color: $gray-0;
+      border-bottom: 1px solid $gray-1;
+      &:hover {
+        background-color: $gray-1;
+        cursor: pointer;
+      }
+    }
+  }
+
+  a.see-all {
+    display: block;
+    margin: 0 auto 10px;
+    color: $gray-3;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .panel-arrow {
+    position: relative;
+    top: -10px;
+    right: -188px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $gray-0;
   }
 }

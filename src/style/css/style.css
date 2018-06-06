@@ -1151,7 +1151,8 @@ dd {
 #status-info .info-item .info-label {
   font-weight: 500;
   font-size: 10px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #717171; }
 
 #status-info .info-item .data {
   font-size: 16px; }
@@ -1162,15 +1163,12 @@ dd {
 #notification-center {
   display: inline-block;
   float: right;
-  width: 72px; }
+  width: 72px;
+  height: 60px; }
 
 #notification-center .notification-circle {
   margin: 8px auto;
-  height: 42px;
-  width: 42px;
-  text-align: center;
-  border-radius: 100%;
-  background-color: #EAEAEA; }
+  text-align: center; }
 
 #notification-center .notification-circle .mdi-notification {
   margin: 4px auto;
@@ -1181,17 +1179,51 @@ dd {
   font-weight: 500;
   font-size: 10px;
   text-transform: uppercase;
-  color: #B7B7B7; }
+  color: #717171; }
 
-.notification-circle-hover {
-  height: 40px;
-  width: 40px;
-  text-align: center;
-  margin: 10px auto;
-  border-radius: 100%;
+#notification-center:hover {
+  cursor: pointer;
   background-color: #EAEAEA; }
 
-.notification-circle-hover .mdi-notification {
-  font-size: 24px; }
+#notification-panel {
+  position: fixed;
+  top: 75px;
+  right: 0;
+  background-color: #f5f5f5;
+  margin-right: 15px;
+  box-shadow: -3px 3px 9px #EAEAEA;
+  width: 240px; }
+
+#notification-panel ul {
+  padding: 0;
+  list-style: none; }
+
+#notification-panel ul li a {
+  display: block;
+  padding: 14px;
+  width: 240px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #EAEAEA; }
+
+#notification-panel ul li a:hover {
+  background-color: #EAEAEA;
+  cursor: pointer; }
+
+#notification-panel a.see-all {
+  display: block;
+  margin: 0 auto 10px;
+  color: #B7B7B7;
+  font-size: 12px;
+  text-align: center; }
+
+#notification-panel .panel-arrow {
+  position: relative;
+  top: -10px;
+  right: -188px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #f5f5f5; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,5 @@
 import React from 'react';
+import StatusBar from "../StatusBar/StatusBar";
 
 class smartroute extends React.Component {
 	constructor(props) {
@@ -8,7 +9,10 @@ class smartroute extends React.Component {
 	}
 	render() {
 		return  (
-			<h1>smartroute</h1>
+				<div>
+          <StatusBar title="Analytics"/>
+          <h1>Route Analytics</h1>
+        </div>
 			);
 	}
 }

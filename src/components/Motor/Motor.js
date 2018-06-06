@@ -1,4 +1,5 @@
 import React from 'react';
+import StatusBar from "../StatusBar/StatusBar";
 
 class motor extends React.Component {
 	constructor(props) {
@@ -8,7 +9,10 @@ class motor extends React.Component {
 	}
 	render() {
 		return  (
-			<h1>Motor</h1>
+        <div>
+          <StatusBar title="Motor"/>
+          <h1>Motor</h1>
+        </div>
 			);
 	}
 }

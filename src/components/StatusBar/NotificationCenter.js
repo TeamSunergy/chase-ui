@@ -7,34 +7,67 @@
  */
 
 import React, {Component} from 'react';
+import NotificationPanel from './NotificationPanel';
 
 class NotificationCenter extends Component {
   // eslint-disable-next-line require-jsdoc
   constructor(props) {
     super(props);
     this.state = {
-      panelOpen: false
+      panelOpen: false,
+      unreadCount: this.props.unreadCount
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.openPanel = this.openPanel.bind(this);
   }
+
+  handleClick() {
+    let {panelOpen} = this.state;
+    if (!panelOpen) this.openPanel();
+    else this.setState({panelOpen: false});
+  }
+
+  openPanel() {
+    this.setState({
+      unreadCount: 0,
+      panelOpen: true
+    });
+  }
+
+
   render() {
-    let {notificationNumber} = this.props;
-    let {unreadNotifications} = this.props;
-    let {priorityAlert} = this.props;
+    /**
+    document.addEventListener("click", function(event) {
+      let isOpen = true;
+      // If user clicks inside the element, do nothing
+      if (event.target.closest("#notification-panel") && this.state.panelOpen) return;
+      // If user clicks outside the element, hide it!
+      else this.setState({panelOpen: false});
+    });
+     **/
+    let {panelOpen} = this.state;
+    let {unreadCount} = this.state;
     let notificationStyle = "notification-circle";
 
-    if (unreadNotifications) notificationStyle += " unread";
+    if (unreadCount > 0) notificationStyle += " unread";
     return (
-        <div id="notification-center">
-          <div className={ notificationStyle }><i className="material-icons mdi-notification">
-            notifications_none
-          </i><div className="number-label">{ notificationNumber }</div></div>
+        <div>
+          <div id="notification-center" onClick={this.handleClick}>
+            <div className={ notificationStyle }><i className="material-icons mdi-notification">
+              notifications_none</i>
+              <div className="number-label">{ unreadCount }</div>
+            </div>
+          </div>
+          {/** IF panel is toggled open, render it **/}
+          {panelOpen ? <NotificationPanel />: <div />}
         </div>
+
     );
   }
 }
 
 NotificationCenter.defaultProps = {
-  notificationNumber: 24,
+  unreadCount: 5,
   unreadNotifications: false,
   priorityAlert: false
 };

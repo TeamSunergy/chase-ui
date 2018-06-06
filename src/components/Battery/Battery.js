@@ -1,4 +1,5 @@
 import React from 'react';
+import StatusBar from "../StatusBar/StatusBar";
 
 class battery extends React.Component {
 	constructor(props) {
@@ -8,7 +9,10 @@ class battery extends React.Component {
 	}
 	render() {
 		return  (
-			<h1>Battery</h1>
+        <div>
+          <StatusBar title="Battery"/>
+          <h1>Battery</h1>
+        </div>
 			);
 	}
 }
