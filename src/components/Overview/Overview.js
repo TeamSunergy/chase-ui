@@ -8,18 +8,13 @@
 
 import React, { Component } from 'react';
 import StatusBar from '../StatusBar/StatusBar';
+import Menu from "../Menu/Menu";
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Gauge from './widgets/Gauge';
 import Graph from './widgets/Graph';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
-
-const styles = {
-  content: {
-    "marginTop" : "15px",
-  },
-};
 
 class Overview extends Component {
   constructor(props) {
@@ -99,7 +94,8 @@ class Overview extends Component {
     return (
         <div>
           <StatusBar title="Overview"/>
-          <div className = "container-fluid" style = {styles.content}>
+          <Menu/>
+          <div className = "container-fluid">
             <div className="row">
               <div className="col-md-3">
                 <Primary {...this.state.primary.props}/>

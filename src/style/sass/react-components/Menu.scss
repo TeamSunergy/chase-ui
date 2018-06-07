@@ -1,0 +1,64 @@
+/*
+ * Menu Component Styles
+ * --------------------------------------------------
+ */
+@import '../custom-variables';
+
+//== Styles
+//
+//
+
+//** Menu
+
+//** MenuToggle
+#menu-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 60px;
+  //padding: 18px 0 0 28px;
+  z-index: 101;
+  border-right: 1px solid $gray-2;
+  .mdi-menu {
+    text-align: center;
+    display: block;
+    margin: 19px;
+    font-size: 22px;
+    color: $gray-5;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $gray-1;
+  }
+}
+//** MenuPanel
+#menu-panel {
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  //width: 240px;
+  background-color: lightblue;
+  z-index: 102;
+  #menu-close-wrapper {
+    float: right;
+    padding: 10px;
+    background-color: red;
+    .menu-close-text {
+      display: inline-block;
+      margin-top: -5px;
+      font-size: 12px;
+    }
+    .mdi-menu-close {
+      text-align: center;
+      font-size: 22px;
+      color: $gray-5;
+    }
+  }
+}
+
+#menu-panel.show {
+  width: 240px;
+}

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1117,8 +1118,12 @@ dd {
   padding: 65px 10px 10px; }
 
 .sub-inline {
+  text-align: center;
   width: 33.33%;
   float: left; }
+
+.material-icons {
+  user-select: none; }
 
 #status-bar {
   position: fixed;
@@ -1132,7 +1137,7 @@ dd {
   z-index: 100; }
 
 #status-title {
-  padding: 0 0 0 36px;
+  padding: 0 0 0 120px;
   display: inline-block;
   line-height: 60px; }
 
@@ -1231,5 +1236,52 @@ dd {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #f5f5f5; }
+
+#menu-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 60px;
+  z-index: 101;
+  border-right: 1px solid #D6D6D6; }
+
+#menu-toggle .mdi-menu {
+  text-align: center;
+  display: block;
+  margin: 19px;
+  font-size: 22px;
+  color: #717171; }
+
+#menu-toggle:hover {
+  cursor: pointer;
+  background-color: #EAEAEA; }
+
+#menu-panel {
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: lightblue;
+  z-index: 102; }
+
+#menu-panel #menu-close-wrapper {
+  float: right;
+  padding: 10px;
+  background-color: red; }
+
+#menu-panel #menu-close-wrapper .menu-close-text {
+  display: inline-block;
+  margin-top: -5px;
+  font-size: 12px; }
+
+#menu-panel #menu-close-wrapper .mdi-menu-close {
+  text-align: center;
+  font-size: 22px;
+  color: #717171; }
+
+#menu-panel.show {
+  width: 240px; }
 
 /*# sourceMappingURL=style.css.map */
