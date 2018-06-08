@@ -16,20 +16,17 @@ class MenuPanel extends Component {
     this.state = {};
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
   }
 
   handleClick() {
-
     this.props.handleToggle();
   }
 
   render() {
-    let {isOpen} = this.props;
+    let {isOpen, panelNodeRef} = this.props;
     return (
         <div id="menu-overlay" className={isOpen ? "show" : ""}>
-          <div id="menu-panel" className={isOpen ? "show" : ""}>
+          <div id="menu-panel" className={isOpen ? "show" : ""} ref={panelNodeRef}>
             <div id="menu-close-wrapper" onClick={this.handleClick}>
               <i className="material-icons mdi-menu-close">close</i>
             </div>
@@ -42,7 +39,8 @@ class MenuPanel extends Component {
 
 MenuToggle.defaultProps = {
   handleToggle: () => {},
-  isOpen: false
+  isOpen: false,
+  panelNodeRef: undefined
 };
 
 export default MenuPanel;

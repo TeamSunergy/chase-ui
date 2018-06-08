@@ -1,5 +1,6 @@
 import React from 'react';
 import StatusBar from "../StatusBar/StatusBar";
+import Menu from "../Menu/Menu";
 
 class battery extends React.Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ class battery extends React.Component {
 	render() {
 		return  (
         <div>
+					<Menu/>
           <StatusBar title="Battery"/>
           <h1>Battery</h1>
         </div>

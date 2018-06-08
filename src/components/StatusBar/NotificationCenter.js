@@ -72,7 +72,7 @@ class NotificationCenter extends Component {
             </div>
           </div>
           {/** IF panel is toggled open, render it **/}
-          {panelOpen ? <NotificationPanel panelNodeRef={el => this.panelNode = el} />: <div />}
+          {panelOpen ? <NotificationPanel panelNodeRef={el => this.panelNode = el} /> : <div />}
         </div>
 
     );
