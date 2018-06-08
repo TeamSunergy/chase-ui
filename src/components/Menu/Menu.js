@@ -51,11 +51,17 @@ class Menu extends Component {
     return (
         <div id="menu">
           <MenuToggle handleToggle={this.handleToggle}/>
-          <div>{this.state.isOpen ? "open" : "closed"}</div>
-          <MenuPanel handleToggle={this.handleToggle} isOpen={this.state.isOpen} panelNodeRef={el => this.panelNode = el}/>
+          <MenuPanel handleToggle={this.handleToggle}
+            isOpen={this.state.isOpen}
+            panelNodeRef={el => this.panelNode = el}
+            currentPath={this.props.currentPath}/>
         </div>
     );
   }
 }
+
+Menu.defaultProps = {
+  currentPath: undefined
+};
 
 export default Menu;

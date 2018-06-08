@@ -11,7 +11,7 @@ class battery extends React.Component {
 	render() {
 		return  (
         <div>
-					<Menu/>
+					<Menu currentPath={this.props.location.pathname}/>
           <StatusBar title="Battery"/>
           <h1>Battery</h1>
         </div>

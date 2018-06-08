@@ -1,7 +1,8 @@
 import React from 'react';
 import StatusBar from "../StatusBar/StatusBar";
+import Menu from "../Menu/Menu";
 
-class smartroute extends React.Component {
+class Analytics extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -10,10 +11,11 @@ class smartroute extends React.Component {
 	render() {
 		return  (
 				<div>
+          <Menu currentPath={this.props.location.pathname}/>
           <StatusBar title="Analytics"/>
           <h1>Route Analytics</h1>
         </div>
 			);
 	}
 }
-export default smartroute;
+export default Analytics;

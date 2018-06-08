@@ -10,8 +10,8 @@
 //
 //## Main colors, notification colors, and grays for use across Bootstrap.
 
-$brand-primary:         #000000;
-$brand-secondary:       #7B7070;
+$brand-primary:         #222222;
+$brand-secondary:       #FFCC00;
 $brand-gray:            #5F5F5F;
 $brand-gray-light:      #95989A;
 $brand-gray-lighter:    #D0D0D0;
@@ -57,8 +57,62 @@ $link-hover-decoration: underline;
 //
 //## Font, line-height, and color for body text, headings, and more.
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: url('../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf') format('truetype')
+}
 
-$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "Source Sans Pro", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -72,8 +126,9 @@ $font-size-small:         14px;
 $font-size-exsmall:       12px;
 
 //** Font weights
+$fw-light:               300;
 $fw-normal:               400;
-$fw-medium:               500;
+$fw-medium:               600;
 $fw-bold:                 700;
 $fw-black:                900;
 
@@ -91,7 +146,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
 $headings-font-family:    inherit;
-$headings-font-weight:    500;
+$headings-font-weight:    700;
 $headings-line-height:    1.1;
 $headings-color:          inherit;
 

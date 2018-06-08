@@ -94,7 +94,7 @@ class Overview extends Component {
     return (
         <div>
           <StatusBar title="Overview"/>
-          <Menu/>
+          <Menu currentPath={this.props.location.pathname}/>
           <div className = "container-fluid">
             <div className="row">
               <div className="col-md-3">

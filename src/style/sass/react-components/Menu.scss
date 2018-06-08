@@ -38,24 +38,92 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 0;
-  background-color: $gray-5;
+  width: 240px;
+  margin-left: -240px;
+  background-color: $brand-primary;
   z-index: 102;
   transition: all 0.2s ease-in;
   #menu-close-wrapper {
+    position: absolute;
+    right: 0;
+    z-index: 110;
     float: right;
-    padding: 20px 10px;
+    height: 40px;
+    width: 40px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
     .mdi-menu-close {
-      line-height: 0;
-      text-align: center;
+      line-height: 40px;
       font-size: 22px;
       color: $gray-1;
     }
+    &:hover {
+      .mdi-menu-close {
+        color: $gray-3;
+      }
+    }
+  }
+  #title {
+    font-style: italic;
+    letter-spacing: 4px;
+    font-weight: $fw-bold;
+    font-size: $font-size-large;
+    z-index: 103;
+    position: absolute;
+    display: inline-block;
+    margin: 10px 0 0;
+    height: 50px;
+    width: 240px;
+    text-align: center;
+    line-height: 40px;
+    color: $gray-2;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  #page-links {
+    margin-top: 160px;
+    padding: 0;
+    li.selected a {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    a {
+      padding: 0 0 0 40px;
+      display: block;
+      width: 240px;
+      height: 52px;
+      line-height: 52px;
+      color: $gray-1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        text-decoration: none;
+      }
+    }
+    li:last-child a {
+       border-bottom: 1px solid transparent;
+     }
+    .material-icons {
+      float: left;
+      margin-top: 15px;
+      margin-right: 8px;
+      color: $gray-5;
+      font-size: 20px;
+    }
+  }
+  #logo-wrapper {
+    width: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+  #logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 120px;
   }
 }
 
 #menu-panel.show {
-  width: 240px;
+  margin-left: 0;
 }
 
 #menu-overlay {
