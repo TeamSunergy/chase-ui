@@ -36,6 +36,7 @@ class NotificationCenter extends Component {
     if (!panelOpen) this.openPanel();
     else this.setState({panelOpen: false});
   }
+
   handleOutsideClick(e) {
     // If panelNode is a defined reference
     if (this.panelNode) {

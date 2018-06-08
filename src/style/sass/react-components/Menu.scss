@@ -34,31 +34,41 @@
 }
 //** MenuPanel
 #menu-panel {
-  width: 0;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  //width: 240px;
-  background-color: lightblue;
+  width: 0;
+  background-color: $gray-5;
   z-index: 102;
+  transition: all 0.2s ease-in;
   #menu-close-wrapper {
     float: right;
-    padding: 10px;
-    background-color: red;
-    .menu-close-text {
-      display: inline-block;
-      margin-top: -5px;
-      font-size: 12px;
-    }
+    padding: 20px 10px;
     .mdi-menu-close {
+      line-height: 0;
       text-align: center;
       font-size: 22px;
-      color: $gray-5;
+      color: $gray-1;
     }
   }
 }
 
 #menu-panel.show {
   width: 240px;
+}
+
+#menu-overlay {
+  background-color: transparent;
+  transition: all 0.2s ease-in;
+}
+
+#menu-overlay.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 101;
 }

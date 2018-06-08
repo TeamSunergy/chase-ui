@@ -16,19 +16,23 @@ class MenuPanel extends Component {
     this.state = {};
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
   }
 
   handleClick() {
+
     this.props.handleToggle();
   }
 
   render() {
     let {isOpen} = this.props;
     return (
-        <div id="menu-panel" className={isOpen ? "show" : ""}>
-          <div id="menu-close-wrapper" onClick={this.handleClick}>
-            <div className="menu-close-text">Close</div>
-            <i className="material-icons mdi-menu-close">close</i>
+        <div id="menu-overlay" className={isOpen ? "show" : ""}>
+          <div id="menu-panel" className={isOpen ? "show" : ""}>
+            <div id="menu-close-wrapper" onClick={this.handleClick}>
+              <i className="material-icons mdi-menu-close">close</i>
+            </div>
           </div>
         </div>
 
