@@ -22,7 +22,7 @@ class StatusBar extends Component {
               </div>
               <div className="info-item">
                 <div className="data">{ this.props.batteryVoltage } V</div>
-                <div className="info-label">Batt. Volt.</div>
+                <div className="info-label">Battery</div>
               </div>
               <div className="info-item">
                 <div className="data">{ this.props.netPower } V</div>

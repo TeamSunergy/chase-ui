@@ -1,3 +1,4 @@
+@import 'custom-variables';
 .widget {
   display: block;
   h2 {
@@ -26,4 +27,65 @@
 
 .material-icons {
   user-select: none;
+}
+
+h2 {
+   font-family: $font-family-monospace;
+   font-weight: $fw-bold;
+   text-transform: uppercase;
+   font-size: $font-size-base;
+   color: $gray-5;
+   letter-spacing: 3px;
+   margin-bottom: 0;
+ }
+
+h3 {
+  font-family: $font-family-monospace;
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+  font-size: $font-size-small;
+  color: $gray-5;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+
+
+
+.value {
+  font-size: 48px;
+  font-weight: $fw-bold;
+  span {
+    font-size: $font-size-large;
+    font-weight: $fw-normal;
+  }
+}
+
+.sub-inline {
+  .value {
+    font-size: $font-size-large;
+    font-weight: $fw-bold;
+    padding-top: 20px;
+    line-height: 1;
+    span {
+      font-size: $font-size-base;
+      font-weight: $fw-normal;
+    }
+  }
+}
+
+.sub {
+  border-bottom: 1px solid $gray-1;
+  clear: both;
+  overflow: auto;
+}
+.sub:last-child {
+  border: 0;
+}
+
+.sub-inline {
+  border-right: 1px solid $gray-1;
+}
+
+.sub-inline:last-child {
+  border: 0;
 }

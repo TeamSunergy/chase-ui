@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
@@ -54,6 +51,18 @@
   font-style: italic;
   font-weight: 900;
   src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -1157,6 +1166,72 @@ dd {
   .hidden-print {
     display: none !important; } }
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
 .widget {
   display: block;
   width: 100%;
@@ -1178,6 +1253,56 @@ dd {
 
 .material-icons {
   user-select: none; }
+
+h2 {
+  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #717171;
+  letter-spacing: 3px;
+  margin-bottom: 0; }
+
+h3 {
+  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #717171;
+  letter-spacing: 2px;
+  margin-bottom: 0; }
+
+.value {
+  font-size: 48px;
+  font-weight: 700; }
+
+.value span {
+  font-size: 22px;
+  font-weight: 400; }
+
+.sub-inline .value {
+  font-size: 22px;
+  font-weight: 700;
+  padding-top: 20px;
+  line-height: 1; }
+
+.sub-inline .value span {
+  font-size: 16px;
+  font-weight: 400; }
+
+.sub {
+  border-bottom: 1px solid #EAEAEA;
+  clear: both;
+  overflow: auto; }
+
+.sub:last-child {
+  border: 0; }
+
+.sub-inline {
+  border-right: 1px solid #EAEAEA; }
+
+.sub-inline:last-child {
+  border: 0; }
 
 @font-face {
   font-family: 'Source Sans Pro';
@@ -1233,6 +1358,18 @@ dd {
   font-weight: 900;
   src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
 
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
 #status-bar {
   position: fixed;
   top: 0;
@@ -1250,7 +1387,10 @@ dd {
   line-height: 60px; }
 
 #status-title h1 {
-  font-size: 16px; }
+  font-size: 18px;
+  font-family: "Source Sans Pro","Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  margin-top: 20px; }
 
 #status-info {
   display: inline-block;
@@ -1269,8 +1409,9 @@ dd {
   margin-top: 8px; }
 
 #status-info .info-item .info-label {
+  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
   font-weight: 600;
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   color: #717171; }
 
@@ -1398,6 +1539,18 @@ dd {
   font-style: italic;
   font-weight: 900;
   src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
 
 #menu-toggle {
   position: fixed;

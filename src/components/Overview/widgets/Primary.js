@@ -36,31 +36,33 @@ class Primary extends Component {
 	render() {
 		const{ speed, batteryVoltage, arrayTotalPower, arrayAPower, arrayBPower, arrayCPower } = this.state;
 		return  (
-			<div className="widget">
+			<div id="primary" className="widget">
           <div className="sub">
-            <h2>Speed</h2>
-            <div>{speed}<span> mph</span></div>
+            <div className="wrapper">
+              <h2>Speed</h2>
+              <div className="value">{speed}<span> mph</span></div>
+            </div>
           </div>
           <div className="sub">
 						<h2>Battery</h2>
-						<div>{batteryVoltage} volts</div>
+						<div className="value">{batteryVoltage}<span> volts</span></div>
 					</div>
         <div className="sub">
           <h2>Array</h2>
-          <div>{arrayTotalPower} watts</div>
+          <div className="value">{arrayTotalPower}<span> watts</span></div>
         </div>
           <div className="sub">
             <div className="sub-inline">
               <h3>sub-a</h3>
-              <div>{arrayAPower}</div><span>watts</span><div/>
+              <div className="value">{arrayAPower}</div><span>watts</span><div/>
             </div>
             <div className="sub-inline">
               <h3>sub-b</h3>
-              <div>{arrayBPower}</div><span>watts</span><div/>
+              <div className="value">{arrayBPower}</div><span>watts</span><div/>
             </div>
             <div className="sub-inline">
               <h3>sub-c</h3>
-              <div>{arrayCPower}</div><span>watts</span><div/>
+              <div className="value">{arrayCPower}</div><span>watts</span><div/>
             </div>
           </div>
 			</div>
