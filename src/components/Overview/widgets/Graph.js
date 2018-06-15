@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import update from 'immutability-helper';
 
 import {Line, Bar, defaults} from 'react-chartjs-2';
@@ -7,7 +7,7 @@ const styles = {
 	}
 }
 defaults.global.animation = false;
-class motorController extends React.Component {
+class Graph extends Component {
 
 	constructor(props) {
 		super(props);
@@ -59,10 +59,13 @@ class motorController extends React.Component {
 	}
 	render() {
 		return (
-			<div style = {styles.graphs}>
-			<Line data={this.state.graph} redraw/>
-			</div>
+		  <div className="widget sub">
+        <h2>Graph</h2>
+        <div style = {styles.graphs}>
+          <Line data={this.state.graph} redraw/>
+        </div>
+      </div>
 			);
 	}
 }
-export default motorController;
+export default Graph;

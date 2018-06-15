@@ -1,0 +1,35 @@
+/*
+ * Overview Component Stylesheet
+ * --------------------------------------------------
+ */
+@import '../custom-variables';
+
+//== Primary
+//
+//## Styles for the Primary widget
+
+.battery {
+  div {
+    display: inline-block;
+  }
+  #soc {
+    float: right;
+    margin: 10px 60px 0 20px;
+    .soc-icon {
+      float: right;
+      height: 46px;
+    }
+    .value {
+      float: right;
+      margin-top: 6px;
+      font-size: 24px;
+      font-weight: $fw-bold;
+      span {
+        font-size: 22px;
+        font-weight: $fw-normal;
+        margin-left: -2px;
+      }
+    }
+  }
+}
+

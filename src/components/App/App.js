@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import Sidebar from 'react-sidebar';
-import MaterialTitlePanel from '../sidebar/material_title_panel';
-import SidebarContent from '../sidebar/sidebar_content'; //npm install react-sidebar - - github.com/balloob/react-sidebar
 import { Route, Switch } from  'react-router-dom';
-import * as Icon from 'react-feather';
 import Weather from "../Weather/Weather";
 import Data from "../Data/Data";
 import Overview from "../Overview/Overview";
@@ -39,45 +35,19 @@ class App extends Component {
   }
 
   render() {
-    const sidebar = <SidebarContent />;
-    const contentHeader = (
-      <span>
-        {!this.state.docked &&
-         <a onClick={this.menuButtonClick} href="#" className = "contentHeaderMenuLink"><Icon.Menu className="styles.icon"/></a>}
-         <span className= "para">
-         Team Sunergy
-         </span>
-       </span>
-       );
-
-    const sidebarProps = {
-      sidebar: sidebar,
-      docked: this.state.docked,
-      open: this.state.open,
-      touch: this.state.touch,
-      shadow: this.state.shadow,
-      pullRight: this.state.pullRight,
-      touchHandleWidth: this.state.touchHandleWidth,
-      dragToggleDistance: this.state.dragToggleDistance,
-      transitions: this.state.transitions,
-      onSetOpen: this.onSetOpen,
-    };
-
     return (
       <div className="root">
-        {/**<Sidebar {...sidebarProps}>**/}
         <div className="view">
-            <Switch>
-              <Route path="/" exact component={Overview}/>
-              <Route path="/battery" exact component={Battery}/>
-              <Route path="/motor" exact component={Motor}/>
-              <Route path="/analytics" exact component={Analytics}/>
-              <Route path="/weather" exact component={Weather}/>
-              <Route path="/settings" exact component={Settings}/>
-              <Route path="/data" exact component={Data}/>
-            </Switch>
-          </div>
-        {/** </Sidebar> **/}
+          <Switch>
+            <Route path="/" exact component={Overview}/>
+            <Route path="/battery" exact component={Battery}/>
+            <Route path="/motor" exact component={Motor}/>
+            <Route path="/analytics" exact component={Analytics}/>
+            <Route path="/weather" exact component={Weather}/>
+            <Route path="/settings" exact component={Settings}/>
+            <Route path="/data" exact component={Data}/>
+          </Switch>
+        </div>
       </div>
       );
   }

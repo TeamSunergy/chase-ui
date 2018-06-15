@@ -15,6 +15,7 @@ import Gauge from './widgets/Gauge';
 import Graph from './widgets/Graph';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
+import battery from "../Battery/Battery";
 
 class Overview extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Overview extends Component {
         props:{
           speed: 0,
           batteryVoltage: 0,
+          batterySoc: 0,
           arrayTotalPower: 0,
           arrayAPower: 0,
           arrayBPower: 0,
@@ -45,7 +47,6 @@ class Overview extends Component {
       },
       graph:{
         props:{
-
           speed:0,
         }
       }
@@ -61,6 +62,7 @@ class Overview extends Component {
           props:{
             speed :{$set: data.motConVehicleVelocity},
             batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
+            batterySoc : {$set: data.soc},
             arrayTotalPower: {$set: data.mpptTotalNetPower},
             arrayAPower : {$set: data.mppt0ArrayCurrent},
             arrayBPower : {$set: data.mppt1ArrayCurrent},
@@ -101,23 +103,17 @@ class Overview extends Component {
                 <Primary {...this.state.primary.props}/>
                 <Secondary {...this.state.secondary.props}/>
               </div>
-              {/**
-              <div className="col-md-9">
-                <div className="row">
-                  <div className = "row">
-                    <div className="col-md-12">
-                      <Graph{...this.state.graph.props}/>
-                    </div>
 
-                    <div className = "row">
-                      <div className="col-md-12">
-                        <Gauge {...this.state.gauge.props}/>
-                      </div>
-                    </div>
+              <div className="col-md-9">
+                <Graph{...this.state.graph.props}/>
+              </div>
+                {/**
+                <div className = "row">
+                  <div className="col-md-12">
+                    <Gauge {...this.state.gauge.props}/>
                   </div>
                 </div>
-              </div>
-               **/}
+                 **/}
             </div>
           </div>
         </div>

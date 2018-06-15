@@ -6,7 +6,7 @@
  * @extends Component
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class motorController extends Component {
 	constructor(props) {
@@ -27,11 +27,11 @@ class motorController extends Component {
       <div className="widget">
         <div className="sub">
           <h2>Motor Controller</h2>
-          <div>{motorControllerPower}<span> watts</span></div>
+          <div className="value">{motorControllerPower}<span> watts</span></div>
         </div>
         <div className="sub">
           <h2>Aux. Battery</h2>
-          <div>{auxiliaryBatteryVoltage}<span> volts</span></div>
+          <div className="value">{auxiliaryBatteryVoltage}<span> volts</span></div>
         </div>
       </div>
     );
