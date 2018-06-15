@@ -1278,45 +1278,18 @@ dd {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
 
+.view {
+  padding: 90px 10px 10px; }
+
 .widget {
   display: block;
   width: 100%;
-  margin: 0 20px;
-  padding: 20px;
+  margin: 0 20px 32px;
   border: 1px solid rgba(0, 0, 0, 0.02);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
   overflow: auto;
   clear: both; }
-
-.view {
-  padding: 65px 10px 10px; }
-
-.sub-inline {
-  text-align: center;
-  width: 33.33%;
-  float: left; }
-
-.material-icons {
-  user-select: none; }
-
-h2 {
-  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 16px;
-  color: #717171;
-  letter-spacing: 3px;
-  margin-bottom: 0; }
-
-h3 {
-  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 14px;
-  color: #717171;
-  letter-spacing: 2px;
-  margin-bottom: 0; }
 
 .value {
   font-size: 48px;
@@ -1325,6 +1298,22 @@ h3 {
 .value span {
   font-size: 22px;
   font-weight: 400; }
+
+.sub {
+  border-bottom: 1px solid #EAEAEA;
+  clear: both;
+  overflow: auto;
+  padding: 20px; }
+
+.sub:last-child, .sub-inline:last-child {
+  border: 0; }
+
+.sub-inline {
+  text-align: center;
+  width: 33.33%;
+  float: left;
+  padding: 20px;
+  border-right: 1px solid #EAEAEA; }
 
 .sub-inline .value {
   font-size: 22px;
@@ -1336,19 +1325,29 @@ h3 {
   font-size: 16px;
   font-weight: 400; }
 
-.sub {
-  border-bottom: 1px solid #EAEAEA;
-  clear: both;
-  overflow: auto; }
+.cluster {
+  padding: 0; }
 
-.sub:last-child {
-  border: 0; }
+h2 {
+  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #717171;
+  letter-spacing: 3px;
+  margin: 6px 0 0; }
 
-.sub-inline {
-  border-right: 1px solid #EAEAEA; }
+h3 {
+  font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #717171;
+  letter-spacing: 2px;
+  margin: 0; }
 
-.sub-inline:last-child {
-  border: 0; }
+.material-icons {
+  user-select: none; }
 
 @font-face {
   font-family: 'Source Sans Pro';

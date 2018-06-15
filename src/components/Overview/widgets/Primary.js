@@ -12,7 +12,7 @@ class Primary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			//speed: Math.round(this.props.speed),
+			speed: Math.round(this.props.speed),
 			batteryVoltage: (this.props.batteryVoltage).toFixed(2),
       arrayTotalPower: (this.props.arrayTotalPower).toFixed(2),
 			arrayAPower : (this.props.arrayAPower).toFixed(2),
@@ -21,9 +21,6 @@ class Primary extends Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-
-    console.log(nextProps);
-
     this.setState({
 			speed: Math.round(nextProps.speed),
 			batteryVoltage: (nextProps.batteryVoltage).toFixed(2),
@@ -51,7 +48,7 @@ class Primary extends Component {
           <h2>Array</h2>
           <div className="value">{arrayTotalPower}<span> watts</span></div>
         </div>
-          <div className="sub">
+          <div className="sub cluster">
             <div className="sub-inline">
               <h3>sub-a</h3>
               <div className="value">{arrayAPower}</div><span>watts</span><div/>
