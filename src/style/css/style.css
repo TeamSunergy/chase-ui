@@ -64,6 +64,29 @@
   font-weight: 700;
   src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -1232,6 +1255,29 @@ dd {
   font-weight: 700;
   src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
 .widget {
   display: block;
   width: 100%;
@@ -1369,6 +1415,29 @@ h3 {
   font-style: normal;
   font-weight: 700;
   src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
 
 #status-bar {
   position: fixed;
@@ -1552,6 +1621,29 @@ h3 {
   font-weight: 700;
   src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
 #menu-toggle {
   position: fixed;
   top: 0;
@@ -1620,7 +1712,8 @@ h3 {
 
 #menu-panel #page-links {
   margin-top: 160px;
-  padding: 0; }
+  padding: 0;
+  list-style: none; }
 
 #menu-panel #page-links li.selected a {
   background-color: rgba(255, 255, 255, 0.05); }
