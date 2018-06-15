@@ -3,15 +3,15 @@ const net = require('net'),
 	http = require('http'),
 	socketIO = require('socket.io'),
 	app = express(),
-	expressPort = 4001
-server = http.createServer(app),
+	expressPort = 4001,
+	server = http.createServer(app),
 	io = socketIO(server),
 	Parser = require("json-stream-parse"),
 	parser = new Parser(),
 	log4js = require('log4js'),
-	logger = log4js.getLogger('chase-server'),
-	connection = false;
-var socket = new net.Socket(),
+	logger = log4js.getLogger('chase-server');
+let connection = false;
+let socket = new net.Socket(),
 	nconf = require('nconf');
 
 nconf.argv()
@@ -20,12 +20,12 @@ nconf.argv()
 
 logger.info(nconf.get("canpiServer"));
 logger.level = 'info';
-var canpiServer = nconf.get("canpiServer")
+let canpiServer = nconf.get("canpiServer");
 
 establishConnection();
 
 io.once('connection', (socket) => {
-	logger.info('Event: SocketIO Connection Established w/ browser')
+	logger.info('Event: SocketIO Connection Established w/ browser');
 	parser.on("json", (json) => {
 		io.sockets.emit("data", json);
 		//logger.info(json)
