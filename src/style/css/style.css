@@ -1325,6 +1325,15 @@ dd {
   font-size: 16px;
   font-weight: 400; }
 
+.graph {
+  width: 70%;
+  float: left;
+  margin-left: 32px; }
+
+.helpme {
+  position: relative;
+  height: 50vh; }
+
 .cluster {
   padding: 0; }
 

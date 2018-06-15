@@ -43,12 +43,14 @@ class Graph extends Component {
         scales: {
           yAxes: [{
             ticks: {
-              max: 100,
+              max: 75,
               min: 0,
               stepSize: 5
             }
           }]
-        }
+        },
+        maintainAspectRatio: false,
+        responsive: true,
       }
 		}
 	}
@@ -73,9 +75,9 @@ class Graph extends Component {
 	}
 	render() {
 		return (
-		  <div className="widget sub">
+		  <div id="net-power-graph" className="widget sub">
         <h2>Graph</h2>
-        <div style = {styles.graphs}>
+        <div className="helpme">
           <Line data={this.state.graph} options={this.state.options} redraw/>
         </div>
       </div>

@@ -104,7 +104,7 @@ class Overview extends Component {
                 <Secondary {...this.state.secondary.props}/>
               </div>
 
-              <div className="col-md-9">
+              <div className="graph">
                 <Graph{...this.state.graph.props}/>
               </div>
                 {/**
