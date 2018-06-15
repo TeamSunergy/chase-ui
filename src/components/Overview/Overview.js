@@ -82,7 +82,7 @@ class Overview extends Component {
         },
         graph:{
           props: {
-            speed: {$set: data.speed},
+            speed: {$set: data.motConVehicleVelocity},
           }
         }
       });
