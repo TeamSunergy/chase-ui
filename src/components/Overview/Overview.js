@@ -21,6 +21,7 @@ class Overview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedGraph: 0,
       loading: true,
       endpoint: "http://localhost:4001",
       primary: {
@@ -50,7 +51,8 @@ class Overview extends Component {
           speed:0,
         }
       }
-    }
+    };
+    this.selectGraph = this.selectGraph.bind(this);
   };
 
   componentDidMount(){
@@ -90,6 +92,11 @@ class Overview extends Component {
     });
   }
 
+  selectGraph(graph) {
+    console.log("selectGraph top" + graph);
+    this.setState({selectedGraph: graph});
+  }
+
   //<Overview widgets={this.state.widgets} layout={this.state.layout}/>
   render() {
     // const { loading } = this.state;
@@ -105,7 +112,7 @@ class Overview extends Component {
               </div>
 
               <div className="graph">
-                <Graph{...this.state.graph.props}/>
+                <Graph selectGraph={this.selectGraph} selectedGraph={this.state.selectedGraph} {...this.state.graph.props}/>
               </div>
                 {/**
                 <div className = "row">

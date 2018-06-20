@@ -26,7 +26,6 @@ class MenuPanel extends Component {
   render() {
     let {isOpen, panelNodeRef} = this.props;
     let path = this.props.currentPath.slice(1);
-    console.log(path);
     return (
         <div id="menu-overlay" className={isOpen ? "show" : ""}>
           <div id="menu-panel" className={isOpen ? "show" : ""} ref={panelNodeRef}>
