@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
 import update from 'immutability-helper';
-import Selector from './Selector';
 
 import {Line, Bar, defaults} from 'react-chartjs-2';
-const styles = {
-	graphs: {
-	}
-};
 
 defaults.global.animation = false;
 defaults.global.defaultFontSize = 11;
@@ -20,7 +15,7 @@ class Graph extends Component {
 				labels: ["0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM"],
 				datasets: [
 				{
-					label: 'Net Power (watts)',
+					label: 'Vehicle Velocity (mph)',
 					fill: false,
 					lineTension: 0.1,
 					backgroundColor: 'rgba(75,192,192,0.4)',
@@ -45,9 +40,9 @@ class Graph extends Component {
         labels: ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
         datasets: [
           {
-            label: 'Net Power (watts)',
+            label: 'Battery SOC (%)',
             fill: false,
-            lineTension: 0.1,
+            lineTension: 0.5,
             backgroundColor: 'rgba(75,192,192,0.4)',
             borderColor: 'rgba(75,192,192,1)',
             borderCapStyle: 'butt',
@@ -66,7 +61,6 @@ class Graph extends Component {
             data: []
           }],
       },
-
       options: {
         maintainAspectRatio: false,
         scales: {
@@ -88,84 +82,87 @@ class Graph extends Component {
             }
           }]
         }
-			  /**
+      },
+      options2: {
+        maintainAspectRatio: false,
         scales: {
           yAxes: [{
+            stacked: true,
+            gridLines: {
+              display: false,
+              color: "rgba(255,99,132,0.2)"
+            },
             ticks: {
-              max: 75,
+              max: 100,
               min: 0,
               stepSize: 5
             }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
           }]
-        },
-        maintainAspectRatio: false,
-        responsive: true,
-         **/
+        }
       }
 		};
-    this.setGraph = this.setGraph.bind(this);
 	}
-
-	componentDidUpdate
 
 	componentWillReceiveProps(nextProps) {
+	  // TODO: Convert this to a for each?
+    // I can imagine this entire Component with an array of the graphs-to-display (based on Parent component/page)
+    // that is initialized in the constructor. Then here using a for each to set its values.
+    // In general, creating some sort of graph/chart framework that is more extensible makes sense.
 	  let {graphNetPower, graphOther} = this.state;
-	  let labels, datasets, currTime, newState;
-	  if (this.props.selectedGraph === 0) {
-      labels = graphNetPower.labels;
-      datasets = graphNetPower.datasets;
-      currTime = new Date().toLocaleTimeString();
-      // NOTE: this check for currTime makes it so the chart only gets updated once every millisecond.
-      if ((labels[11] !== currTime) && (nextProps.speed !== this.props.speed)) {
-        labels.push(currTime);
-        if (labels.length > 12) labels.shift();
-        datasets[0].data.push(nextProps.speed);
-        if (datasets[0].data.length > 12) datasets[0].data.shift();
-        newState = update(this.state, {
-          graphNetPower: {
-            labels: {$set: labels},
-            datasets: {$set: datasets}
-          },
-        });
-        this.setState(newState);
-      }
+	  let labels1, labels2, datasets1, datasets2, currTime, newState;
+    labels1 = graphNetPower.labels;
+    datasets1 = graphNetPower.datasets;
+    currTime = new Date().toLocaleTimeString();
+    let shouldUpdate = false;
+    // NOTE: this check for currTime makes it so the chart only gets updated once every millisecond.
+    if ((labels1[11] !== currTime) && (nextProps.speed !== this.props.speed)) {
+      shouldUpdate = true;
+      labels1.push(currTime);
+      if (labels1.length > 12) labels1.shift();
+      datasets1[0].data.push(nextProps.speed);
+      if (datasets1[0].data.length > 12) datasets1[0].data.shift();
     }
-    if (this.props.selectedGraph === 1) {
-      labels = graphOther.labels;
-      datasets = graphOther.datasets;
-      currTime = new Date().toLocaleTimeString();
-      if ((labels[11] !== currTime) && (nextProps.speed !== this.props.speed)) {
-        labels.push(new Date().toLocaleTimeString());
-        if (labels.length > 12) labels.shift();
-        datasets[0].data.push(nextProps.speed);
-        if (datasets[0].data.length > 12) datasets[0].data.shift();
-        newState = update(this.state, {
-          graphOther: {
-            labels: {$set: labels},
-            datasets: {$set: datasets}
-          },
-        });
-        this.setState(newState);
-      }
+
+    labels2 = graphOther.labels;
+    datasets2 = graphOther.datasets;
+    currTime = new Date().toLocaleTimeString();
+    if ((labels2[11] !== currTime) && (nextProps.batterySoc !== this.props.batterySoc)) {
+      shouldUpdate = true;
+      labels2.push(new Date().toLocaleTimeString());
+      if (labels2.length > 12) labels2.shift();
+      datasets2[0].data.push(nextProps.batterySoc);
+      if (datasets2[0].data.length > 12) datasets2[0].data.shift();
+    }
+
+    if (shouldUpdate) {
+      newState = update(this.state, {
+        graphNetPower: {
+          labels: {$set: labels1},
+          datasets: {$set: datasets1}
+        },
+        graphOther: {
+          labels: {$set: labels2},
+          datasets: {$set: datasets2}
+        },
+      });
+      this.setState(newState);
     }
 	}
 
-  setGraph() {
-	  console.log(this.props.selectedGraph);
-    if (this.props.selectedGraph === 0)
-      return <Line data={this.state.graphNetPower} options={this.state.options} redraw/>;
-    if (this.props.selectedGraph === 1)
-      return <Line data={this.state.graphOther} options={this.state.options} redraw/>;
-  }
-
 	render() {
-    let {selectedGraph} = this.props;
+    let {selected} = this.props;
 		return (
-		  <div id="net-power-graph" className="widget sub">
-        <Selector selected={selectedGraph} selectGraph={this.props.selectGraph}/>
-        {(selectedGraph === 0) ? <h2>Graph – Net Power</h2> : <h2>Graph – Other</h2>}
-        <div className="chart-container">
-          {this.setGraph()}
+      <div className="chart-container">
+        <div className={(selected === 0) ? "show" : "hide"}>
+          <Line data={this.state.graphNetPower} options={this.state.options} redraw/>
+        </div>
+        <div className={(selected === 1) ? "show" : "hide"}>
+          <Line data={this.state.graphOther} options={this.state.options2} redraw/>
         </div>
       </div>
     );
@@ -173,7 +170,7 @@ class Graph extends Component {
 }
 
 Graph.defaultProps = {
-  selectedGraph: 0,
+  selected: 0,
   selectGraph: () => {}
 };
 export default Graph;
