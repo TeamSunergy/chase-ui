@@ -1285,7 +1285,7 @@ dd {
   display: block;
   width: 100%;
   margin: 0 0 32px;
-  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   overflow: auto;
   clear: both;
@@ -1459,7 +1459,7 @@ h3 {
 
 #overview .battery #soc {
   float: left;
-  margin: 2px 0 0 6%; }
+  margin: 2px 4% 0; }
 
 #overview .battery #soc .soc-icon {
   float: right;
