@@ -40,9 +40,9 @@ export const graphs = {
             color: "rgba(255,99,132,0.2)"
           },
           ticks: {
-            max: 75,
-            min: 0,
-            stepSize: 5
+            max: 200,
+            min: -200,
+            stepSize: 50
           }
         }],
         xAxes: [{

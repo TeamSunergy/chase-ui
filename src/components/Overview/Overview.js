@@ -18,11 +18,14 @@ import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
 import battery from "../Battery/Battery";
 
+import {graphs} from './widgets/Graph/graph-config';
+
 class Overview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedGraph: 0,
+      graphSet: graphs,
       loading: true,
       endpoint: "http://localhost:4001",
       status: {
@@ -54,7 +57,6 @@ class Overview extends Component {
       },
       graph:{
         props:{
-          speed:0,
         }
       }
     };
@@ -95,7 +97,7 @@ class Overview extends Component {
         },
         graph:{
           props: {
-            speed: {$set: data.motConVehicleVelocity},
+            netPower: {$set: data.netPower},
             batterySoc: {$set: data.soc},
           }
         }
@@ -105,7 +107,7 @@ class Overview extends Component {
   }
 
   selectGraph(graph) {
-    console.log("selectGraph top" + graph);
+    console.log("selectGraph", graph);
     if (this.state.selected !== graph)
       this.setState({selectedGraph: graph});
   }
@@ -129,7 +131,10 @@ class Overview extends Component {
                 <div id="net-power-graph" className="widget sub">
                   {(selectedGraph === 0) ? <h2>Graph – Speed</h2> : <h2>Graph – SOC</h2>}
                   <Selector selected={selectedGraph} selectGraph={this.selectGraph}/>
-                  <Graph selected={selectedGraph} selectGraph={this.selectGraph} {...this.state.graph.props}/>
+                  <Graph selected={selectedGraph}
+                         selectGraph={this.selectGraph}
+                         graphSet={this.state.graphSet}
+                         {...this.state.graph.props}/>
                 </div>
               </div>
                 {/**
