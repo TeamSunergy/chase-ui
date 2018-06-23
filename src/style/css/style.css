@@ -242,7 +242,7 @@ td, th {
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
   font-family: "Source Sans Pro","Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -1885,5 +1885,11 @@ h3 {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 101; }
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 60vh;
+  width: 60vw; }
 
 /*# sourceMappingURL=style.css.map */

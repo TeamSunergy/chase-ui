@@ -1,7 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # Python
-./src/test/__pycache__
+./src/test/__pycache__/*
 
 # Idea
 .idea/workspace.xml

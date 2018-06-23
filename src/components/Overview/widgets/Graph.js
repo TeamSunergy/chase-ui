@@ -9,6 +9,7 @@ const styles = {
 };
 
 defaults.global.animation = false;
+defaults.global.defaultFontSize = 11;
 
 class Graph extends Component {
 	constructor(props) {
@@ -65,7 +66,29 @@ class Graph extends Component {
             data: []
           }],
       },
+
       options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            stacked: true,
+            gridLines: {
+              display: true,
+              color: "rgba(255,99,132,0.2)"
+            },
+            ticks: {
+              max: 75,
+              min: 0,
+              stepSize: 5
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
+          }]
+        }
+			  /**
         scales: {
           yAxes: [{
             ticks: {
@@ -77,6 +100,7 @@ class Graph extends Component {
         },
         maintainAspectRatio: false,
         responsive: true,
+         **/
       }
 		};
     this.setGraph = this.setGraph.bind(this);
@@ -135,7 +159,7 @@ class Graph extends Component {
 		  <div id="net-power-graph" className="widget sub">
         <Selector selected={selectedGraph} selectGraph={this.props.selectGraph}/>
         {(selectedGraph === 0) ? <h2>Graph – Net Power</h2> : <h2>Graph – Other</h2>}
-        <div className="helpme">
+        <div className="chart-container">
           {this.setGraph()}
         </div>
       </div>
