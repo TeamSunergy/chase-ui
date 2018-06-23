@@ -13,6 +13,7 @@ import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Gauge from './widgets/Gauge';
 import Graph from './widgets/Graph';
+import Selector from './widgets/Selector';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
 import battery from "../Battery/Battery";
@@ -95,6 +96,7 @@ class Overview extends Component {
         graph:{
           props: {
             speed: {$set: data.motConVehicleVelocity},
+            batterySoc: {$set: data.soc},
           }
         }
       });
@@ -104,7 +106,7 @@ class Overview extends Component {
 
   selectGraph(graph) {
     console.log("selectGraph top" + graph);
-    if (this.state.selectedGraph !== graph)
+    if (this.state.selected !== graph)
       this.setState({selectedGraph: graph});
   }
 
@@ -112,6 +114,7 @@ class Overview extends Component {
   render() {
     // const { loading } = this.state;
     let {speed, batteryVoltage, netPower} = this.state.status;
+    let {selectedGraph} = this.state;
     return (
         <div>
           <StatusBar title="Overview" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
@@ -122,9 +125,12 @@ class Overview extends Component {
                 <Primary {...this.state.primary.props}/>
                 <Secondary {...this.state.secondary.props}/>
               </div>
-
               <div className="graph">
-                <Graph selectGraph={this.selectGraph} selectedGraph={this.state.selectedGraph} {...this.state.graph.props}/>
+                <div id="net-power-graph" className="widget sub">
+                  {(selectedGraph === 0) ? <h2>Graph – Speed</h2> : <h2>Graph – SOC</h2>}
+                  <Selector selected={selectedGraph} selectGraph={this.selectGraph}/>
+                  <Graph selected={selectedGraph} selectGraph={this.selectGraph} {...this.state.graph.props}/>
+                </div>
               </div>
                 {/**
                 <div className = "row">
