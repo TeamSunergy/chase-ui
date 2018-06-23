@@ -249,7 +249,7 @@ body {
   font-size: 16px;
   line-height: 1.42857;
   color: #222;
-  background-color: #fff; }
+  background-color: #F6F8FA; }
 
 input, button, select, textarea {
   font-family: inherit;
@@ -1279,24 +1279,24 @@ dd {
   font-feature-settings: 'liga'; }
 
 .view {
-  padding: 90px 10px 10px; }
+  padding: 90px 0 0; }
 
 .widget {
   display: block;
   width: 100%;
-  margin: 0 20px 32px;
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+  margin: 0 0 32px;
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: auto;
-  clear: both; }
+  clear: both;
+  background-color: #FFF; }
 
 .value {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700; }
 
 .value span {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400; }
 
 .sub {
@@ -1316,7 +1316,7 @@ dd {
   border-right: 1px solid #EAEAEA; }
 
 .sub-inline .value {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   padding-top: 20px;
   line-height: 1; }
@@ -1438,27 +1438,57 @@ h3 {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
 
-.battery div {
-  display: inline-block; }
+#overview .content-wrapper {
+  width: 94%;
+  margin: 0 auto;
+  clear: both;
+  overflow: visible; }
 
-.battery #soc {
-  float: right;
-  margin: 10px 60px 0 20px; }
+#overview #column-left {
+  width: 30%;
+  float: left; }
 
-.battery #soc .soc-icon {
+#overview #column-right {
+  width: 70%;
+  float: left;
+  padding-left: 32px; }
+
+#overview .battery div {
+  display: inline-block;
+  float: left; }
+
+#overview .battery #soc {
+  float: left;
+  margin: 2px 0 0 6%; }
+
+#overview .battery #soc .soc-icon {
   float: right;
   height: 46px; }
 
-.battery #soc .value {
+#overview .battery #soc .value {
   float: right;
   margin-top: 6px;
   font-size: 24px;
   font-weight: 700; }
 
-.battery #soc .value span {
+#overview .battery #soc .value span {
   font-size: 22px;
   font-weight: 400;
   margin-left: -2px; }
+
+#overview .chart-container .show {
+  visibility: visible; }
+
+#overview .chart-container .hide {
+  visibility: hidden; }
+
+#overview .graph {
+  float: left; }
+
+#overview #net-power-graph .chart-container > div {
+  position: relative;
+  margin: auto;
+  width: 100%; }
 
 @font-face {
   font-family: 'Source Sans Pro';
@@ -1555,7 +1585,7 @@ h3 {
   left: 0;
   width: 100%;
   height: 60px;
-  box-shadow: 0 1px 0 #D6D6D6;
+  border-bottom: 1px solid #D6D6D6;
   overflow: auto;
   background-color: white;
   z-index: 100; }
@@ -1808,7 +1838,7 @@ h3 {
   font-style: italic;
   letter-spacing: 4px;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   z-index: 103;
   position: absolute;
   display: inline-block;
@@ -1965,26 +1995,6 @@ h3 {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
-
-.chart-container .show {
-  visibility: visible; }
-
-.chart-container .hide {
-  visibility: hidden; }
-
-.chart-container > div {
-  position: relative;
-  margin: auto;
-  height: 60vh;
-  width: 60vw; }
-
-.graph {
-  float: left;
-  margin-left: 32px; }
-
-#net-power-graph .chart-container > div {
-  height: 70vh;
-  width: 60vw; }
 
 .chart-container > div {
   position: relative;

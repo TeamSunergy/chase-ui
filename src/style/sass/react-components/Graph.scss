@@ -8,31 +8,5 @@
 //
 //
 
-.chart-container {
-  .show {
-    visibility: visible;
-  }
-  .hide {
-    visibility: hidden;
-  }
-}
 
-.chart-container > div {
-  position: relative;
-  margin: auto;
-  height: 60vh;
-  width: 60vw;
-}
-
-.graph {
-  float: left;
-  margin-left: 32px;
-}
-
-#net-power-graph {
-  .chart-container > div {
-    height: 70vh;
-    width: 60vw;
-  }
-}
 

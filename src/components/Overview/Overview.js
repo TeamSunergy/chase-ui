@@ -119,13 +119,13 @@ class Overview extends Component {
         <div>
           <StatusBar title="Overview" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
           <Menu currentPath={this.props.location.pathname}/>
-          <div className = "container-fluid">
-            <div className="row">
-              <div className="col-md-3">
+          <div id="overview">
+            <div className="content-wrapper">
+              <div id="column-left">
                 <Primary {...this.state.primary.props}/>
                 <Secondary {...this.state.secondary.props}/>
               </div>
-              <div className="graph">
+              <div id="column-right" className="graph">
                 <div id="net-power-graph" className="widget sub">
                   {(selectedGraph === 0) ? <h2>Graph – Speed</h2> : <h2>Graph – SOC</h2>}
                   <Selector selected={selectedGraph} selectGraph={this.selectGraph}/>

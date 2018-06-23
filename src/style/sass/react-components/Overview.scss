@@ -4,32 +4,78 @@
  */
 @import '../custom-variables';
 
-//== Primary
-//
-//## Styles for the Primary widget
-
-.battery {
-  div {
-    display: inline-block;
+#overview {
+  .content-wrapper {
+    width: 94%;
+    margin: 0 auto;
+    clear: both;
+    overflow: visible;
   }
-  #soc {
-    float: right;
-    margin: 10px 60px 0 20px;
-    .soc-icon {
-      float: right;
-      height: 46px;
+  #column-left {
+    //margin-left: 20px;
+    width: 30%;
+    float: left;
+  }
+
+  #column-right {
+    width: 70%;
+    float: left;
+    padding-left: 32px;
+  }
+
+  //== Primary
+  //
+  //## Styles for the Primary widget
+
+  .battery {
+    div {
+      display: inline-block;
+      float: left;
     }
-    .value {
-      float: right;
-      margin-top: 6px;
-      font-size: 24px;
-      font-weight: $fw-bold;
-      span {
-        font-size: 22px;
-        font-weight: $fw-normal;
-        margin-left: -2px;
+    #soc {
+      float: left;
+      margin: 2px 0 0 6%;
+      .soc-icon {
+        float: right;
+        height: 46px;
+      }
+      .value {
+        float: right;
+        margin-top: 6px;
+        font-size: 24px;
+        font-weight: $fw-bold;
+        span {
+          font-size: 22px;
+          font-weight: $fw-normal;
+          margin-left: -2px;
+        }
       }
     }
   }
-}
+
+  //== Graph
+  //
+  //## Styles for the Graph widget
+
+  .chart-container {
+    .show {
+      visibility: visible;
+    }
+    .hide {
+      visibility: hidden;
+    }
+  }
+
+  .graph {
+    float: left;
+  }
+
+  #net-power-graph {
+    .chart-container > div {
+      position: relative;
+      margin: auto;
+      width: 100%;
+    }
+  }
+} //** END #overview
 

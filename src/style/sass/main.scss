@@ -1,26 +1,27 @@
 @import 'custom-variables';
 .view {
-  padding: 90px 10px 10px;
+  padding: 90px 0 0;
 }
 
 //== Widget
 //
-//## General styles for widgets
+//## General styles for widget
 
 .widget {
   display: block;
   width: 100%;
-  margin: 0 20px 32px;
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+  margin: 0 0 32px;
+  //border: 1px solid rgba(0, 0, 0, 0.02);
+  //border: 3px solid #EFEFEF;
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.10);
   border-radius: 5px;
-
   overflow: auto;
   clear: both;
+  background-color: #FFF;
 }
 
 .value {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: $fw-bold;
   span {
     font-size: $font-size-large;
