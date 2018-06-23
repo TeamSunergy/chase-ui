@@ -24,6 +24,11 @@ class Overview extends Component {
       selectedGraph: 0,
       loading: true,
       endpoint: "http://localhost:4001",
+      status: {
+        speed: 0,
+        batteryVoltage: 0,
+        netPower: 0
+      },
       primary: {
         props:{
           speed: 0,
@@ -60,6 +65,11 @@ class Overview extends Component {
     socket.on('data', (data) => {
       this.state.loading = false;
       const newState = update(this.state, {
+        status: {
+          speed :{$set: data.motConVehicleVelocity},
+          batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
+          netPower: {$set: data.netPower},
+        },
         primary: {
           props:{
             speed :{$set: data.motConVehicleVelocity},
@@ -101,9 +111,10 @@ class Overview extends Component {
   //<Overview widgets={this.state.widgets} layout={this.state.layout}/>
   render() {
     // const { loading } = this.state;
+    let {speed, batteryVoltage, netPower} = this.state.status;
     return (
         <div>
-          <StatusBar title="Overview"/>
+          <StatusBar title="Overview" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
           <Menu currentPath={this.props.location.pathname}/>
           <div className = "container-fluid">
             <div className="row">
