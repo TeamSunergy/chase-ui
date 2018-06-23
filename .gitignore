@@ -1,11 +1,13 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# Python
+./src/test/__pycache__
+
 # Idea
 .idea/workspace.xml
 .idea/tasks.xml
 code/.idea/workspace.xml
 code/.idea/tasks.xml
-
 
 # dependencies
 **/node_modules
