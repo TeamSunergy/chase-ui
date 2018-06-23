@@ -1,5 +1,5 @@
 from socket import *
-from ex_json import json_ex
+from data import data
 from datetime import datetime
 import json
 import asyncio
@@ -20,29 +20,30 @@ async def echo_server(address, loop, sleep_seconds):
         print('Connection from: ', address)
         loop.create_task(echo_handler(client,loop,sleep_seconds))
 
-
 async def echo_handler(client, loop, sleep_seconds):
     while True:
-        json_ex["motConVehicleVelocity"] += 1
-        if json_ex["motConVehicleVelocity"] == 100:
-            json_ex["motConVehicleVelocity"] = 1
-        json_ex['netPower'] = random.randint(-200, 200)
-        json_ex['highestCellTemperature'] = random.randint(1, 75)
-        json_ex['batteryPackInstantaneousVoltage'] = random.randint(1,75)
-        json_ex['gpio5'] = 1
-        json_ex['gpio12'] = 1
-        json_ex['soc'] = random.randint(0, 100)
-        json_ex['bpsHighVoltage'] = random.randint(100, 200)
-        json_ex['mpptTotalNetPower'] = random.randint(100, 200)
-        json_ex['mppt1UnitTemperature'] = random.randint(100, 200)
-        json_ex['mppt2UnitTemperature'] = random.randint(100, 200)
-        json_ex['mppt3UnitTemperature'] = random.randint(100, 200)
-        json_ex['internalBPSTemperature'] = random.randint(100, 200)
-        json_ex['motConOdometer'] = random.randint(100, 200)
-
+        generateValues()
         await asyncio.sleep(sleep_seconds)
-        await loop.sock_sendall(client,json.dumps(json_ex).encode())
+        await loop.sock_sendall(client,json.dumps(data).encode())
         print("Send user JSON @", datetime.now())
+
+def generateValues():
+    data["motConVehicleVelocity"] += 1
+    data['netPower'] = random.randint(-200, 200)
+    data['highestCellTemperature'] = random.randint(1, 75)
+    data['batteryPackInstantaneousVoltage'] = random.randint(1,75)
+    data['gpio5'] = 1
+    data['gpio12'] = 1
+    data['soc'] = random.randint(0, 100)
+    data['bpsHighVoltage'] = random.randint(100, 200)
+    data['mpptTotalNetPower'] = random.randint(100, 200)
+    data['mppt1UnitTemperature'] = random.randint(100, 200)
+    data['mppt2UnitTemperature'] = random.randint(100, 200)
+    data['mppt3UnitTemperature'] = random.randint(100, 200)
+    data['internalBPSTemperature'] = random.randint(100, 200)
+    data['motConOdometer'] = random.randint(100, 200)
+    if data["motConVehicleVelocity"] == 100:
+        data["motConVehicleVelocity"] = 1
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
