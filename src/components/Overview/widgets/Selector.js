@@ -12,21 +12,27 @@ class Selector extends Component {
   // eslint-disable-next-line require-jsdoc
   constructor(props) {
     super(props);
-    this.state = {};
     this.select = this.select.bind(this);
+    this.setup = this.setup.bind(this);
+
+    //this.setup();
   }
 
   select(option) {
-    // 0 = Net Power
-    // 1 = Other
     this.props.selectGraph(option);
+  }
+
+  setup() {
+    let {options} = this.props;
+    return options.map((o) =>
+        <button onClick={()=>{this.select(o)}}>{o.string}</button>
+    );
   }
 
   render() {
     return (
         <div id="graph-filter">
-          <button className="selected" onClick={()=>{this.select(0)}}>Net Power</button>
-          <button onClick={()=>{this.select(1)}}>Other</button>
+          {this.setup()}
         </div>
     );
   }
@@ -34,6 +40,7 @@ class Selector extends Component {
 
 Selector.defaultProps = {
   selectGraph: () => {},
+  options: []
 };
 
 export default Selector;

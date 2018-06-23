@@ -10,9 +10,11 @@ class Graph extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-		  graphs: this.props.graphSet
+		  graphs: this.props.graphSet,
+      charts: []
 		};
     this.updateGraph = this.updateGraph.bind(this);
+    this.setupCharts = this.setupCharts.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -24,6 +26,35 @@ class Graph extends Component {
       }
       this.setState(newState);
     }
+  }
+
+  setup() {
+    let {graphs} = this.state;
+
+  }
+
+  componentDidMount() {
+	  if (this.props.selected === '_default')
+      document.getElementsByClassName("chart-container")[0].getElementsByTagName("div")[0].className = "show";
+  }
+
+  setupCharts() {
+	  let chartComponentData = [];
+	  let i = 0;
+    let {graphs} = this.state;
+    for (let graph in graphs) {
+      if (graphs.hasOwnProperty(graph)) {
+        let g = graphs[graph];
+        chartComponentData[i] = g;
+        i++;
+      }
+    }
+    let id = "#graph-";
+    return chartComponentData.map((g) =>
+        <div id={id + g.key} className={(this.props.selected.key === g.name) ? "show" : "hide"}>
+          <Line data={g.data} options={g.options} redraw/>
+        </div>
+    );
   }
 
   updateGraph(graph, newData, oldData, newState, dataKey) {
@@ -55,19 +86,14 @@ class Graph extends Component {
     let {graphs} = this.state;
 		return (
       <div className="chart-container">
-        <div className={(selected === 0) ? "show" : "hide"}>
-          <Line data={graphs.netPower.data} options={graphs.netPower.options} redraw/>
-        </div>
-        <div className={(selected === 1) ? "show" : "hide"}>
-          <Line data={graphs.batterySoc.data} options={graphs.batterySoc.options} redraw/>
-        </div>
+        {this.setupCharts()}
       </div>
     );
 	}
 }
 
 Graph.defaultProps = {
-  selected: 0,
+  selected: "_default",
   graphSet: {},
   selectGraph: () => {},
 };

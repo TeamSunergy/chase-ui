@@ -24,7 +24,8 @@ class Overview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedGraph: 0,
+      selectedGraph: "_default",
+      options: [],
       graphSet: graphs,
       loading: true,
       endpoint: "http://localhost:4001",
@@ -61,6 +62,9 @@ class Overview extends Component {
       }
     };
     this.selectGraph = this.selectGraph.bind(this);
+    this.setupSelector = this.setupSelector.bind(this);
+
+    this.setupSelector();
   };
 
   componentDidMount(){
@@ -108,8 +112,29 @@ class Overview extends Component {
 
   selectGraph(graph) {
     console.log("selectGraph", graph);
-    if (this.state.selected !== graph)
+    if (this.state.selectedGraph !== graph) {
+      if (this.state.selectedGraph === '_default')
+        document.getElementsByClassName("chart-container")[0].getElementsByTagName("div")[0].className = "hide";
       this.setState({selectedGraph: graph});
+    }
+  }
+
+  setupSelector() {
+    let {graphSet} = this.state;
+    let options = [];
+    let i = 0;
+    for (let graph in graphSet) {
+      if (graphSet.hasOwnProperty(graph)) {
+        // Regex credits: James Khoury – https://stackoverflow.com/questions/7225407
+        options[i] = {
+          key: graphSet[graph].name,
+          string: (graphSet[graph].name.charAt(0).toUpperCase() + graphSet[graph].name.slice(1))
+              .replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+        };
+        i++;
+      }
+    }
+    return options;
   }
 
   //<Overview widgets={this.state.widgets} layout={this.state.layout}/>
@@ -117,6 +142,12 @@ class Overview extends Component {
     // const { loading } = this.state;
     let {speed, batteryVoltage, netPower} = this.state.status;
     let {selectedGraph} = this.state;
+    let options = this.setupSelector();
+    //let {options} = this.state;
+    let title;
+    console.log(options);
+    if (selectedGraph === "_default") title = options[0].string;
+    else title = selectedGraph.string;
     return (
         <div>
           <StatusBar title="Overview" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
@@ -129,8 +160,8 @@ class Overview extends Component {
               </div>
               <div id="column-right" className="graph">
                 <div id="net-power-graph" className="widget sub">
-                  {(selectedGraph === 0) ? <h2>Graph – Speed</h2> : <h2>Graph – SOC</h2>}
-                  <Selector selected={selectedGraph} selectGraph={this.selectGraph}/>
+                  <h2>{title}</h2>
+                  <Selector selected={selectedGraph} selectGraph={this.selectGraph} options={options}/>
                   <Graph selected={selectedGraph}
                          selectGraph={this.selectGraph}
                          graphSet={this.state.graphSet}
