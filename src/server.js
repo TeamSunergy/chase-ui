@@ -28,9 +28,13 @@ io.once('connection', (socket) => {
 	logger.info('Event: SocketIO Connection Established w/ browser');
 	parser.on("json", (json) => {
 		io.sockets.emit("data", json);
+
+		io.sockets.emit("notification", {"message": "Battery", "link": "/battery"});
+		io.sockets.emit("notification", {"message": "Overview", "link":"/"});
 		//logger.info(json)
 	});
 });
+
 
 function establishConnection() {
 	socket.connect(canpiServer.port, canpiServer.host, () => {
