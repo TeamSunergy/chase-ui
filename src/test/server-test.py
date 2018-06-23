@@ -24,7 +24,7 @@ async def echo_server(address, loop, sleep_seconds):
 async def echo_handler(client, loop, sleep_seconds):
     while True:
         json_ex["motConVehicleVelocity"] += 1
-        if json_ex["motConVehicleVelocity"] == 100:
+        if json_ex["motConVehicleVelocity"] == 75:
             json_ex["motConVehicleVelocity"] = 1
         json_ex['netPower'] = random.randint(-200, 200)
         json_ex['highestCellTemperature'] = random.randint(1, 75)

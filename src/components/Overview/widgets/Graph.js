@@ -106,42 +106,47 @@ class Graph extends Component {
     this.setGraph = this.setGraph.bind(this);
 	}
 
+	componentDidUpdate
+
 	componentWillReceiveProps(nextProps) {
-    /** TODO
-     *  Pretty sure this is making the graph weird when you switch back and forth.
-     *  A node gets added each time the graph is selected. 
-     */
 	  let {graphNetPower, graphOther} = this.state;
-	  let labels, datasets, newState;
+	  let labels, datasets, currTime, newState;
 	  if (this.props.selectedGraph === 0) {
       labels = graphNetPower.labels;
       datasets = graphNetPower.datasets;
-      labels.push(new Date().toLocaleTimeString());
-      if (labels.length > 12) labels.shift();
-      datasets[0].data.push(nextProps.speed);
-      if (datasets[0].data.length > 12) datasets[0].data.shift();
-      newState = update(this.state, {
-        graphNetPower: {
-          labels: {$set: labels},
-          datasets: {$set: datasets}
-        },
-      });
-      this.setState(newState);
+      currTime = new Date().toLocaleTimeString();
+      // NOTE: this check for currTime makes it so the chart only gets updated once every millisecond.
+      if ((labels[11] !== currTime) && (nextProps.speed !== this.props.speed)) {
+        labels.push(currTime);
+        if (labels.length > 12) labels.shift();
+        datasets[0].data.push(nextProps.speed);
+        if (datasets[0].data.length > 12) datasets[0].data.shift();
+        newState = update(this.state, {
+          graphNetPower: {
+            labels: {$set: labels},
+            datasets: {$set: datasets}
+          },
+        });
+        this.setState(newState);
+      }
     }
     if (this.props.selectedGraph === 1) {
       labels = graphOther.labels;
       datasets = graphOther.datasets;
-      labels.push(new Date().toLocaleTimeString());
-      if (labels.length > 12) labels.shift();
-      datasets[0].data.push(nextProps.speed);
-      if (datasets[0].data.length > 12) datasets[0].data.shift();
-      newState = update(this.state, {
-        graphOther: {
-          labels: {$set: labels},
-          datasets: {$set: datasets}
-        },
-      });
-      this.setState(newState);
+      currTime = new Date().toLocaleTimeString();
+      if ((labels[11] !== currTime) && (nextProps.speed !== this.props.speed)) {
+        labels.push(new Date().toLocaleTimeString());
+        if (labels.length > 12) labels.shift();
+        datasets[0].data.push(nextProps.speed);
+        if (datasets[0].data.length > 12) datasets[0].data.shift();
+        newState = update(this.state, {
+          graphOther: {
+            labels: {$set: labels},
+            datasets: {$set: datasets}
+          },
+        });
+        this.setState(newState);
+      }
     }
 	}
 

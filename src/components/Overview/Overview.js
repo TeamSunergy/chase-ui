@@ -94,7 +94,8 @@ class Overview extends Component {
 
   selectGraph(graph) {
     console.log("selectGraph top" + graph);
-    this.setState({selectedGraph: graph});
+    if (this.state.selectedGraph !== graph)
+      this.setState({selectedGraph: graph});
   }
 
   //<Overview widgets={this.state.widgets} layout={this.state.layout}/>
