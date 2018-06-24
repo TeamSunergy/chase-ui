@@ -8,5 +8,61 @@
 //
 //
 
+#graph-selector {
+  display: inline-block;
+  border: 1px solid $gray-1;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin: 3px;
+  &:hover {
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+    i {
+      color: $gray-4;
+    }
+  }
+  i {
+    color: $gray-3;
+    float: right;
+    margin-top: 3px;
+    margin-left: -20px;
+    pointer-events: none;
+  }
+  select {
+    color: $gray-4;
+    cursor: pointer;
+    float: left;
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 4px 20px 4px 8px;
+    //padding-right: 20px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.graph-info {
+  clear: both;
+  overflow: hidden;
+}
+.graph {
+  h2 {
+    float: left;
+    display: inline-block;
+  }
+}
+
+.chart-container {
+  .show {
+    visibility: visible;
+  }
+  .hide {
+    visibility: hidden;
+  }
+}
 
 
