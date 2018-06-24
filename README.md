@@ -7,9 +7,9 @@
 
 ## Introduction
 
-**ChaseUI** is a web application that displays telemetry data in a dashboard format. ChaseUI works by connecting via a web socket over wireless access points to a running instance of the `canpi` application, which sends data to be displayed by this app. 
+**ChaseUI** is a web application that displays telemetry data in a dashboard format. ChaseUI works by creating a TCP connection over a wireless access points to a running instance of the `canpi` application. The data recevied is sent to a client-side application via a socket that allows real-time, event based communication. 
 
-This application works primarily offline, so as to not require internet access to receive data via the web socket.
+This application works primarily offline, so as to not require internet access to receive data.
 
 ## Install & Run Instructions
 
