@@ -28,11 +28,6 @@ class Graph extends Component {
     }
   }
 
-  setup() {
-    let {graphs} = this.state;
-
-  }
-
   componentDidMount() {
 	  if (this.props.selected === '_default')
       document.getElementsByClassName("chart-container")[0].getElementsByTagName("div")[0].className = "show";
@@ -44,14 +39,13 @@ class Graph extends Component {
     let {graphs} = this.state;
     for (let graph in graphs) {
       if (graphs.hasOwnProperty(graph)) {
-        let g = graphs[graph];
-        chartComponentData[i] = g;
+        chartComponentData[i] = graphs[graph];
         i++;
       }
     }
     let id = "#graph-";
     return chartComponentData.map((g) =>
-        <div id={id + g.key} className={(this.props.selected.key === g.name) ? "show" : "hide"}>
+        <div id={id + g.name} className={(this.props.selected.name === g.name) ? "show" : "hide"}>
           <Line data={g.data} options={g.options} redraw/>
         </div>
     );
@@ -82,8 +76,6 @@ class Graph extends Component {
   }
 
 	render() {
-    let {selected} = this.props;
-    let {graphs} = this.state;
 		return (
       <div className="chart-container">
         {this.setupCharts()}
