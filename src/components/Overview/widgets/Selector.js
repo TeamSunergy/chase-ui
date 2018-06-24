@@ -37,10 +37,11 @@ class Selector extends Component {
 
   render() {
     return (
-        <div id="graph-filter">
+        <div id="graph-selector">
           <select value={this.props.selected.name} onChange={this.handleChange}>
             {this.setup()}
           </select>
+          <i className="material-icons">arrow_drop_down</i>
         </div>
     );
   }

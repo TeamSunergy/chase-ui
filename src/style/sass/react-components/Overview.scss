@@ -57,20 +57,11 @@
   //
   //## Styles for the Graph widget
 
-  .chart-container {
-    .show {
-      visibility: visible;
-    }
-    .hide {
-      visibility: hidden;
-    }
-  }
-
   .graph {
     float: left;
   }
 
-  #net-power-graph {
+  #overview-graphs {
     .chart-container > div {
       position: relative;
       margin: auto;

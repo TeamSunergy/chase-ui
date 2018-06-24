@@ -1476,16 +1476,10 @@ h3 {
   font-weight: 400;
   margin-left: -2px; }
 
-#overview .chart-container .show {
-  visibility: visible; }
-
-#overview .chart-container .hide {
-  visibility: hidden; }
-
 #overview .graph {
   float: left; }
 
-#overview #net-power-graph .chart-container > div {
+#overview #overview-graphs .chart-container > div {
   position: relative;
   margin: auto;
   width: 100%; }
@@ -1995,6 +1989,54 @@ h3 {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
+
+#graph-selector {
+  display: inline-block;
+  border: 1px solid #EAEAEA;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin: 3px; }
+
+#graph-selector:hover {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08); }
+
+#graph-selector:hover i {
+  color: #9F9F9F; }
+
+#graph-selector i {
+  color: #B7B7B7;
+  float: right;
+  margin-top: 3px;
+  margin-left: -20px;
+  pointer-events: none; }
+
+#graph-selector select {
+  color: #9F9F9F;
+  cursor: pointer;
+  float: left;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 4px 20px 4px 8px; }
+
+#graph-selector select:focus {
+  outline: none; }
+
+.graph-info {
+  clear: both;
+  overflow: hidden; }
+
+.graph h2 {
+  float: left;
+  display: inline-block; }
+
+.chart-container .show {
+  visibility: visible; }
+
+.chart-container .hide {
+  visibility: hidden; }
 
 .chart-container > div {
   position: relative;

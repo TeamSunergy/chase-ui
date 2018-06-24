@@ -166,9 +166,11 @@ class Overview extends Component {
                 <Secondary {...this.state.secondary.props}/>
               </div>
               <div id="column-right" className="graph">
-                <div id="net-power-graph" className="widget sub">
-                  <h2>{title}</h2>
-                  <Selector selected={selectedGraph} selectGraph={this.selectGraph} options={options}/>
+                <div id="overview-graphs" className="widget sub">
+                  <div className="graph-info">
+                    <h2>{title}</h2>
+                    <Selector selected={selectedGraph} selectGraph={this.selectGraph} options={options}/>
+                  </div>
                   <Graph selected={selectedGraph}
                          selectGraph={this.selectGraph}
                          graphSet={this.state.graphSet}
