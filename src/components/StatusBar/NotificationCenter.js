@@ -6,8 +6,9 @@
  * @extends Component
  */
 
-import React, {Component} from 'react';
-import NotificationPanel from './NotificationPanel';
+import React, { Component } from 'react';
+import NotificationPanel from './NotificationPanel'
+import socketIOClient from 'socket.io-client';;
 
 class NotificationCenter extends Component {
   // eslint-disable-next-line require-jsdoc
@@ -15,7 +16,10 @@ class NotificationCenter extends Component {
     super(props);
     this.state = {
       panelOpen: false,
-      unreadCount: this.props.unreadCount
+      unreadCount: this.props.unreadCount,
+      notifications: this.props.notifications,
+      unreadNotifications: this.props.unreadNotifications,
+      endpoint: "http://localhost:4001"
     };
 
     this.panelNode = null;
@@ -25,7 +29,7 @@ class NotificationCenter extends Component {
   }
 
   handleClick() {
-    let {panelOpen} = this.state;
+    let { panelOpen } = this.state;
 
     if (!panelOpen) {
       document.addEventListener('click', this.handleOutsideClick, false);
@@ -34,7 +38,7 @@ class NotificationCenter extends Component {
     }
 
     if (!panelOpen) this.openPanel();
-    else this.setState({panelOpen: false});
+    else this.setState({ panelOpen: false });
   }
 
   handleOutsideClick(e) {
@@ -48,41 +52,52 @@ class NotificationCenter extends Component {
       this.handleClick();
     }
   }
-
+  componentWillMount() {
+    const socket = socketIOClient(this.state.endpoint);
+    socket.on('notification', (notification) => {
+      let notifications = this.state.notifications.slice(); //creates the clone of the state
+      notifications.push(notification);
+      let unread = this.state.unreadCount + 1;
+      this.setState({ notifications: notifications, unreadCount: unread, unreadNotifications: true});
+    });
+  }
 
   openPanel() {
     this.setState({
       unreadCount: 0,
-      panelOpen: true
+      panelOpen: true,
+      unreadNotifications: false
     });
   }
 
   render() {
-    let {panelOpen} = this.state;
-    let {unreadCount} = this.state;
+    let { panelOpen } = this.state;
+    let { unreadCount } = this.state;
     let notificationStyle = "notification-circle";
 
     if (unreadCount > 0) notificationStyle += " unread";
     return (
-        <div>
-          <div id="notification-center" onClick={this.handleClick}>
-            <div className={ notificationStyle }><i className="material-icons mdi-notification">
-              notifications_none</i>
-              <div className="number-label">{ unreadCount }</div>
-            </div>
+      <div>
+        <div id="notification-center" onClick={this.handleClick}>
+          <div className={notificationStyle}><i className="material-icons mdi-notification">
+            notifications_none</i>
+            <div className="number-label">{unreadCount}</div>
           </div>
-          {/** IF panel is toggled open, render it **/}
-          {panelOpen ? <NotificationPanel panelNodeRef={el => this.panelNode = el} /> : <div />}
         </div>
+        {/** IF panel is toggled open, render it **/}
+        {panelOpen ? <NotificationPanel panelNodeRef={el => this.panelNode = el} notifications={this.state.notifications} /> : <div />}
+      </div>
 
     );
   }
 }
 
 NotificationCenter.defaultProps = {
-  unreadCount: 5,
+  unreadCount: 0,
   unreadNotifications: false,
-  priorityAlert: false
+  priorityAlert: false,
+  notifications: []
+
 };
 
 export default NotificationCenter;
