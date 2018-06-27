@@ -1479,9 +1479,12 @@ h3 {
 #overview .graph {
   float: left; }
 
-#overview #overview-graphs .chart-container > div {
-  position: relative;
-  margin: auto;
+#overview #graph1 .chart-container > div {
+  height: 50vh;
+  width: 100%; }
+
+#overview #graph2 .chart-container > div {
+  height: 15vh;
   width: 100%; }
 
 @font-face {

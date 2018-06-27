@@ -12,7 +12,7 @@ import Menu from "../Menu/Menu";
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Gauge from './widgets/Gauge';
-import Graph from '../Graph/Graph';
+import Graph from './widgets/Graph/Graph';
 import Selector from './widgets/Selector';
 import update from 'immutability-helper';
 import socketIOClient from 'socket.io-client';
@@ -100,6 +100,7 @@ class Overview extends Component {
           props: {
             netPower: {$set: data.netPower},
             batterySoc: {$set: data.soc},
+            netPowerGauge: {$set: data.netPower}
           }
         }
       });
@@ -116,8 +117,8 @@ class Overview extends Component {
     }
   }
 
-  setupSelector() {
-    let {graphSet} = this.state;
+  setupSelector(set) {
+    let graphSet = set;
     let options = [];
     let i = 0;
     let str = "";
@@ -142,7 +143,14 @@ class Overview extends Component {
     // const { loading } = this.state;
     let {speed, batteryVoltage, netPower} = this.state.status;
     let {selectedGraph} = this.state;
-    let options = this.setupSelector();
+    let set1 = {
+      batterySoc: this.state.graphSet.batterySoc,
+      netPower: this.state.graphSet.netPower,
+    };
+    let set2 = {
+      netPowerGauge: this.state.graphSet.netPowerGauge
+    };
+    let options = this.setupSelector(set1);
 
     // Set title of graph based on states
     let title;
@@ -165,7 +173,7 @@ class Overview extends Component {
                 <Secondary {...this.state.secondary.props}/>
               </div>
               <div id="column-right" className="graph">
-                <div id="overview-graphs" className="widget sub">
+                <div id="graph1" className="widget sub">
                   <div className="graph-info">
                     <h2>{title}</h2>
                     <Selector selected={selectedGraph} selectGraph={this.selectGraph} options={options}/>
@@ -175,14 +183,16 @@ class Overview extends Component {
                          graphSet={this.state.graphSet}
                          {...this.state.graph.props}/>
                 </div>
-              </div>
-                {/**
-                <div className = "row">
-                  <div className="col-md-12">
-                    <Gauge {...this.state.gauge.props}/>
+                <div id="graph2" className="widget sub">
+                  <div className="graph-info">
+                    <h2>Net Power Gauge</h2>
                   </div>
+                  <Graph selected={set2.netPowerGauge}
+                         selectGraph={this.selectGraph}
+                         graphSet={set2}
+                         {...this.state.graph.props}/>
                 </div>
-                 **/}
+              </div>
             </div>
           </div>
         </div>

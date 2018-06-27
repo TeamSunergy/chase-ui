@@ -66,13 +66,23 @@ class Graph extends Component {
     let {graphs} = this.state;
     let currTime = new Date().toLocaleTimeString();
     let shouldUpdate = false;
-    // NOTE: this check for currTime makes it so the chart only gets updated once every millisecond.
-    if ((labels[11] !== currTime) && (newData[dataKey] !== oldData[dataKey])) {
-      shouldUpdate = true;
-      labels.push(currTime);
-      if (labels.length > 12) labels.shift();
-      datasets[0].data.push(newData[dataKey]);
-      if (datasets[0].data.length > 12) datasets[0].data.shift();
+    // NOTE: this check for currTime makes it so the chart only gets updated once every second.
+    if (graph.name !== 'netPowerGauge') {
+      if ((labels[11] !== currTime) && (newData[dataKey] !== oldData[dataKey])) {
+        shouldUpdate = true;
+        labels.push(currTime);
+        if (labels.length > 12) labels.shift();
+        datasets[0].data.push(newData[dataKey]);
+        if (datasets[0].data.length > 12) datasets[0].data.shift();
+      }
+    } else {
+      if ((labels[0] !== currTime) && (newData[dataKey] !== oldData[dataKey])) {
+        shouldUpdate = true;
+        labels.push(currTime);
+        labels.shift();
+        datasets[0].data.push(newData[dataKey]);
+        datasets[0].data.shift();
+      }
     }
     if (shouldUpdate) {
       newState = update(graphs[dataKey], {
@@ -86,7 +96,6 @@ class Graph extends Component {
   }
 
 	render() {
-	  console.log(this.props);
 		return (
       <div className="chart-container">
         {this.setupCharts()}

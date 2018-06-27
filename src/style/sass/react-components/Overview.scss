@@ -61,10 +61,15 @@
     float: left;
   }
 
-  #overview-graphs {
+  #graph1 {
     .chart-container > div {
-      position: relative;
-      margin: auto;
+      height: 50vh;
+      width: 100%;
+    }
+  }
+  #graph2 {
+    .chart-container > div {
+      height: 15vh;
       width: 100%;
     }
   }
