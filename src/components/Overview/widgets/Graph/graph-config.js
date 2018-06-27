@@ -2,6 +2,7 @@ export const graphs = {
   /** Net Power **/
   netPower: {
     name: "netPower",
+    type: "line",
     data: {
       labels: ["0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM"],
           datasets
@@ -32,6 +33,13 @@ export const graphs = {
     },
     options: {
       maintainAspectRatio: false,
+      legend: {
+        display: true,
+        labels: {
+          //**fontColor: 'rgb(255, 99, 132)'
+        },
+        position: 'bottom',
+      },
       scales: {
         yAxes: [{
           stacked: true,
@@ -56,6 +64,7 @@ export const graphs = {
   /** Speed **/
   batterySoc: {
     name: "batterySoc",
+    type: "line",
     data: {
       labels: ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
       datasets: [
@@ -84,6 +93,13 @@ export const graphs = {
     },
     options: {
       maintainAspectRatio: false,
+      legend: {
+        display: true,
+        labels: {
+          //**fontColor: 'rgb(255, 99, 132)'
+        },
+        position: 'bottom',
+      },
       scales: {
         yAxes: [{
           stacked: true,

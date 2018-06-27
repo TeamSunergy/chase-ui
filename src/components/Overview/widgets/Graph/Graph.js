@@ -44,9 +44,14 @@ class Graph extends Component {
       }
     }
     let id = "#graph-";
+    // TODO I just realized that the graph system I laid out doesn't take into account different kinds of charts
     return chartComponentData.map((g) =>
         <div id={id + g.name} className={(this.props.selected.name === g.name) ? "show" : "hide"}>
-          <Line data={g.data} options={g.options} redraw/>
+          {
+            (g.type === 'line') ? <Line data={g.data} options={g.options} redraw/>
+            : (g.type === 'bar') ? <Bar data={g.data} options={g.options} redraw/>
+            : <div>Chart type not found.</div>
+          }
         </div>
     );
   }
