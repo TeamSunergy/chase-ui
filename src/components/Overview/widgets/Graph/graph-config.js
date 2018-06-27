@@ -2,7 +2,7 @@ export const graphs = {
   /** Net Power **/
   netPower: {
     name: "netPower",
-    type: "line",
+    type: "scatter",
     data: {
       labels: ["0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM", "0:00:00 AM"],
           datasets

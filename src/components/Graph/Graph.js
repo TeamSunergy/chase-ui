@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import update from 'immutability-helper';
 
-import {Line, Bar, defaults} from 'react-chartjs-2';
+import {Line, Bar, HorizontalBar, Pie, Polar, Radar, Bubble, Scatter, defaults} from 'react-chartjs-2';
 
 defaults.global.animation = false;
 defaults.global.defaultFontSize = 11;
@@ -44,12 +44,17 @@ class Graph extends Component {
       }
     }
     let id = "#graph-";
-    // TODO I just realized that the graph system I laid out doesn't take into account different kinds of charts
     return chartComponentData.map((g) =>
-        <div id={id + g.name} className={(this.props.selected.name === g.name) ? "show" : "hide"}>
+        <div key={id + g.name} id={id + g.name} className={(this.props.selected.name === g.name) ? "show" : "hide"}>
           {
             (g.type === 'line') ? <Line data={g.data} options={g.options} redraw/>
             : (g.type === 'bar') ? <Bar data={g.data} options={g.options} redraw/>
+            : (g.type === 'horizontalbar') ? <HorizontalBar data={g.data} options={g.options} redraw/>
+            // : (g.type === 'pie') ? <Pie data={g.data} options={g.options} redraw/>
+            : (g.type === 'radar') ? <Radar data={g.data} options={g.options} redraw/>
+            // : (g.type === 'polar') ? <Polar data={g.data} options={g.options} redraw/>
+            // : (g.type === 'bubble') ? <Bubble data={g.data} options={g.options} redraw/>
+            // : (g.type === 'scatter') ? <Scatter data={g.data} options={g.options} redraw/>
             : <div>Chart type not found.</div>
           }
         </div>
@@ -81,6 +86,7 @@ class Graph extends Component {
   }
 
 	render() {
+	  console.log(this.props);
 		return (
       <div className="chart-container">
         {this.setupCharts()}
