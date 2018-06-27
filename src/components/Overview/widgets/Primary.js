@@ -83,7 +83,7 @@ class Primary extends Component {
               <h2>SOC</h2>
               <div id="soc">
                 <img className="soc-icon" src={this.getSocImage(batterySoc)} />
-                <div className="value">{100}<span> %</span></div>
+                <div className="value">{batterySoc}<span> %</span></div>
               </div>
             </div>
 					</div>

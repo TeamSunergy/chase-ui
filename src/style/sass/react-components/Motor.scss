@@ -1,0 +1,44 @@
+/*
+ * Motor Component Styles
+ * --------------------------------------------------
+ */
+@import '../custom-variables';
+
+//== Styles
+//
+//
+
+#motor {
+  #column-left {
+    //margin-left: 20px;
+    width: 30%;
+    float: left;
+  }
+
+  #column-right {
+    width: 70%;
+    float: left;
+    padding-left: 32px;
+  }
+
+  //== Graph
+  //
+  //## Styles for the Graph widget
+
+  .graph {
+    float: left;
+  }
+
+  #graph1 {
+    .chart-container > div {
+      height: 58vh;
+      width: 100%;
+    }
+  }
+  #graph2 {
+    .chart-container > div {
+      height: 15vh;
+      width: 100%;
+    }
+  }
+}

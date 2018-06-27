@@ -21,6 +21,27 @@
     padding-left: 32px;
   }
 
+  //== Graph
+  //
+  //## Styles for the Graph widget
+
+  .graph {
+    float: left;
+  }
+
+  #graph1 {
+    .chart-container > div {
+      height: 50vh;
+      width: 100%;
+    }
+  }
+  #graph2 {
+    .chart-container > div {
+      height: 15vh;
+      width: 100%;
+    }
+  }
+
   //== Primary
   //
   //## Styles for the Primary widget
@@ -68,27 +89,6 @@
         //font-weight: $fw-normal;
        // margin-left: -2px;
       }
-    }
-  }
-
-  //== Graph
-  //
-  //## Styles for the Graph widget
-
-  .graph {
-    float: left;
-  }
-
-  #graph1 {
-    .chart-container > div {
-      height: 50vh;
-      width: 100%;
-    }
-  }
-  #graph2 {
-    .chart-container > div {
-      height: 15vh;
-      width: 100%;
     }
   }
 
