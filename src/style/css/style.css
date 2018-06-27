@@ -2282,7 +2282,7 @@ h3 {
   float: left; }
 
 #battery #graph1 .chart-container > div {
-  height: 50vh;
+  height: 75vh;
   width: 100%; }
 
 #battery #graph2 .chart-container > div {
@@ -2421,7 +2421,7 @@ h3 {
   float: left; }
 
 #motor #graph1 .chart-container > div {
-  height: 58vh;
+  height: 75vh;
   width: 100%; }
 
 #motor #graph2 .chart-container > div {
