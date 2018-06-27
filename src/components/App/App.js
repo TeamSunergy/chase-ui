@@ -7,6 +7,7 @@ import Battery from "../Battery/Battery";
 import Analytics from "../Analytics/Analytics";
 import Settings from "../Settings/Settings";
 import Motor from "../Motor/Motor";
+import Array from "../Array/Array";
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class App extends Component {
             <Route path="/" exact component={Overview}/>
             <Route path="/battery" exact component={Battery}/>
             <Route path="/motor" exact component={Motor}/>
+            <Route path="/array" exact component={Array}/>
             <Route path="/analytics" exact component={Analytics}/>
             <Route path="/weather" exact component={Weather}/>
             <Route path="/settings" exact component={Settings}/>
