@@ -36,12 +36,12 @@
   overflow: auto;
   padding: 20px;
 }
-.sub:last-child, .sub-inline:last-child {
+.sub:last-child, .sub-inline-2:last-child, .sub-inline-3:last-child {
   border: 0;
 }
 
 //** Sub component of a widget that's 3-across
-.sub-inline {
+.sub-inline-3 {
   text-align: center;
   width: 33.33%;
   float: left;
@@ -59,10 +59,66 @@
   }
 }
 
+.sub-inline-2 {
+  text-align: left;
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border-right: 1px solid $gray-1;
+  .value {
+    display: inline-block;
+    font-size: $font-size-large;
+    font-weight: $fw-bold;
+    padding-top: 20px;
+    line-height: 1;
+    span {
+      font-size: $font-size-base;
+      font-weight: $fw-normal;
+    }
+  }
+}
+
+.sub-inline-60 {
+  text-align: left;
+  width: 60%;
+  float: left;
+  padding: 20px;
+  border-right: 1px solid $gray-1;
+  .value {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: $fw-bold;
+    padding-top: 20px;
+    line-height: 1;
+    span {
+      font-size: $font-size-large;
+      font-weight: $fw-normal;
+    }
+  }
+}
+.sub-inline-40 {
+  text-align: left;
+  width: 40%;
+  float: left;
+  padding: 20px;
+  //border-left: 1px solid $gray-1;
+  .value {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: $fw-bold;
+    padding-top: 20px;
+    line-height: 1;
+    span {
+      font-size: $font-size-large;
+      font-weight: $fw-normal;
+    }
+  }
+}
 
 //** Helper style for sub components of a widget
 .cluster {
   padding: 0;
+  display: flex;
 }
 
 //** Widget header
@@ -93,4 +149,33 @@ h3 {
 
 .material-icons {
   user-select: none;
+}
+
+.content-wrapper {
+  width: 94%;
+  margin: 0 auto;
+  clear: both;
+  overflow: visible;
+}
+
+
+#soc {
+  clear: both;
+  .soc-icon {
+    display: inline-block;
+    width: 24px;
+    padding-top: 20px;
+  }
+  .value {
+    float: left;
+    display: inline-block;
+    //margin-top: 4px;
+    font-size: 24px;
+    font-weight: $fw-bold;
+    span {
+      font-size: 22px;
+      font-weight: $fw-normal;
+      margin-left: -2px;
+    }
+  }
 }

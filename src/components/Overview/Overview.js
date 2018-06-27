@@ -11,7 +11,6 @@ import StatusBar from '../StatusBar/StatusBar';
 import Menu from "../Menu/Menu";
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
-import Gauge from './widgets/Gauge';
 import Graph from './widgets/Graph/Graph';
 import Selector from './widgets/Selector';
 import update from 'immutability-helper';

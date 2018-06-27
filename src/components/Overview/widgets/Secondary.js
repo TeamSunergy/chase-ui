@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 
-class motorController extends Component {
+class Secondary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -38,4 +38,4 @@ class motorController extends Component {
 	}
 }
 
-export default motorController;
+export default Secondary;
