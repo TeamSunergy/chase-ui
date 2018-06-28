@@ -26,12 +26,17 @@ async def echo_handler(client, loop, sleep_seconds):
         json_ex["motConVehicleVelocity"] += 1
         if json_ex["motConVehicleVelocity"] == 75:
             json_ex["motConVehicleVelocity"] = 1
-        json_ex['netPower'] = random.randint(-200, 200)
-        json_ex['highestCellTemperature'] = random.randint(1, 75)
-        json_ex['batteryPackInstantaneousVoltage'] = random.randint(1,75)
+        json_ex['netPower'] = random.uniform(-200, 200)
+        json_ex['averageCellTemperature'] = random.uniform(26, 45)
+        json_ex['highestCellTemperature'] = random.uniform(45, 75)
+        json_ex['lowestCellTemperature'] = random.uniform(1, 25)
+        json_ex['batteryPackInstantaneousVoltage'] = random.uniform(1,100)
+        json_ex['batteryPackCurrent'] = random.uniform(1,24)
+        json_ex['batteryPackSummedVoltage'] = random.uniform(1,75)
         json_ex['gpio5'] = 1
         json_ex['gpio12'] = 1
         json_ex['soc'] = random.randint(0, 100)
+        json_ex['packHealth'] = random.randint(0, 100)
         json_ex['bpsHighVoltage'] = random.randint(100, 200)
         json_ex['mpptTotalNetPower'] = random.randint(100, 200)
         json_ex['mppt1UnitTemperature'] = random.randint(100, 200)

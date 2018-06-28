@@ -28,11 +28,11 @@ class Secondary extends Component {
     return  (
         <div className="widget">
           <div className="sub cluster">
-            <div className="sub-inline-2">
+            <div className="sub-inline-50">
               <h2>Motor Temp.</h2>
               <div className="value">{slipSpeed}<span> &deg;C</span></div>
             </div>
-            <div className="sub-inline-2">
+            <div className="sub-inline-50">
               <h2>DSP Temp.</h2>
               <div className="value">{slipSpeed}<span> &deg;C</span></div>
             </div>

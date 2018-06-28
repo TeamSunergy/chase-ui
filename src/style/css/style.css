@@ -1305,7 +1305,7 @@ dd {
   overflow: auto;
   padding: 14px 20px; }
 
-.sub:last-child, .sub-inline-2:last-child, .sub-inline-3:last-child {
+.sub:last-child, .sub-inline-50:last-child, .sub-inline-3:last-child {
   border: 0; }
 
 .sub-inline-3 {
@@ -1325,21 +1325,21 @@ dd {
   font-size: 16px;
   font-weight: 400; }
 
-.sub-inline-2 {
+.sub-inline-50 {
   text-align: left;
   width: 50%;
   float: left;
   padding: 14px 20px;
   border-right: 1px solid #EAEAEA; }
 
-.sub-inline-2 .value {
+.sub-inline-50 .value {
   display: inline-block;
   font-size: 20px;
   font-weight: 700;
   padding-top: 20px;
   line-height: 1; }
 
-.sub-inline-2 .value span {
+.sub-inline-50 .value span {
   font-size: 16px;
   font-weight: 400; }
 

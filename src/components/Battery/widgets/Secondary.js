@@ -27,19 +27,19 @@ class Secondary extends Component {
 		const{ hiCellTemp, loCellTemp, avgCellTemp } = this.state;
 		return  (
       <div className="widget">
-        <div className="sub cluster">
-          <div className="sub-inline-2">
-            <h3>Hi-cell Temp.</h3>
-            <div className="value">{hiCellTemp}</div><span> &deg;C</span><div/>
-          </div>
-          <div className="sub-inline-2">
-            <h3>Lo-cell Temp.</h3>
-            <div className="value">{loCellTemp}</div><span> &deg;C</span><div/>
-          </div>
-        </div>
         <div className="sub">
           <h2>Avg. cell Temp.</h2>
           <div className="value">{avgCellTemp}<span> &deg;C</span></div>
+        </div>
+        <div className="sub cluster">
+          <div className="sub-inline-50">
+            <h3>Hi-cell Temp.</h3>
+            <div className="value">{hiCellTemp}</div><span> &deg;C</span><div/>
+          </div>
+          <div className="sub-inline-50">
+            <h3>Lo-cell Temp.</h3>
+            <div className="value">{loCellTemp}</div><span> &deg;C</span><div/>
+          </div>
         </div>
       </div>
     );

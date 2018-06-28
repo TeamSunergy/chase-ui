@@ -73,11 +73,11 @@ class Primary extends Component {
           <div className="value">{busVoltage}<span> volts</span></div>
         </div>
         <div className="sub cluster">
-          <div className="sub-inline-2">
+          <div className="sub-inline-50">
             <h2>Vehicle Vel.</h2>
             <div className="value">{vehicleVelocity}<span> mph</span></div>
           </div>
-          <div className="sub-inline-2">
+          <div className="sub-inline-50">
             <h2>Motor Vel.</h2>
             <div className="value">{motorVelocity}<span> mph</span></div>
           </div>

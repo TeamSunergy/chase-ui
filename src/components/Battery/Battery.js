@@ -3,7 +3,7 @@ import StatusBar from "../StatusBar/StatusBar";
 import Menu from "../Menu/Menu";
 import socketIOClient from "socket.io-client";
 import update from "immutability-helper/index";
-import {graphs} from "../Overview/widgets/Graph/graph-config";
+import {graphs} from "./widgets/Graph/graph-config";
 
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
@@ -79,7 +79,8 @@ class Battery extends Component {
         },
         graph:{
           props: {
-            batterySoc: {$set: data.soc},
+            packInstantaneousVoltage : {$set: data.batteryPackInstantaneousVoltage.toFixed(3)},
+            packCurrent: {$set: data.batteryPackCurrent.toFixed(3)},
           }
         }
       });
@@ -120,13 +121,8 @@ class Battery extends Component {
 	render() {
     let {speed, batteryVoltage, netPower} = this.state.status;
     let {selectedGraph} = this.state;
-    let set1 = {
-      batterySoc: this.state.graphSet.batterySoc,
-    };
-    let set2 = {
-      netPowerGauge: this.state.graphSet.netPowerGauge
-    };
-    let options = this.setupSelector(set1);
+    let {graphSet} = this.state;
+    let options = this.setupSelector(graphSet);
 
     // Set title of graph based on states
     let title;
@@ -156,7 +152,7 @@ class Battery extends Component {
                 </div>
                 <Graph selected={selectedGraph}
                        selectGraph={this.selectGraph}
-                       graphSet={this.state.graphSet}
+                       graphSet={graphSet}
                        {...this.state.graph.props}/>
               </div>
             </div>

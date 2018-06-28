@@ -12,12 +12,12 @@ class Primary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      packSummedVoltage: (this.props.packSummedVoltage).toFixed(4),
-      packInstantaneousVoltage : (this.props.packInstantaneousVoltage).toFixed(4),
+      packSummedVoltage: (this.props.packSummedVoltage).toFixed(1),
+      packInstantaneousVoltage : (this.props.packInstantaneousVoltage).toFixed(1),
       packCurrent: (this.props.packCurrent).toFixed(3),
-      packAmpHours: (this.props.packInstantaneousVoltage).toFixed(2),
-      packHealth: (this.props.packInstantaneousVoltage).toFixed(0),
-      batterySoc : (this.props.packInstantaneousVoltage).toFixed(0),
+      packAmpHours: (this.props.packAmpHours).toFixed(2),
+      packHealth: (this.props.packHealth).toFixed(0),
+      batterySoc : (this.props.batterySoc).toFixed(0),
 		};
 
 		this.getSocImage = this.getSocImage.bind(this);
@@ -25,12 +25,12 @@ class Primary extends Component {
 
 	componentWillReceiveProps(nextProps) {
     this.setState({
-      packSummedVoltage: (nextProps.packSummedVoltage).toFixed(4),
-      packInstantaneousVoltage : (nextProps.packInstantaneousVoltage).toFixed(4),
+      packSummedVoltage: (nextProps.packSummedVoltage).toFixed(1),
+      packInstantaneousVoltage : (nextProps.packInstantaneousVoltage).toFixed(1),
       packCurrent: (nextProps.packCurrent).toFixed(3),
-      packAmpHours: (nextProps.packInstantaneousVoltage).toFixed(2),
-      packHealth: (nextProps.packInstantaneousVoltage).toFixed(0),
-      batterySoc : (nextProps.packInstantaneousVoltage).toFixed(0),
+      packAmpHours: (nextProps.packAmpHours).toFixed(2),
+      packHealth: (nextProps.packHealth).toFixed(0),
+      batterySoc : (nextProps.batterySoc).toFixed(0),
 		});
 	}
 
@@ -67,27 +67,36 @@ class Primary extends Component {
 
 		return  (
 			<div id="primary" className="widget">
-          <div className="sub">
-            <h2>Pack Inst. Voltage</h2>
-            <div className="value">{packInstantaneousVoltage}<span> volts</span></div>
-          </div>
         <div className="sub">
-          <h2>Pack Sum. Voltage</h2>
+          <h2>Pack Inst. Volt.</h2>
+          <div className="value">{packInstantaneousVoltage}<span> volts</span></div>
+        </div>
+        <div className="sub">
+          <h2>Pack Sum. Volt.</h2>
           <div className="value">{packSummedVoltage}<span> volts</span></div>
+        </div>
+        <div id="pack" className="sub cluster">
+          <div className="sub-inline-60">
+            <h2>Pack Current</h2>
+            <div className="value">{packCurrent}<span> watts</span></div>
+          </div>
+          <div className="sub-inline-40">
+            <h2>SOH</h2>
+            <div className="value">{packHealth}<span> %</span></div>
+          </div>
         </div>
         <div className="sub cluster">
           <div className="sub-inline-60">
-            <h2>Battery Pack</h2>
+            <h2>Pack Charge</h2>
             <div className="value">{packAmpHours}<span> Ah</span></div>
           </div>
           <div className="sub-inline-40">
-            <h2>Battery Soc</h2>
+            <h2>Soc</h2>
             <div id="soc">
               <img className="soc-icon" src={this.getSocImage(batterySoc)} />
               <div className="value">{batterySoc}<span> %</span></div>
             </div>
           </div>
-
         </div>
 			</div>
 		);
