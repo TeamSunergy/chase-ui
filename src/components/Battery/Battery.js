@@ -129,9 +129,7 @@ class Battery extends Component {
     if (selectedGraph === "_default") title = options[0].string;
     else {
       for (let i = 0; i < options.length; i++) {
-        if (options[i].key === selectedGraph.name) {}
-        title = options[i].string;
-        console.log(options[i].string, selectedGraph.name);
+        if (options[i].key === selectedGraph.name) title = options[i].string;
       }
     }
 		return  (

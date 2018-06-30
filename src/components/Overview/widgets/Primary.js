@@ -92,15 +92,15 @@ class Primary extends Component {
           <div className="value">{arrayTotalPower}<span> watts</span></div>
         </div>
           <div className="sub cluster">
-            <div className="sub-inline-3">
+            <div className="sub-inline-33">
               <h3>sub-a</h3>
               <div className="value">{arrayAPower}</div><span>watts</span><div/>
             </div>
-            <div className="sub-inline-3">
+            <div className="sub-inline-33">
               <h3>sub-b</h3>
               <div className="value">{arrayBPower}</div><span>watts</span><div/>
             </div>
-            <div className="sub-inline-3">
+            <div className="sub-inline-33">
               <h3>sub-c</h3>
               <div className="value">{arrayCPower}</div><span>watts</span><div/>
             </div>

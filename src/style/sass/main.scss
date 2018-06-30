@@ -36,12 +36,12 @@
   overflow: auto;
   padding: 14px 20px;
 }
-.sub:last-child, .sub-inline-50:last-child, .sub-inline-3:last-child {
+.sub:last-child, .sub-inline-50:last-child, .sub-inline-33:last-child {
   border: 0;
 }
 
 //** Sub component of a widget that's 3-across
-.sub-inline-3 {
+.sub-inline-33 {
   text-align: center;
   width: 33.33%;
   float: left;
