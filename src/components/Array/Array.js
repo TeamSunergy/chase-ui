@@ -145,7 +145,6 @@ class Array extends Component {
     if (selectedGraph === "_default") title = options[0].string;
     else {
       for (let i = 0; i < options.length; i++) {
-        console.log("inside for", selectedGraph);
         if (options[i].key === selectedGraph.name)
           title = options[i].string;
       }
@@ -159,7 +158,7 @@ class Array extends Component {
             <div className="content-wrapper">
               <div id="column-left">
                 <Primary {...this.state.primary.props}/>
-                {/**<Secondary {...this.state.secondary.props}/> **/}
+                <Secondary {...this.state.secondary.props}/>
               </div>
               <div id="column-right" className="graph">
                 <div id="graph1" className="widget sub">

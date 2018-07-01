@@ -23,8 +23,8 @@ class Graph extends Component {
     let dataKeys = [];
     for (let graph in graphs) {
       if (graphs.hasOwnProperty(graph)) {
-        if (graphs[graph].name === 'packVoltageAndCurrent')
-          dataKeys = ['packInstantaneousVoltage', 'packCurrent'];
+        if (graphs[graph].name === 'subArrayPower')
+          dataKeys = ['subAPower', 'subBPower', 'subCPower'];
         else dataKeys = [graphs[graph].name];
         newState = this.updateGraph(graphs[graph], nextProps, this.props, newState, dataKeys);
       }
