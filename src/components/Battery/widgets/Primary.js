@@ -67,13 +67,15 @@ class Primary extends Component {
 
 		return  (
 			<div id="primary" className="widget">
-        <div className="sub">
-          <h2>Pack Inst. Volt.</h2>
-          <div className="value">{packInstantaneousVoltage}<span> volts</span></div>
-        </div>
-        <div className="sub">
-          <h2>Pack Sum. Volt.</h2>
-          <div className="value">{packSummedVoltage}<span> volts</span></div>
+        <div className="sub cluster">
+          <div className="sub-inline-50">
+            <h2>Pack Inst. Volt.</h2>
+            <div className="value">{packInstantaneousVoltage}<span> volts</span></div>
+          </div>
+          <div className="sub-inline-50">
+            <h2>Pack Sum. Volt.</h2>
+            <div className="value">{packSummedVoltage}<span> volts</span></div>
+          </div>
         </div>
         <div id="pack" className="sub cluster">
           <div className="sub-inline-60">
