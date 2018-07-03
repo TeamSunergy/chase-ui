@@ -102,8 +102,8 @@ export const graphs = {
     }
   },
   /** Pack Instantaneous Voltage & Pack Current **/
-  totalArrayPower: {
-    name: "totalArrayPower",
+  arrayTotalPower: {
+    name: "arrayTotalPower",
     type: "line",
     xAxisMax: 10,
     data: {
@@ -173,9 +173,9 @@ export const graphs = {
             color: "rgba(255,99,132,0.2)"
           },
           ticks: {
-            max: 100,
-            min: 0,
-            stepSize: 5
+            max: 200,
+            min: 100,
+            stepSize: 10
           },
         },{
           id: 'B',
