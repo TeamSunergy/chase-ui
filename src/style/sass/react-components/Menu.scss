@@ -87,6 +87,12 @@
     li.selected a {
       background-color: rgba(255, 255, 255, 0.05);
     }
+    li.disabled {
+      pointer-events: none;
+      a {
+        color: $gray-5 !important;
+      }
+    }
     a {
       padding: 0 0 0 40px;
       display: block;

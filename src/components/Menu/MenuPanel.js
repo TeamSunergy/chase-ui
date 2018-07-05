@@ -46,11 +46,11 @@ class MenuPanel extends Component {
                 <Link to={"/battery"}>
                   <i className="material-icons">battery_std</i>
                   Battery</Link></li>
-              <li className={(path === "motor") ? "selected" : ""}>
+              <li className={"disabled"}>
                 <Link to={"/motor"}>
                   <i className="material-icons">tune</i>
                   Motor</Link></li>
-              <li className={(path === "analytics") ? "selected" : ""}>
+              <li className={"disabled"}>
                 <Link to={"/analytics"}>
                   <i className="material-icons">insert_chart</i>
                   Analytics</Link></li>
@@ -58,7 +58,7 @@ class MenuPanel extends Component {
                 <Link to={"/data"}>
                   <i className="material-icons">bubble_chart</i>
                   Data</Link></li>
-              <li className={(path === "weather") ? "selected" : ""}>
+              <li className={"disabled"}>
                 <Link to={"/weather"}>
                   <i className="material-icons">cloud</i>
                   Weather</Link></li>

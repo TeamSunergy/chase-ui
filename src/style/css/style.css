@@ -1905,6 +1905,12 @@ h3 {
 #menu-panel #page-links li.selected a {
   background-color: rgba(255, 255, 255, 0.05); }
 
+#menu-panel #page-links li.disabled {
+  pointer-events: none; }
+
+#menu-panel #page-links li.disabled a {
+  color: #717171 !important; }
+
 #menu-panel #page-links a {
   padding: 0 0 0 40px;
   display: block;
