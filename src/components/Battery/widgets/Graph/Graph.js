@@ -25,6 +25,15 @@ class Graph extends Component {
       if (graphs.hasOwnProperty(graph)) {
         if (graphs[graph].name === 'packVoltageAndCurrent')
           dataKeys = ['packInstantaneousVoltage', 'packCurrent'];
+        else if (graphs[graph].name === 'deltaCellTemp') {
+          dataKeys = ['hiCellTemp', 'loCellTemp'];
+        }
+        else if (graphs[graph].name === 'deltaCellVoltage') {
+          dataKeys = ['deltaHiCellVoltage', 'deltaLoCellVoltage'];
+        }
+        else if (graphs[graph].name === 'deltaCellTemp') {
+          dataKeys = ['deltaHiCellTemp', 'deltaLoCellTemp'];
+        }
         else dataKeys = [graphs[graph].name];
         newState = this.updateGraph(graphs[graph], nextProps, this.props, newState, dataKeys);
       }
@@ -73,22 +82,18 @@ class Graph extends Component {
 
     // For multiple data sets
     if (dataKeys.length > 1) {
-      console.log("I got two pizza pies right ere");
       // NOTE: the first check for currTime makes it so the chart only gets updated once every second.
       if ((labels[labels.length-1] !== currTime)
           && ((newData[dataKeys[0]] !== oldData[dataKeys[0]]) || (newData[dataKeys[1]] !== oldData[dataKeys[1]]))) {
-        console.log("I still GOT TWO pizza pies right ere");
         shouldUpdate = true;
         labels.push(currTime);
         if (labels.length > graph.xAxisMax) labels.shift();
         for (let i = 0; i < datasets.length; i++) {
           datasets[i].data.push(newData[dataKeys[i]]);
-          console.log(newData[dataKeys[i]]);
           if (datasets[i].data.length > graph.xAxisMax) datasets[i].data.shift();
         }
       }
     } else { // For one data set
-      console.log("I only GOT a ONE pizza pie");
       // NOTE: the first check for currTime makes it so the chart only gets updated once every second.
       if ((labels[labels.length-1] !== currTime) && (newData[dataKeys[0]] !== oldData[dataKeys[0]])) {
         shouldUpdate = true;

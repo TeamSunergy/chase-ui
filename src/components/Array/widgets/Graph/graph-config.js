@@ -84,8 +84,8 @@ export const graphs = {
       scales: {
         yAxes: [{
           gridLines: {
-            display: false,
-            color: "rgba(255,99,132,0.2)"
+            display: true,
+            color: "#efefef"
           },
           ticks: {
             max: 200,
@@ -110,34 +110,12 @@ export const graphs = {
       labels: ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
       datasets: [
         {
-          label: 'Pack Voltage (v)',
+          label: 'Total Power (w)',
           yAxisID: 'A',
           fill: false,
           lineTension: 0.5,
           backgroundColor: 'rgba(66, 244, 182, 1)',
           borderColor: 'rgba(66, 244, 182, 1)',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: 'rgba(75,192,192,1)',
-          pointBackgroundColor: '#fff',
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-          pointHoverBorderColor: 'rgba(220,220,220,1)',
-          pointHoverBorderWidth: 2,
-          pointRadius: 5,
-          pointHitRadius: 10,
-          data: []
-        },
-        {
-          label: 'Pack Current (w)',
-          yAxisID: 'B',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: 'rgb(65, 163, 244)',
-          borderColor: 'rgb(65, 163, 244)',
           borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
@@ -169,28 +147,15 @@ export const graphs = {
           id: 'A',
           position: 'left',
           gridLines: {
-            display: false,
-            color: "rgba(255,99,132,0.2)"
+            display: true,
+            color: "#efefef"
           },
           ticks: {
             max: 200,
             min: 100,
             stepSize: 10
           },
-        },{
-          id: 'B',
-          position: 'right',
-          gridLines: {
-            display: true,
-            color: "rgba(255,99,132,0.2)"
-          },
-          ticks: {
-            max: 24,
-            min: 0,
-            stepSize: 2
-          },
-        }
-        ],
+        }],
         xAxes: [{
           gridLines: {
             display: false

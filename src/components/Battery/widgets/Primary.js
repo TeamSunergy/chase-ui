@@ -18,6 +18,10 @@ class Primary extends Component {
       packAmpHours: (this.props.packAmpHours).toFixed(2),
       packHealth: (this.props.packHealth).toFixed(0),
       batterySoc : (this.props.batterySoc).toFixed(0),
+      hiCellVoltage : (this.props.hiCellVoltage).toFixed(1),
+      loCellVoltage : (this.props.loCellVoltage).toFixed(1),
+      deltaHiCellVoltage : 0,
+      deltaLoCellVoltage : 0,
 		};
 
 		this.getSocImage = this.getSocImage.bind(this);
@@ -31,6 +35,10 @@ class Primary extends Component {
       packAmpHours: (nextProps.packAmpHours).toFixed(2),
       packHealth: (nextProps.packHealth).toFixed(0),
       batterySoc : (nextProps.batterySoc).toFixed(0),
+      hiCellVoltage : (nextProps.hiCellVoltage).toFixed(1),
+      loCellVoltage : (nextProps.loCellVoltage).toFixed(1),
+      deltaHiCellVoltage : (this.props.hiCellVoltage - nextProps.hiCellVoltage).toFixed(1),
+      deltaLoCellVoltage : (this.props.loCellVoltage - nextProps.loCellVoltage).toFixed(1),
 		});
 	}
 
@@ -63,7 +71,7 @@ class Primary extends Component {
 
 	render() {
 		const { packSummedVoltage, packInstantaneousVoltage, packCurrent, packAmpHours,
-      packHealth, batterySoc } = this.state;
+      packHealth, batterySoc, deltaHiCellVoltage, deltaLoCellVoltage } = this.state;
 
 		return  (
 			<div id="primary" className="widget">
@@ -77,15 +85,19 @@ class Primary extends Component {
             <div className="value">{packSummedVoltage}<span> volts</span></div>
           </div>
         </div>
-        <div id="pack" className="sub cluster">
-          <div className="sub-inline-60">
-            <h2>Pack Current</h2>
-            <div className="value">{packCurrent}<span> watts</span></div>
+        <div id="delta-values" className="sub cluster">
+          <div className="sub-inline-50">
+            <h3>Delta Hi-cell Volt.</h3>
+            <div className="value">{deltaHiCellVoltage}<span> volts</span></div>
           </div>
-          <div className="sub-inline-40">
-            <h2>SOH</h2>
-            <div className="value">{packHealth}<span> %</span></div>
+          <div className="sub-inline-50">
+            <h3>Delta Lo-cell Volt.</h3>
+            <div className="value">{deltaLoCellVoltage}<span> volts</span></div>
           </div>
+        </div>
+        <div id="pack" className="sub">
+          <h2>Pack Current</h2>
+          <div className="value">{packCurrent}<span> watts</span></div>
         </div>
         <div className="sub cluster">
           <div className="sub-inline-60">

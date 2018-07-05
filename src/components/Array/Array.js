@@ -64,7 +64,6 @@ class Array extends Component {
     const socket = socketIOClient(this.state.endpoint);
     socket.on('data', (data) => {
       this.state.loading = false;
-      console.log(data);
       const newState = update(this.state, {
         status: {
           speed :{$set: data.motConVehicleVelocity},
@@ -137,8 +136,6 @@ class Array extends Component {
     let {selectedGraph} = this.state;
     let {graphSet} = this.state;
     let options = this.setupSelector(graphSet);
-    console.log(options);
-    console.log(selectedGraph);
 
     // Set title of graph based on states
     let title;
@@ -149,7 +146,6 @@ class Array extends Component {
           title = options[i].string;
       }
     }
-    console.log(title);
     return (
         <div>
           <Menu currentPath={this.props.location.pathname}/>

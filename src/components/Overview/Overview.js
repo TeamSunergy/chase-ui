@@ -97,9 +97,10 @@ class Overview extends Component {
         },
         graph:{
           props: {
-            netPower: {$set: data.netPower},
-            batterySoc: {$set: data.soc},
-            netPowerGauge: {$set: data.netPower}
+            speed: {$set: data.motConVehicleVelocity.toFixed(0)},
+            packVoltage: {$set: data.batteryPackInstantaneousVoltage.toFixed(1)},
+            netPower: {$set: data.netPower.toFixed(1)},
+            netPowerGauge: {$set: data.netPower.toFixed(1)}
           }
         }
       });
@@ -143,7 +144,8 @@ class Overview extends Component {
     let {speed, batteryVoltage, netPower} = this.state.status;
     let {selectedGraph} = this.state;
     let set1 = {
-      batterySoc: this.state.graphSet.batterySoc,
+      packVoltage: this.state.graphSet.packVoltage,
+      speed: this.state.graphSet.speed,
       netPower: this.state.graphSet.netPower,
     };
     let set2 = {

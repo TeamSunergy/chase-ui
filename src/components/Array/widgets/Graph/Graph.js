@@ -81,12 +81,10 @@ class Graph extends Component {
         if (labels.length > graph.xAxisMax) labels.shift();
         for (let i = 0; i < datasets.length; i++) {
           datasets[i].data.push(newData[dataKeys[i]]);
-          console.log(newData[dataKeys[i]]);
           if (datasets[i].data.length > graph.xAxisMax) datasets[i].data.shift();
         }
       }
     } else { // For one data set
-      console.log("I only GOT a ONE pizza pie");
       // NOTE: the first check for currTime makes it so the chart only gets updated once every second.
       if ((labels[labels.length-1] !== currTime) && (newData[dataKeys[0]] !== oldData[dataKeys[0]])) {
         shouldUpdate = true;

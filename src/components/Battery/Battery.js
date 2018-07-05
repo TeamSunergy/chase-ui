@@ -32,6 +32,8 @@ class Battery extends Component {
           packAmpHours: 0,
           packHealth: 0,
           batterySoc : 0,
+          hiCellVoltage: 0,
+          loCellVoltage: 0,
         }
       },
       secondary: {
@@ -68,6 +70,8 @@ class Battery extends Component {
             packAmpHours: {$set: data.packAmpHours},
             packHealth: {$set: data.packHealth},
             batterySoc : {$set: data.soc},
+            hiCellVoltage: {$set: data.bpsHighVoltage},
+            loCellVoltage: {$set: data.bpsLowVoltage},
           }
         },
         secondary:{
@@ -81,6 +85,14 @@ class Battery extends Component {
           props: {
             packInstantaneousVoltage : {$set: data.batteryPackInstantaneousVoltage.toFixed(3)},
             packCurrent: {$set: data.batteryPackCurrent.toFixed(3)},
+            hiCellVoltage: {$set: data.bpsHighVoltage.toFixed(1)},
+            loCellVoltage: {$set: data.bpsLowVoltage.toFixed(1)},
+            hiCellTemp: {$set: data.highestCellTemperature.toFixed(0)},
+            loCellTemp: {$set: data.lowestCellTemperature.toFixed(0)},
+            deltaHiCellVoltage: {$set: (this.state.primary.props.hiCellVoltage - data.bpsHighVoltage).toFixed(1)},
+            deltaLoCellVoltage: {$set: (this.state.primary.props.loCellVoltage - data.bpsLowVoltage).toFixed(1)},
+            deltaHiCellTemp: {$set: (this.state.secondary.props.hiCellTemp - data.highestCellTemperature).toFixed(0)},
+            deltaLoCellTemp: {$set: (this.state.secondary.props.loCellTemp - data.lowestCellTemperature).toFixed(0)},
           }
         }
       });

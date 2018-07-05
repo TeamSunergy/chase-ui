@@ -40,11 +40,11 @@ class Secondary extends Component {
         </div>
         <div id="delta-values" className="sub cluster">
           <div className="sub-inline-50">
-            <h2>Delta Hi-cell Temp.</h2>
+            <h3>Delta Hi-cell Temp.</h3>
             <div className="value">{deltaHiCellTemp}<span> &deg;C</span></div>
           </div>
           <div className="sub-inline-50">
-            <h2>Delta Lo-cell Temp.</h2>
+            <h3>Delta Lo-cell Temp.</h3>
             <div className="value">{deltaLoCellTemp}<span> &deg;C</span></div>
           </div>
         </div>
