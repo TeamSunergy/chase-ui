@@ -1303,30 +1303,84 @@ dd {
   border-bottom: 1px solid #EAEAEA;
   clear: both;
   overflow: auto;
-  padding: 20px; }
+  padding: 14px 20px; }
 
-.sub:last-child, .sub-inline:last-child {
+.sub:last-child, .sub-inline-50:last-child, .sub-inline-33:last-child {
   border: 0; }
 
-.sub-inline {
+.sub-inline-33 {
   text-align: center;
   width: 33.33%;
   float: left;
-  padding: 20px;
+  padding: 14px 20px;
   border-right: 1px solid #EAEAEA; }
 
-.sub-inline .value {
+.sub-inline-33 .value {
   font-size: 20px;
   font-weight: 700;
   padding-top: 20px;
   line-height: 1; }
 
-.sub-inline .value span {
+.sub-inline-33 .value span {
   font-size: 16px;
   font-weight: 400; }
 
+.sub-inline-50 {
+  text-align: left;
+  width: 50%;
+  float: left;
+  padding: 14px 20px;
+  border-right: 1px solid #EAEAEA; }
+
+.sub-inline-50 .value {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 20px;
+  line-height: 1; }
+
+.sub-inline-50 .value span {
+  font-size: 16px;
+  font-weight: 400; }
+
+.sub-inline-60 {
+  text-align: left;
+  width: 60%;
+  float: left;
+  padding: 14px 20px;
+  border-right: 1px solid #EAEAEA; }
+
+.sub-inline-60 .value {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 700;
+  padding-top: 20px;
+  line-height: 1; }
+
+.sub-inline-60 .value span {
+  font-size: 20px;
+  font-weight: 400; }
+
+.sub-inline-40 {
+  text-align: left;
+  width: 40%;
+  float: left;
+  padding: 14px 20px; }
+
+.sub-inline-40 .value {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 700;
+  padding-top: 20px;
+  line-height: 1; }
+
+.sub-inline-40 .value span {
+  font-size: 20px;
+  font-weight: 400; }
+
 .cluster {
-  padding: 0; }
+  padding: 0;
+  display: flex; }
 
 h2 {
   font-family: Inconsolata,Monaco,Consolas,"Courier New",monospace;
@@ -1348,6 +1402,31 @@ h3 {
 
 .material-icons {
   user-select: none; }
+
+.content-wrapper {
+  width: 94%;
+  margin: 0 auto;
+  clear: both;
+  overflow: visible; }
+
+#soc {
+  clear: both; }
+
+#soc .soc-icon {
+  display: inline-block;
+  width: 24px;
+  padding-top: 20px; }
+
+#soc .value {
+  float: left;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700; }
+
+#soc .value span {
+  font-size: 22px;
+  font-weight: 400;
+  margin-left: -2px; }
 
 @font-face {
   font-family: 'Source Sans Pro';
@@ -1438,12 +1517,6 @@ h3 {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
 
-#overview .content-wrapper {
-  width: 94%;
-  margin: 0 auto;
-  clear: both;
-  overflow: visible; }
-
 #overview #column-left {
   width: 30%;
   float: left; }
@@ -1453,35 +1526,15 @@ h3 {
   float: left;
   padding-left: 32px; }
 
-#overview .battery div {
-  display: inline-block;
-  float: left; }
-
-#overview .battery #soc {
-  float: left;
-  margin: 2px 4% 0; }
-
-#overview .battery #soc .soc-icon {
-  float: right;
-  height: 46px; }
-
-#overview .battery #soc .value {
-  float: right;
-  margin-top: 6px;
-  font-size: 24px;
-  font-weight: 700; }
-
-#overview .battery #soc .value span {
-  font-size: 22px;
-  font-weight: 400;
-  margin-left: -2px; }
-
 #overview .graph {
   float: left; }
 
-#overview #overview-graphs .chart-container > div {
-  position: relative;
-  margin: auto;
+#overview #graph1 .chart-container > div {
+  height: 50vh;
+  width: 100%; }
+
+#overview #graph2 .chart-container > div {
+  height: 15.5vh;
   width: 100%; }
 
 @font-face {
@@ -1852,6 +1905,12 @@ h3 {
 #menu-panel #page-links li.selected a {
   background-color: rgba(255, 255, 255, 0.05); }
 
+#menu-panel #page-links li.disabled {
+  pointer-events: none; }
+
+#menu-panel #page-links li.disabled a {
+  color: #717171 !important; }
+
 #menu-panel #page-links a {
   padding: 0 0 0 40px;
   display: block;
@@ -2038,7 +2097,365 @@ h3 {
 .chart-container .hide {
   visibility: hidden; }
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
+#array #column-left {
+  width: 30%;
+  float: left; }
+
+#array #column-right {
+  width: 70%;
+  float: left;
+  padding-left: 32px; }
+
+#array .graph {
+  float: left; }
+
+#array #graph1 .chart-container > div {
+  height: 75vh;
+  width: 100%; }
+
+#array #graph2 .chart-container > div {
+  height: 15vh;
+  width: 100%; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
+#battery #column-left {
+  width: 30%;
+  float: left; }
+
+#battery #column-right {
+  width: 70%;
+  float: left;
+  padding-left: 32px; }
+
+#battery .graph {
+  float: left; }
+
+#battery #graph1 .chart-container > div {
+  height: 75vh;
+  width: 100%; }
+
+#battery #graph2 .chart-container > div {
+  height: 15vh;
+  width: 100%; }
+
+#battery .battery div {
+  display: inline-block;
+  float: left; }
+
+#battery .battery #soc {
+  float: left;
+  margin: 2px 4% 0; }
+
+#battery .battery #soc .soc-icon {
+  float: right;
+  height: 46px; }
+
+#battery .battery #soc .value {
+  float: right;
+  margin-top: 6px;
+  font-size: 24px;
+  font-weight: 700; }
+
+#battery .battery #soc .value span {
+  font-size: 22px;
+  font-weight: 400;
+  margin-left: -2px; }
+
+#battery #soc .soc-icon {
+  height: 46px; }
+
+#battery #soc .value {
+  font-size: 24px;
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Material_Icons/MaterialIcons-Regular-v38.ttf") format("truetype"); }
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga'; }
+
+#motor #column-left {
+  width: 30%;
+  float: left; }
+
+#motor #column-right {
+  width: 70%;
+  float: left;
+  padding-left: 32px; }
+
+#motor .graph {
+  float: left; }
+
+#motor #graph1 .chart-container > div {
+  height: 75vh;
+  width: 100%; }
+
+#motor #graph2 .chart-container > div {
+  height: 15vh;
+  width: 100%; }
+
 .chart-container > div {
+  padding-top: 15px;
   position: relative;
   margin: auto;
   height: 60vh;

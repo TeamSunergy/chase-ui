@@ -1,0 +1,99 @@
+/*
+ * Battery Component Styles
+ * --------------------------------------------------
+ */
+@import '../custom-variables';
+
+//== Styles
+//
+//
+
+#battery {
+  #column-left {
+    //margin-left: 20px;
+    width: 30%;
+    float: left;
+  }
+
+  #column-right {
+    width: 70%;
+    float: left;
+    padding-left: 32px;
+  }
+
+  //== Graph
+  //
+  //## Styles for the Graph widget
+
+  .graph {
+    float: left;
+  }
+
+  #graph1 {
+    .chart-container > div {
+      height: 75vh;
+      width: 100%;
+    }
+  }
+  #graph2 {
+    .chart-container > div {
+      height: 15vh;
+      width: 100%;
+    }
+  }
+
+  //== Primary
+  //
+  //## Styles for the Primary widget
+
+  .battery {
+    div {
+      display: inline-block;
+      float: left;
+    }
+    #soc {
+      float: left;
+      margin: 2px 4% 0;
+      .soc-icon {
+        float: right;
+        height: 46px;
+      }
+      .value {
+        float: right;
+        margin-top: 6px;
+        font-size: 24px;
+        font-weight: $fw-bold;
+        span {
+          font-size: 22px;
+          font-weight: $fw-normal;
+          margin-left: -2px;
+        }
+      }
+    }
+  }
+
+  #soc {
+    //float: left;
+    // margin: 2px 4% 0;
+    .soc-icon {
+      //float: right;
+      height: 46px;
+    }
+    .value {
+      //float: right;
+      //margin-top: 6px;
+      font-size: 24px;
+      font-weight: $fw-bold;
+      span {
+        //font-size: 22px;
+        //font-weight: $fw-normal;
+       // margin-left: -2px;
+      }
+    }
+  }
+
+  //== Secondary
+  //
+  //## Styles for the Secondary widget
+
+} //** END #battery

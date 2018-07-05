@@ -38,26 +38,30 @@ class MenuPanel extends Component {
                 <Link to={"/"}>
                   <i className="material-icons">vertical_split</i>
                   Overview</Link></li>
+              <li className={(path === "array") ? "selected" : ""}>
+                <Link to={"/array"}>
+                  <i className="material-icons">grid_on</i>
+                  Array</Link></li>
               <li className={(path === "battery") ? "selected" : ""}>
                 <Link to={"/battery"}>
                   <i className="material-icons">battery_std</i>
                   Battery</Link></li>
-              <li className={(path === "motor") ? "selected" : ""}>
+              <li className={"disabled"}>
                 <Link to={"/motor"}>
                   <i className="material-icons">tune</i>
                   Motor</Link></li>
-              <li className={(path === "analytics") ? "selected" : ""}>
+              <li className={"disabled"}>
                 <Link to={"/analytics"}>
                   <i className="material-icons">insert_chart</i>
                   Analytics</Link></li>
-              <li className={(path === "weather") ? "selected" : ""}>
-                <Link to={"/weather"}>
-                  <i className="material-icons">cloud</i>
-                  Weather</Link></li>
               <li className={(path === "data") ? "selected" : ""}>
                 <Link to={"/data"}>
                   <i className="material-icons">bubble_chart</i>
                   Data</Link></li>
+              <li className={"disabled"}>
+                <Link to={"/weather"}>
+                  <i className="material-icons">cloud</i>
+                  Weather</Link></li>
             </ul>
             <div id="logo-wrapper">
               <img id="logo" src={window.location.origin + '/images/team-sunergy-logo-light.png'}/>

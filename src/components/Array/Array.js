@@ -1,24 +1,25 @@
 /**
- * Overview Component
+ * Array Component
  *
  * // TODO: Write Desc
  *
  * @extends Component
  */
 
-import React, { Component } from 'react';
-import StatusBar from '../StatusBar/StatusBar';
+import React, {Component} from 'react';
+import StatusBar from "../StatusBar/StatusBar";
 import Menu from "../Menu/Menu";
+import socketIOClient from "socket.io-client";
+import update from "immutability-helper/index";
+import {graphs} from "./widgets/Graph/graph-config";
+
 import Primary from './widgets/Primary';
 import Secondary from './widgets/Secondary';
 import Graph from './widgets/Graph/Graph';
 import Selector from './widgets/Selector';
-import update from 'immutability-helper';
-import socketIOClient from 'socket.io-client';
 
-import {graphs} from './widgets/Graph/graph-config';
-
-class Overview extends Component {
+class Array extends Component {
+  // eslint-disable-next-line require-jsdoc
   constructor(props) {
     super(props);
     this.state = {
@@ -34,24 +35,20 @@ class Overview extends Component {
       },
       primary: {
         props:{
-          speed: 0,
-          batteryVoltage: 0,
-          batterySoc: 0,
           arrayTotalPower: 0,
-          arrayAPower: 0,
-          arrayBPower: 0,
-          arrayCPower: 0,
+          subAPower: 0,
+          subBPower: 0,
+          subCPower: 0,
         }
       },
       secondary: {
         props: {
-          motorControllerPower: 0,
-          auxiliaryBatteryVoltage: 0,
-        },
-      },
-      gauge: {
-        props: {
-          netPower: 0,
+          subACurrent: 0,
+          subBCurrent: 0,
+          subCCurrent: 0,
+          subAVoltage: 0,
+          subBVoltage: 0,
+          subCVoltage: 0,
         },
       },
       graph:{
@@ -61,7 +58,7 @@ class Overview extends Component {
     };
     this.selectGraph = this.selectGraph.bind(this);
     this.setupSelector = this.setupSelector.bind(this);
-  };
+  }
 
   componentDidMount(){
     const socket = socketIOClient(this.state.endpoint);
@@ -75,32 +72,28 @@ class Overview extends Component {
         },
         primary: {
           props:{
-            speed :{$set: data.motConVehicleVelocity},
-            batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
-            batterySoc : {$set: data.soc},
-            arrayTotalPower: {$set: data.mpptTotalNetPower},
-            arrayAPower : {$set: data.mppt0ArrayCurrent},
-            arrayBPower : {$set: data.mppt1ArrayCurrent},
-            arrayCPower : {$set: data.mppt2ArrayCurrent},
+            arrayTotalPower: {$set: data.mpptTotalNetPower.toFixed(1)},
+            subAPower: {$set: data.mppt0ArrayNetPower.toFixed(1)},
+            subBPower: {$set: data.mppt1ArrayNetPower.toFixed(1)},
+            subCPower: {$set: data.mppt2ArrayNetPower.toFixed(1)},
           }
         },
         secondary:{
           props: {
-            motorControllerPower: {$set: data.motConBusCurrent},
-            auxiliaryBatteryVoltage: {/**$set: data.auxiliaryBatteryVoltage **/ $set: 0.00},
-          }
-        },
-        gauge:{
-          props: {
-            netPower: {$set: data.netPower},
+            subACurrent: {$set: data.mppt0ArrayCurrent.toFixed(1)},
+            subBCurrent: {$set: data.mppt1ArrayCurrent.toFixed(1)},
+            subCCurrent: {$set: data.mppt2ArrayCurrent.toFixed(1)},
+            subAVoltage: {$set: data.mppt0ArrayVoltage.toFixed(1)},
+            subBVoltage: {$set: data.mppt1ArrayVoltage.toFixed(1)},
+            subCVoltage: {$set: data.mppt2ArrayVoltage.toFixed(1)},
           }
         },
         graph:{
           props: {
-            speed: {$set: data.motConVehicleVelocity.toFixed(0)},
-            packVoltage: {$set: data.batteryPackInstantaneousVoltage.toFixed(1)},
-            netPower: {$set: data.netPower.toFixed(1)},
-            netPowerGauge: {$set: data.netPower.toFixed(1)}
+            arrayTotalPower: {$set: data.mpptTotalNetPower.toFixed(1)},
+            subAPower: {$set: data.mppt0ArrayNetPower.toFixed(1)},
+            subBPower: {$set: data.mppt1ArrayNetPower.toFixed(1)},
+            subCPower: {$set: data.mppt2ArrayNetPower.toFixed(1)},
           }
         }
       });
@@ -138,35 +131,26 @@ class Overview extends Component {
     return options;
   }
 
-  //<Overview widgets={this.state.widgets} layout={this.state.layout}/>
   render() {
-    // const { loading } = this.state;
     let {speed, batteryVoltage, netPower} = this.state.status;
     let {selectedGraph} = this.state;
-    let set1 = {
-      packVoltage: this.state.graphSet.packVoltage,
-      speed: this.state.graphSet.speed,
-      netPower: this.state.graphSet.netPower,
-    };
-    let set2 = {
-      netPowerGauge: this.state.graphSet.netPowerGauge
-    };
-    let options = this.setupSelector(set1);
+    let {graphSet} = this.state;
+    let options = this.setupSelector(graphSet);
 
     // Set title of graph based on states
     let title;
     if (selectedGraph === "_default") title = options[0].string;
     else {
       for (let i = 0; i < options.length; i++) {
-        if (options[i].key === selectedGraph.name) title = options[i].string;
-        console.log(options[i].string, selectedGraph.name);
+        if (options[i].key === selectedGraph.name)
+          title = options[i].string;
       }
     }
     return (
         <div>
-          <StatusBar title="Overview" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
           <Menu currentPath={this.props.location.pathname}/>
-          <div id="overview">
+          <StatusBar title="Array" speed={speed} batteryVoltage={batteryVoltage} netPower={netPower}/>
+          <div id="array">
             <div className="content-wrapper">
               <div id="column-left">
                 <Primary {...this.state.primary.props}/>
@@ -180,16 +164,7 @@ class Overview extends Component {
                   </div>
                   <Graph selected={selectedGraph}
                          selectGraph={this.selectGraph}
-                         graphSet={this.state.graphSet}
-                         {...this.state.graph.props}/>
-                </div>
-                <div id="graph2" className="widget sub">
-                  <div className="graph-info">
-                    <h2>Net Power Gauge</h2>
-                  </div>
-                  <Graph selected={set2.netPowerGauge}
-                         selectGraph={this.selectGraph}
-                         graphSet={set2}
+                         graphSet={graphSet}
                          {...this.state.graph.props}/>
                 </div>
               </div>
@@ -200,4 +175,4 @@ class Overview extends Component {
   }
 }
 
-export default Overview;
+export default Array;

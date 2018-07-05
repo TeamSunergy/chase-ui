@@ -74,12 +74,17 @@ class Primary extends Component {
               <div className="value">{speed}<span> mph</span></div>
             </div>
           </div>
-          <div className="sub battery">
-						<h2>Battery</h2>
-						<div className="value">{batteryVoltage}<span> volts</span></div>
-            <div id="soc">
-              <div className="value">{batterySoc}<span> %</span></div>
-              <img className="soc-icon" src={this.getSocImage(batterySoc)} />
+          <div className="sub cluster">
+            <div className="sub-inline-60">
+              <h2>Pack Inst.</h2>
+              <div className="value">{batteryVoltage}<span> volts</span></div>
+            </div>
+            <div className="sub-inline-40">
+              <h2>SOC</h2>
+              <div id="soc">
+                <img className="soc-icon" src={this.getSocImage(batterySoc)} />
+                <div className="value">{batterySoc}<span> %</span></div>
+              </div>
             </div>
 					</div>
         <div className="sub">
@@ -87,15 +92,15 @@ class Primary extends Component {
           <div className="value">{arrayTotalPower}<span> watts</span></div>
         </div>
           <div className="sub cluster">
-            <div className="sub-inline">
+            <div className="sub-inline-33">
               <h3>sub-a</h3>
               <div className="value">{arrayAPower}</div><span>watts</span><div/>
             </div>
-            <div className="sub-inline">
+            <div className="sub-inline-33">
               <h3>sub-b</h3>
               <div className="value">{arrayBPower}</div><span>watts</span><div/>
             </div>
-            <div className="sub-inline">
+            <div className="sub-inline-33">
               <h3>sub-c</h3>
               <div className="value">{arrayCPower}</div><span>watts</span><div/>
             </div>

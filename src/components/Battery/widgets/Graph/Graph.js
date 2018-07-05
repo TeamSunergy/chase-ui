@@ -20,9 +20,22 @@ class Graph extends Component {
 	componentWillReceiveProps(nextProps) {
     let newState = {};
     let {graphs} = this.state;
+    let dataKeys = [];
     for (let graph in graphs) {
       if (graphs.hasOwnProperty(graph)) {
-        newState = this.updateGraph(graphs[graph], nextProps, this.props, newState, graphs[graph].name);
+        if (graphs[graph].name === 'packVoltageAndCurrent')
+          dataKeys = ['packInstantaneousVoltage', 'packCurrent'];
+        else if (graphs[graph].name === 'deltaCellTemp') {
+          dataKeys = ['hiCellTemp', 'loCellTemp'];
+        }
+        else if (graphs[graph].name === 'deltaCellVoltage') {
+          dataKeys = ['deltaHiCellVoltage', 'deltaLoCellVoltage'];
+        }
+        else if (graphs[graph].name === 'deltaCellTemp') {
+          dataKeys = ['deltaHiCellTemp', 'deltaLoCellTemp'];
+        }
+        else dataKeys = [graphs[graph].name];
+        newState = this.updateGraph(graphs[graph], nextProps, this.props, newState, dataKeys);
       }
       this.setState(newState);
     }
@@ -61,31 +74,38 @@ class Graph extends Component {
     );
   }
 
-  updateGraph(graph, newData, oldData, newState, dataKey) {
+  updateGraph(graph, newData, oldData, newState, dataKeys) {
     let {labels, datasets} = graph.data;
     let {graphs} = this.state;
     let currTime = new Date().toLocaleTimeString();
     let shouldUpdate = false;
-    // NOTE: this check for currTime makes it so the chart only gets updated once every second.
-    if (graph.name !== 'netPowerGauge') {
-      if ((labels[11] !== currTime) && (newData[dataKey] !== oldData[dataKey])) {
+
+    // For multiple data sets
+    if (dataKeys.length > 1) {
+      // NOTE: the first check for currTime makes it so the chart only gets updated once every second.
+      if ((labels[labels.length-1] !== currTime)
+          && ((newData[dataKeys[0]] !== oldData[dataKeys[0]]) || (newData[dataKeys[1]] !== oldData[dataKeys[1]]))) {
         shouldUpdate = true;
         labels.push(currTime);
-        if (labels.length > 12) labels.shift();
-        datasets[0].data.push(newData[dataKey]);
-        if (datasets[0].data.length > 12) datasets[0].data.shift();
+        if (labels.length > graph.xAxisMax) labels.shift();
+        for (let i = 0; i < datasets.length; i++) {
+          datasets[i].data.push(newData[dataKeys[i]]);
+          if (datasets[i].data.length > graph.xAxisMax) datasets[i].data.shift();
+        }
       }
-    } else {
-      if ((labels[0] !== currTime) && (newData[dataKey] !== oldData[dataKey])) {
+    } else { // For one data set
+      // NOTE: the first check for currTime makes it so the chart only gets updated once every second.
+      if ((labels[labels.length-1] !== currTime) && (newData[dataKeys[0]] !== oldData[dataKeys[0]])) {
         shouldUpdate = true;
         labels.push(currTime);
-        labels.shift();
-        datasets[0].data.push(newData[dataKey]);
-        datasets[0].data.shift();
+        if (labels.length > graph.xAxisMax) labels.shift();
+        datasets[0].data.push(newData[dataKeys[0]]);
+        if (datasets[0].data.length > graph.xAxisMax) datasets[0].data.shift();
       }
     }
+
     if (shouldUpdate) {
-      newState = update(graphs[dataKey], {
+      newState = update(graphs[graph.name], {
         data: {
           labels: {$set: labels},
           datasets: {$set: datasets}

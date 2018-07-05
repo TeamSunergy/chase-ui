@@ -1,12 +1,15 @@
 /*
- * Overview Component Stylesheet
+ * Array Component Styles
  * --------------------------------------------------
  */
 @import '../custom-variables';
 
-#overview {
+//== Styles
+//
+//
+
+#array {
   #column-left {
-    //margin-left: 20px;
     width: 30%;
     float: left;
   }
@@ -16,10 +19,6 @@
     float: left;
     padding-left: 32px;
   }
-
-  //== Primary
-  //
-  //## Styles for the Primary widget
 
   //== Graph
   //
@@ -31,15 +30,14 @@
 
   #graph1 {
     .chart-container > div {
-      height: 50vh;
+      height: 75vh;
       width: 100%;
     }
   }
   #graph2 {
     .chart-container > div {
-      height: 15.5vh;
+      height: 15vh;
       width: 100%;
     }
   }
-} //** END #overview
-
+}
