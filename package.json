@@ -5,6 +5,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "chart.js": "^2.7.2",
+    "csvtojson": "^2.0.4",
     "dns": "file:./src/mock/dns",
     "express": "^4.16.2",
     "feather-icons": "^4.7.0",

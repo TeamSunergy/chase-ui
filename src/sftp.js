@@ -22,50 +22,54 @@ exec("pwd", function (error, stdout, stderr) {
   localFilePath = localRootDir + "/logs/";
 });
 
-exec("ls ./logs/", function (error, stdout, stderr) {
-  //console.log('stdout: ' + stdout);
-  //console.log('stderr: ' + stderr);
-  if (error !== null) {
-    console.log('exec error: ' + error);
-  }
-  console.log("exec: ls ./logs/");
-  localLogFiles = stdout.split('\n');
-});
-
 console.log("Connecting to host...");
-sftp.connect({
+let connection = sftp.connect({
   host: 'student.cs.appstate.edu',
   port: '',
   username: 'aliceami',
   password: 'lizardgrad2018'
-}).then(() => {
-  //console.log("Executing ls...");
-  return sftp.list('./test/logs/');
-}).then((list) => {
-
-  //console.log("Generating array from file list...");
-  // Generate array of file names from list of file objects
-  for (let i = 0; i < list.length; i++) {
-    fileList.push(list[i].name);
-  }
-
-  let data, filePath;
-  console.log("Writing to local files...");
-  for (let i = 0; i < fileList.length; i++) {
-    filePath = './test/logs/' + fileList[i];
-    if (!isLocalFile(fileList[i], localLogFiles)) {
-      sftp.fastGet(filePath, (localFilePath + fileList[i]));
-      //console.log("Remote file: ", data.path);
-      localLogFiles.push(fileList[i]);
-      console.log("Got file: ", fileList[i]);
-    }
-    else console.log("Ignored file. Local copy found: ", fileList[i]);
-
-    //data.pipe(fs.createWriteStream(localFilePath + fileList[i]));
-  }
-}).catch((err) => {
-  console.log(err, 'catch error');
 });
+
+let timerPeriod = 3000; // 3 seconds
+setInterval(function() {
+  exec("ls ./logs/", function (error, stdout, stderr) {
+    //console.log('stdout: ' + stdout);
+    //console.log('stderr: ' + stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+    console.log("exec: ls ./logs/");
+    localLogFiles = stdout.split('\n');
+  });
+  connection.then(() => {
+    //console.log("Executing ls...");
+    return sftp.list('./test/logs/');
+  }).then((list) => {
+
+    //console.log("Generating array from file list...");
+    // Generate array of file names from list of file objects
+    for (let i = 0; i < list.length; i++) {
+      fileList.push(list[i].name);
+    }
+
+    let filePath;
+    // console.log("Writing to local files...");
+    for (let i = 0; i < fileList.length; i++) {
+      filePath = './test/logs/' + fileList[i];
+      if (!isLocalFile(fileList[i], localLogFiles)) {
+        sftp.fastGet(filePath, (localFilePath + fileList[i]));
+        //console.log("Remote file: ", data.path);
+        localLogFiles.push(fileList[i]);
+        console.log("Got file: ", fileList[i]);
+      }
+      else console.log("Ignored file. Local copy found: ", fileList[i]);
+    }
+    fileList = []; // Reset list of remote log files
+
+  }).catch((err) => {
+    console.log(err, 'catch error');
+  });
+}, timerPeriod);
 
 function isLocalFile(fn, files) {
   for (let i = 0; i < files.length; i++) {
