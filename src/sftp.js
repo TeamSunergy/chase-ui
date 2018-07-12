@@ -70,6 +70,8 @@ setInterval(function() {
     for (let i = 0; i < fileList.length; i++) {
       filePath = './test/logs/' + fileList[i];
       if (!isLocalFile(fileList[i], localLogFiles)) {
+        // Ignore swap files (writing in progress)
+        if (fileList[i].slice(-4) === '.swp') continue;
         sftp.fastGet(filePath, (localFilePath + fileList[i]));
         //console.log("Remote file: ", data.path);
         localLogFiles.push(fileList[i]);
