@@ -10,13 +10,16 @@
 let Client = require('ssh2-sftp-client');
 let sftp = new Client();
 let exec = require('child_process').exec;
-const csv = require('csvtojson');
+const csvjson = require('csvjson');
+const fs = require('fs');
+
 
 // Initialize globals
 let localFilePath = "";
 let localRootDir = "";
 let fileList = [];
 let localLogFiles = [];
+let localLogFilesJson = [];
 
 // TODO: SET THIS BASED ON HOST FS
 let remoteRootDir = "./test/logs/";
@@ -43,7 +46,7 @@ let connection = sftp.connect({
   password: 'lizardgrad2018'
 });
 
-let timerPeriod = 3000; // 3 seconds
+let timerPeriod = 2000; // 3 seconds
 let command = "ls " + "./logs/";
 setInterval(function() {
   exec(command, function (error, stdout, stderr) {
@@ -65,7 +68,7 @@ setInterval(function() {
     for (let i = 0; i < list.length; i++) {
       fileList.push(list[i].name);
     }
-
+    let fl = fileList;
     let filePath;
     // console.log("Writing to local files...");
     for (let i = 0; i < fileList.length; i++) {
@@ -73,26 +76,43 @@ setInterval(function() {
       if (!isLocalFile(fileList[i], localLogFiles)) {
         // Ignore swap files (writing in progress)
         if (fileList[i].slice(-4) === '.swp') continue;
-        sftp.fastGet(filePath, (localFilePath + fileList[i]));
+        var currCsv = fileList[i].slice(0, -4);
+        sftp.fastGet(filePath, (localFilePath + fileList[i]), function(err) {
+          if (err) {
+            console.log("wow");
+          } else convertCsvToJson(currCsv);
+        });
         //console.log("Remote file: ", data.path);
         localLogFiles.push(fileList[i]);
         console.log("Got file: ", fileList[i]);
         console.log("THIS: ", (localFilePath + fileList[i]));
         console.log("test: ", fileList[i].slice(-4));
-        if (fileList[i].slice(-4) === '.csv') {
-          wow(fileList[i]);
-        }
 
-          //convertCsvToJson(localFilePath + fileList[i]);
+        //convertCsvToJson(localFilePath + fileList[i]);
 
       }
-      else console.log("Ignored file. Local copy found: ", fileList[i]);
+      else {
+        console.log("Ignored file. Local copy found: ", fileList[i]);
+
+      }
     }
     fileList = []; // Reset list of remote log files
-
+    return fl;
+  }).then((fileList) => {
+    /**
+    for (let i = 0; i < fileList.length; i++) {
+      if (!isLocalFile((fileList[i].slice(0, -4) + ".json"), localLogFilesJson)) {
+        if (fileList[i].slice(-4) === '.csv') {
+          console.log("Converting to json...");
+          convertCsvToJson(fileList[i].slice(0, -4));
+          localLogFilesJson.push(fileList[i].slice(0, -4) + ".json");
+        }
+      }
+    } **/
   }).catch((err) => {
     console.log(err, 'catch error');
   });
+
 }, timerPeriod);
 
 function isLocalFile(fn, files) {
@@ -102,12 +122,12 @@ function isLocalFile(fn, files) {
   return false;
 }
 
-function convertCsvToJson(filePath) {
-  console.log("filePath: ", filePath);
-  console.log("fp: ", filePath);
-  csv().fromFile(filePath).then((jsonObj) => {
-    console.log("obj: ", jsonObj);
-  });
+function convertCsvToJson(fn) {
+  let read = fs.createReadStream('logs/' + fn + '.csv');
+  let write = fs.createWriteStream('logs/' + fn + '.json');
+  let toObject = csvjson.stream.toObject();
+  let stringify = csvjson.stream.stringify();
+  read.pipe(toObject).pipe(stringify).pipe(write);
 }
 
 
