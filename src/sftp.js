@@ -10,6 +10,7 @@
 let Client = require('ssh2-sftp-client');
 let sftp = new Client();
 let exec = require('child_process').exec;
+const csv = require('csvtojson');
 
 // Initialize globals
 let localFilePath = "";
@@ -76,6 +77,14 @@ setInterval(function() {
         //console.log("Remote file: ", data.path);
         localLogFiles.push(fileList[i]);
         console.log("Got file: ", fileList[i]);
+        console.log("THIS: ", (localFilePath + fileList[i]));
+        console.log("test: ", fileList[i].slice(-4));
+        if (fileList[i].slice(-4) === '.csv') {
+          wow(fileList[i]);
+        }
+
+          //convertCsvToJson(localFilePath + fileList[i]);
+
       }
       else console.log("Ignored file. Local copy found: ", fileList[i]);
     }
@@ -91,6 +100,14 @@ function isLocalFile(fn, files) {
     if (files[i] === fn) return true;
   }
   return false;
+}
+
+function convertCsvToJson(filePath) {
+  console.log("filePath: ", filePath);
+  console.log("fp: ", filePath);
+  csv().fromFile(filePath).then((jsonObj) => {
+    console.log("obj: ", jsonObj);
+  });
 }
 
 
