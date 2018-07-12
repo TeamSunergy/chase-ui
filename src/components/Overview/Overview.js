@@ -192,7 +192,6 @@ class Overview extends Component {
                          graphSet={set2}
                          {...this.state.graph.props}/>
                 </div>
-                <button onClick={this.sftp}>SFTP</button>
               </div>
             </div>
           </div>

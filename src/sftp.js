@@ -1,14 +1,24 @@
+/**
+ * Name:
+ * sftp.js
+ *
+ * Desc: Connects to a host using SFTP to get log files and store them locally. Runs on a timer loop.
+ * Usage: node sftp.js
+ */
+
+// Import modules
 let Client = require('ssh2-sftp-client');
 let sftp = new Client();
-
 let exec = require('child_process').exec;
-let child;
-let fs = require('fs');
+
+// Initialize globals
 let localFilePath = "";
 let localRootDir = "";
-let remoteRootDir = "./test/";
 let fileList = [];
 let localLogFiles = [];
+
+// TODO: SET THIS BASED ON HOST FS
+let remoteRootDir = "./test/logs/";
 
 // Get local path for logs
 exec("pwd", function (error, stdout, stderr) {
@@ -20,6 +30,8 @@ exec("pwd", function (error, stdout, stderr) {
   console.log("exec: pwd");
   localRootDir = "" + stdout.slice(0, -1); // remove newline from pwd
   localFilePath = localRootDir + "/logs/";
+  //console.log("localRootDir: ", localRootDir);
+  //console.log("localFilePath: ", localFilePath);
 });
 
 console.log("Connecting to host...");
@@ -31,19 +43,20 @@ let connection = sftp.connect({
 });
 
 let timerPeriod = 3000; // 3 seconds
+let command = "ls " + "./logs/";
 setInterval(function() {
-  exec("ls ./logs/", function (error, stdout, stderr) {
+  exec(command, function (error, stdout, stderr) {
     //console.log('stdout: ' + stdout);
     //console.log('stderr: ' + stderr);
     if (error !== null) {
       console.log('exec error: ' + error);
     }
-    console.log("exec: ls ./logs/");
+    console.log("================================\nexec: ls ./logs/");
     localLogFiles = stdout.split('\n');
   });
   connection.then(() => {
     //console.log("Executing ls...");
-    return sftp.list('./test/logs/');
+    return sftp.list(remoteRootDir);
   }).then((list) => {
 
     //console.log("Generating array from file list...");
