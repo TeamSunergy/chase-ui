@@ -1,7 +1,8 @@
 {
-  "canpiServer": {
-    "host":"127.0.0.1",
-    "port": 25000
+  "rabbit": {
+    "host":"amqp://localhost",
+    "port": 32768
   },
-  "connectionInterval":10000
+  "connectionInterval":10000,
+  "weather-api":"5f6141a52f5f8687a3cb5505a0df6aff"
 }

@@ -1,55 +1,45 @@
-const net = require('net'),
-	express = require('express'),
+const express = require('express'),
 	http = require('http'),
 	socketIO = require('socket.io'),
 	app = express(),
 	expressPort = 4001,
 	server = http.createServer(app),
 	io = socketIO(server),
-	Parser = require("json-stream-parse"),
-	parser = new Parser(),
 	log4js = require('log4js'),
-	logger = log4js.getLogger('chase-server');
-let connection = false;
-let socket = new net.Socket(),
+	logger = log4js.getLogger('chase-ui'),
 	nconf = require('nconf');
+module.exports.connected = false;
 
-nconf.argv()
-	.env()
-	.file({ file: 'config/config.json' });
+const isPortReachable = require('is-port-reachable');
 
+//nconf configuration
+nconf.file("default", './config/default.json');
+nconf.file("file", './config/config.json');
+
+//logging configuration
+log4js.configure("./config/log4js.json");
 logger.info(nconf.get("canpiServer"));
 logger.level = 'info';
-let canpiServer = nconf.get("canpiServer");
 
-establishConnection();
+let rabbit = nconf.get("rabbit");
 
-io.once('connection', (socket) => {
-	logger.info('Event: SocketIO Connection Established w/ browser');
-	parser.on("json", (json) => {
-		io.sockets.emit("data", json);
-		//logger.info(json)
+var amqp = require('amqplib/callback_api');
+amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
+	module.exports.connected = true;
+	conn.createChannel(function (err, ch) {
+		var q = 'data';
+		ch.assertQueue(q, { durable: false });
+		console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+		ch.consume(q, function (msg) {
+			io.sockets.emit("data", JSON.parse(msg.content.toString()))
+		}, { noAck: true });
 	});
 });
+io.once('connection', (socket) => {
+	logger.info('Event: SocketIO Connection Established w/ browser');
+});
 
-function establishConnection() {
-	socket.connect(canpiServer.port, canpiServer.host, () => {
-		connection = true;
-		logger.info("Connection made with host: " + canpiServer.host + " on port: " + canpiServer.port);
-		try {
-			socket.pipe(parser);
-		}
-		catch (e) {
-			logger.fatal("Could not pipe bytes to parser")
-		}
-	});
-	socket.on('error', function () { });
+var router = require('./lib/controller/router');
+app.use('/api', router);
 
-	socket.on('close', () => {
-		connection = false;
-		logger.info("Socket closed - Attempting to establish a connection");
-		setTimeout(establishConnection, nconf.get("connectionInterval"));
-	});
-}
-
-server.listen(expressPort, () => console.log("Listening on port: ", expressPort));
+server.listen(expressPort, () => logger.info("Listening on port: ", expressPort));

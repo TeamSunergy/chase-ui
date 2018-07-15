@@ -1,0 +1,15 @@
+{
+    "OpenWeatherMap": {
+        "baseUrl": "https://api.openweathermap.org/data/2.5/",
+        "type":{
+            "forecast": "/forecast",
+            "current": "/weather",
+            "daily": "/forecast/daily"
+        },
+        "seperator": {
+            "cityName": "q",
+            "id": "id",
+            "coordinates": ["lat", "lon"]
+        }
+    }
+}
