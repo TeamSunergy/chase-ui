@@ -18,7 +18,6 @@ nconf.file("file", './config/config.json');
 
 //logging configuration
 log4js.configure("./config/log4js.json");
-logger.info(nconf.get("canpiServer"));
 logger.level = 'info';
 
 let rabbit = nconf.get("rabbit");
@@ -29,7 +28,7 @@ amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
 	conn.createChannel(function (err, ch) {
 		var q = 'data';
 		ch.assertQueue(q, { durable: false });
-		console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+		logger.info(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
 		ch.consume(q, function (msg) {
 			io.sockets.emit("data", JSON.parse(msg.content.toString()))
 		}, { noAck: true });
