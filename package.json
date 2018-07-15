@@ -9,6 +9,7 @@
     "express": "^4.16.2",
     "feather-icons": "^4.7.0",
     "immutability-helper": "^2.6.6",
+    "is-port-reachable": "^2.0.0",
     "jquery": "^3.3.1",
     "json-stream-parse": "^1.0.3",
     "log4js": "^2.9.0",
