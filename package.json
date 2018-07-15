@@ -2,8 +2,9 @@
   "name": "chase",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:4001",
   "dependencies": {
+    "amqplib": "^0.5.2",
     "chart.js": "^2.7.2",
     "express": "^4.16.2",
     "feather-icons": "^4.7.0",
