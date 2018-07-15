@@ -29,7 +29,8 @@ amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
 		ch.assertQueue(q, { durable: false });
 		logger.info(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
 		ch.consume(q, function (msg) {
-			io.sockets.emit("data", JSON.parse(msg.content.toString()))
+			module.exports.data = JSON.parse(msg.content.toString());
+			io.sockets.emit("data", JSON.parse(msg.content.toString()));
 		}, { noAck: true });
 	});
 });
