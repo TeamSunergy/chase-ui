@@ -21,7 +21,6 @@ log4js.configure("./config/log4js.json");
 logger.level = 'info';
 
 let rabbit = nconf.get("rabbit");
-
 var amqp = require('amqplib/callback_api');
 amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
 	module.exports.connected = true;
