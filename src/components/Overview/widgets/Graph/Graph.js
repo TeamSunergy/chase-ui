@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 
-import { Line, Bar, HorizontalBar,Radar, defaults } from 'react-chartjs-2';
+import { Line, Bar, HorizontalBar, Radar, defaults } from 'react-chartjs-2';
 //import {Pie, Polar,  Bubble, Scatter} from 'react-chartjs-2';
 
 defaults.global.animation = false;
@@ -38,9 +38,11 @@ class Graph extends Component {
   }
 
   clearGraph(graphName) {
+    let { graphs } = this.state;
     if (graphName != null) {
-      this.state.graphs[graphName].data.labels = []
-      this.state.graphs[graphName].data.datasets[0].data = []
+      graphs[graphName].data.labels = [];
+      graphs[graphName].data.datasets[0].data = [];
+      this.setState(graphs);
     }
   }
 
