@@ -75,4 +75,5 @@ docker ps -a
 docker exec <contiainer_id> rabbitmq-plugins enable rabbitmq_management
 ```
 Browse to localhost:8080 or <host_ip:8080> for management console
+The default username and password are guest and guest
 

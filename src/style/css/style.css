@@ -2048,7 +2048,14 @@ h3 {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga'; }
-
+#clear-graph {
+    display: inline-block;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin: 3px; }
+  
 #graph-selector {
   display: inline-block;
   border: 1px solid #EAEAEA;
