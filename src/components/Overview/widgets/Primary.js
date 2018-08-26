@@ -9,37 +9,37 @@
 import React, { Component } from 'react';
 
 class Primary extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			speed: Math.round(this.props.speed),
-			batteryVoltage: (this.props.batteryVoltage).toFixed(2),
+  constructor(props) {
+    super(props);
+    this.state = {
+      speed: Math.round(this.props.speed),
+      batteryVoltage: (this.props.batteryVoltage).toFixed(2),
       batterySoc: (this.props.batterySoc),
       arrayTotalPower: (this.props.arrayTotalPower).toFixed(2),
-			arrayAPower : (this.props.arrayAPower).toFixed(2),
-			arrayBPower : (this.props.arrayBPower).toFixed(2),
-			arrayCPower : (this.props.arrayCPower).toFixed(2),
-		};
+      arrayAPower: (this.props.arrayAPower).toFixed(2),
+      arrayBPower: (this.props.arrayBPower).toFixed(2),
+      arrayCPower: (this.props.arrayCPower).toFixed(2),
+    };
 
-		this.getSocImage = this.getSocImage.bind(this);
-	}
+    this.getSocImage = this.getSocImage.bind(this);
+  }
 
-	componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-			speed: Math.round(nextProps.speed),
-			batteryVoltage: (nextProps.batteryVoltage).toFixed(2),
+      speed: Math.round(nextProps.speed),
+      batteryVoltage: (nextProps.batteryVoltage).toFixed(2),
       batterySoc: (nextProps.batterySoc),
       arrayTotalPower: (nextProps.arrayTotalPower).toFixed(2),
-			arrayAPower: (nextProps.arrayAPower).toFixed(2),
-			arrayBPower: (nextProps.arrayBPower).toFixed(2),
-			arrayCPower: (nextProps.arrayCPower).toFixed(2),
-		});
-	}
+      arrayAPower: (nextProps.arrayAPower).toFixed(2),
+      arrayBPower: (nextProps.arrayBPower).toFixed(2),
+      arrayCPower: (nextProps.arrayCPower).toFixed(2),
+    });
+  }
 
-	getSocImage(batterySOC) {
-	  let loc = window.location.origin + "/images/battery-icons/";
-	  if (batterySOC >= 91) {
-	    return loc + "battery_full.svg";
+  getSocImage(batterySOC) {
+    let loc = window.location.origin + "/images/battery-icons/";
+    if (batterySOC >= 91) {
+      return loc + "battery_full.svg";
     }
     if (batterySOC >= 81) {
       return loc + "battery_90.svg";
@@ -63,51 +63,58 @@ class Primary extends Component {
     return loc + "battery_full.svg";
   }
 
-	render() {
-		const { speed, batteryVoltage, batterySoc, arrayTotalPower, arrayAPower, arrayBPower, arrayCPower } = this.state;
+  render() {
+    const { speed, batteryVoltage, batterySoc, arrayTotalPower, arrayAPower, arrayBPower, arrayCPower } = this.state;
 
-		return  (
-			<div id="primary" className="widget">
-          <div className="sub">
-            <div className="wrapper">
-              <h2>Speed</h2>
-              <div className="value">{speed}<span> mph</span></div>
+    return (
+      <div id="primary" className="widget">
+        <div className="sub">
+          <div className="wrapper">
+            <h2>Speed</h2>
+            <div className="value">{speed}<span> mph</span></div>
+          </div>
+        </div>
+        <div className="sub cluster">
+          <div className="sub-inline-60">
+            <h2>Pack Inst.</h2>
+            <div className="value">{batteryVoltage}<span> volts</span></div>
+          </div>
+          <div className="sub-inline-40">
+            <h2>SOC</h2>
+            <div id="soc">
+              <img className="soc-icon" src={this.getSocImage(batterySoc)} />
+              <div className="value">{batterySoc.pad(2)}<span> %</span></div>
             </div>
           </div>
-          <div className="sub cluster">
-            <div className="sub-inline-60">
-              <h2>Pack Inst.</h2>
-              <div className="value">{batteryVoltage}<span> volts</span></div>
-            </div>
-            <div className="sub-inline-40">
-              <h2>SOC</h2>
-              <div id="soc">
-                <img className="soc-icon" src={this.getSocImage(batterySoc)} />
-                <div className="value">{batterySoc}<span> %</span></div>
-              </div>
-            </div>
-					</div>
+        </div>
         <div className="sub">
           <h2>Array</h2>
           <div className="value">{arrayTotalPower}<span> watts</span></div>
         </div>
-          <div className="sub cluster">
-            <div className="sub-inline-33">
-              <h3>sub-a</h3>
-              <div className="value">{arrayAPower}</div><span>watts</span><div/>
-            </div>
-            <div className="sub-inline-33">
-              <h3>sub-b</h3>
-              <div className="value">{arrayBPower}</div><span>watts</span><div/>
-            </div>
-            <div className="sub-inline-33">
-              <h3>sub-c</h3>
-              <div className="value">{arrayCPower}</div><span>watts</span><div/>
-            </div>
+        <div className="sub cluster">
+          <div className="sub-inline-33">
+            <h3>sub-a</h3>
+            <div className="value">{arrayAPower}</div><span>watts</span><div />
           </div>
-			</div>
-		);
-	}
+          <div className="sub-inline-33">
+            <h3>sub-b</h3>
+            <div className="value">{arrayBPower}</div><span>watts</span><div />
+          </div>
+          <div className="sub-inline-33">
+            <h3>sub-c</h3>
+            <div className="value">{arrayCPower}</div><span>watts</span><div />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
+
+Number.prototype.pad = function (size) {
+  var s = String(this);
+  while (s.length < (size || 2)) { s = "0" + s; }
+  return s;
+}
+
 
 export default Primary;
