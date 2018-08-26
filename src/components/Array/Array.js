@@ -64,7 +64,6 @@ class Array extends Component {
     const socket = socketIOClient(this.state.endpoint);
     socket.on('data', (data) => {
       const newState = update(this.state, {
-        loading: false,
         status: {
           speed :{$set: data.motConVehicleVelocity},
           batteryVoltage : {$set: data.batteryPackInstantaneousVoltage},
