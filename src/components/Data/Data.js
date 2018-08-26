@@ -22,7 +22,6 @@ class Data extends Component {
 	componentDidMount(){
 		const socket = socketIOClient(this.state.endpoint);
 		socket.on('data', (data) => {
-			console.log('re');
       this.setState({"object": data})
 		});
 	}

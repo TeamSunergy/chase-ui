@@ -29,7 +29,7 @@ class NotificationPanel extends Component {
     const { notifications } = this.props
     let link;
     if(notifications.length === 0){
-      link = <li><Link to="#"> No notifcations</Link></li>
+      link = <li><Link to="#"> No Notifications :)</Link></li>
     }
     else{
       link = notifications.slice(numberOfNotifications * -1).map((notification) =>
@@ -42,7 +42,7 @@ class NotificationPanel extends Component {
         <ul>
           { link }
         </ul>
-        <a className="see-all" href="#">All notifications</a>
+        <a className="see-all" href="">All notifications</a>
       </div>
     );
   }

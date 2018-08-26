@@ -22,6 +22,7 @@ logger.level = 'info';
 
 let rabbit = nconf.get("rabbit");
 var amqp = require('amqplib/callback_api');
+var count = 0;
 amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
 	module.exports.connected = true;
 	conn.createChannel(function (err, ch) {
@@ -31,6 +32,8 @@ amqp.connect(rabbit.host + ':' + rabbit.port, function (err, conn) {
 		ch.consume(q, function (msg) {
 			module.exports.data = JSON.parse(msg.content.toString());
 			io.sockets.emit("data", JSON.parse(msg.content.toString()));
+			//Notification Template
+			//io.sockets.emit('notification', {message:"MESSAGE_GOES_HERE", link: "/data"});
 		}, { noAck: true });
 	});
 });

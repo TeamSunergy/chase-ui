@@ -27,7 +27,7 @@ class Selector extends Component {
   setup() {
     let {options} = this.props;
     return options.map((o) =>
-        <option value={o.key}>{o.string}</option>
+        <option key={o.key} value={o.key}>{o.string}</option>
     );
   }
 
