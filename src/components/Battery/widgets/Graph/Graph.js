@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import update from 'immutability-helper';
 
-import {Line, Bar, HorizontalBar, Pie, Polar, Radar, Bubble, Scatter, defaults} from 'react-chartjs-2';
+import { Line, Bar, HorizontalBar, Radar, defaults } from 'react-chartjs-2';
+//import {Pie, Polar,  Bubble, Scatter} from 'react-chartjs-2';
 
 defaults.global.animation = false;
 defaults.global.defaultFontSize = 11;

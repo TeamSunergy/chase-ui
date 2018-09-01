@@ -63,3 +63,17 @@ Server started. Host: 127.0.0.1 Port: 25000
    ```
 
 6. Now if you go back to the browser tab with the application running you'll see that the values are changing (as of 2018.06.24, only the Overview page should work). The graph data updates every second while the other data in the two widgets on the left should be updating more rapidly. 
+
+
+RabbitMQ
+```
+docker login 
+-Insert Credentials
+docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 -p 5672 rabbitmq:3
+docker ps -a 
+-Find container id
+docker exec <contiainer_id> rabbitmq-plugins enable rabbitmq_management
+```
+Browse to localhost:8080 or <host_ip:8080> for management console
+The default username and password are guest and guest
+

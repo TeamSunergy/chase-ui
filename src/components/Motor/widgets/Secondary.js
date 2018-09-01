@@ -34,12 +34,12 @@ class Secondary extends Component {
             </div>
             <div className="sub-inline-50">
               <h2>DSP Temp.</h2>
-              <div className="value">{slipSpeed}<span> &deg;C</span></div>
+              <div className="value">{dspBoardTemp}<span> &deg;C</span></div>
             </div>
           </div>
           <div className="sub">
             <h2>Slip Speed</h2>
-            <div className="value">{slipSpeed}<span> %</span></div>
+            <div className="value">{motorTemp}<span> %</span></div>
           </div>
 
 
