@@ -231,9 +231,9 @@ export const graphs = {
             display: true
           },
           ticks: {
-            max: 500,
-            min: -500,
-            stepSize: 100
+            max: 25,
+            min: -25,
+            stepSize: 5,
           }
         }]
       }
